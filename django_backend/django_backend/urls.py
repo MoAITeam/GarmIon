@@ -20,5 +20,6 @@ urlpatterns = [
     path('polls_app_test/', include('polls_app_test.urls')),
     path('', include('polls_app_test.urls')),
     path('admin/', admin.site.urls),
+    path('api-auth/', include('rest_framework.urls'))
 ]
     
