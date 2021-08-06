@@ -5,4 +5,4 @@ from .models import Picture
 class PictureSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Picture
-        fields = ('picId','picId')
+        fields = ('picId','image')
