@@ -4,3 +4,5 @@ class Picture(models.Model):
     image = models.ImageField(upload_to ='uploads/')
     def __str__(self):
         return self.picId
+
+

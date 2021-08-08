@@ -26,6 +26,7 @@
     "@types/react-dom": "^16.9.10",
     "@types/react-router": "^5.1.11",
     "@types/react-router-dom": "^5.1.7",
+    "base64-arraybuffer": "^0.2.0",
     "cordova-plugin-advanced-http": "^3.2.0",
     "cordova-plugin-file": "^6.0.2",
     "ionicons": "^5.4.0",
