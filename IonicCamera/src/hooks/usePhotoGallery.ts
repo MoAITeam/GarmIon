@@ -20,7 +20,7 @@ export function usePhotoGallery() {
       resultType: CameraResultType.Base64,
     });
     const fileName = new Date().getTime() + ".jpeg";
-    HTTP.sendRequest('http://192.168.1.190:8000/pictures/',
+    HTTP.sendRequest('http://192.168.43.62:8000/pictures/',
       {
         method: 'post',
         data: { picId: 666, image: cameraPhoto.base64String },
@@ -35,11 +35,11 @@ export function usePhotoGallery() {
         const newPhotos = [
           {
             filepath: fileName,
-            webviewPath: 'http://192.168.1.190:8000/'+responsed['recommended garments'][0]['image'],
+            webviewPath: 'http://192.168.43.62:8000/'+responsed['recommended garments'][0]['image'],
           },
           {
             filepath: fileName,
-            webviewPath: 'http://192.168.1.190:8000/'+responsed['recommended garments'][1]['image'],
+            webviewPath: 'http://192.168.43.62:8000/'+responsed['recommended garments'][1]['image'],
           },
           ...photos,
           ];
