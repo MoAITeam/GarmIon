@@ -18,9 +18,12 @@ const Tab2: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-      <IonSlides pager={true} options={slideOpts} key={photos.map((path,index) => path.webviewPath).join('_')}>
-      {photos.map((photo, index) => (
-              <IonSlide key={index}>
+            {photos.slice(0,0+1).map((photo, index) => (
+                <IonImg key={(index.toString())+'_imgkey'} src={photo.webviewPath} />
+             ))}
+      <IonSlides pager={true} options={slideOpts} key={photos.map((path) => path.webviewPath).join('_')}>
+      {photos.slice(1,3).map((photo, index) => (
+              <IonSlide key={(index.toString())+'_slidekey'}>
                 <IonImg src={photo.webviewPath} />
               </IonSlide>
             ))}

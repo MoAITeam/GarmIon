@@ -20,6 +20,7 @@ export function usePhotoGallery() {
       resultType: CameraResultType.Base64,
     });
     const fileName = new Date().getTime() + ".jpeg";
+    if(window.hasOwnProperty("cordova")){
     HTTP.sendRequest('http://192.168.43.62:8000/pictures/',
       {
         method: 'post',
@@ -35,6 +36,10 @@ export function usePhotoGallery() {
         const newPhotos = [
           {
             filepath: fileName,
+            webviewPath: 'data:image/jpeg;base64,'+cameraPhoto.base64String, 
+          },
+          {
+            filepath: fileName,
             webviewPath: 'http://192.168.43.62:8000/'+responsed['recommended garments'][0]['image'],
           },
           {
@@ -43,7 +48,7 @@ export function usePhotoGallery() {
           },
           ...photos,
           ];
-          setPhotos(newPhotos);;
+          setPhotos(newPhotos);
       })
       .catch(response => {
         // prints 403
@@ -51,11 +56,31 @@ export function usePhotoGallery() {
 
         // prints Permission denied
         console.log(response);
-      });
+      });}
+      else{
+        // Se non siamo su mobile, riempi comunque l'array di qualcosa
+        console.log('debug');
+        const newPhotos = [
+          {
+            filepath: fileName,
+            webviewPath: 'data:image/jpeg;base64,'+cameraPhoto.base64String, 
+          },
+          {
+            filepath: fileName,
+            webviewPath: 'data:image/jpeg;base64,'+cameraPhoto.base64String,
+          },
+          {
+            filepath: fileName,
+            webviewPath: 'data:image/jpeg;base64,'+cameraPhoto.base64String,
+          },
+          ...photos,
+          ];
+          setPhotos(newPhotos);
+      }
   };
 
   return {
-    photos, takePhoto,
+    photos, takePhoto
   };
 }
 
