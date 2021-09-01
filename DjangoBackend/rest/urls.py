@@ -9,6 +9,6 @@ router.register(r'pictures', views.PictureViewSet)
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
     path('', include(router.urls)),
-    #path('neuralnetwork',  views.PictureViewSet.NeuralNetworkResult),
+    #path('neuralnetwork',  views.VIEWELABORAZIONEJSON.RESULT),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
