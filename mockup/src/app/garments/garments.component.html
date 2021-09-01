@@ -1,1 +1,8 @@
-<h2>{{garment.name}} - prova component</h2>
+<h2>My Garments</h2>
+<ul class="garments">
+  <li *ngFor="let garment of garments">
+    <a routerLink="detail/{{garment.id}}">
+      <span class="badge">{{garment.id}}</span> {{garment.name}}
+    </a>
+  </li>
+</ul>

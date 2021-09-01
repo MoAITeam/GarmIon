@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Garment} from '../garment';
+import { GARMENTS } from '../mock-garments';
 
 @Component({
   selector: 'app-garments',
@@ -8,10 +9,15 @@ import {Garment} from '../garment';
 })
 
 export class GarmentsComponent implements OnInit {
-  public garment: Garment = {
+  public garments = GARMENTS;
+  selectedGarment?: Garment;
+  onSelect(garment: Garment): void {
+    this.selectedGarment = garment;
+  }
+  /*public garment: Garment = {
     id: 1,
     name: 'BeautifulTop'
-  };
+  };*/
   constructor() {
    }
 
