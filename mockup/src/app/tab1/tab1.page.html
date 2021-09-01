@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Tab One </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-list>
+    <ion-list-header>
+      <ion-label>
+        Filter
+      </ion-label>
+    </ion-list-header>
+  
+    <ion-item>
+      <ion-label>Color</ion-label>
+      <ion-select multiple="true" cancelText="Nah" okText="Okay!">
+        <ion-select-option value="blue">Blue</ion-select-option>
+        <ion-select-option value="red">Red</ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label>Mood</ion-label>
+      <ion-select multiple="true" [value]="['wedding', 'funeral']">
+        <ion-select-option value="wedding">Wedding</ion-select-option>
+        <ion-select-option value="funeral">Funeral</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <img 
+        id = "2"
+        src="https://www.net-a-porter.com/variants/images/6630340699385535/in/w2000.jpg" 
+        routerLink="/tabs/tab1/garments/2"
+        routerDirection="forward" />
+      </ion-col>
+      <ion-col size="6">
+        <img src="https://www.net-a-porter.com/variants/images/11452292647496505/in/w2000.jpg" 
+        routerLink="/tabs/tab1/garments/2"
+        routerDirection="forward" />
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <img src="https://www.net-a-porter.com/variants/images/11452292645919937/in/w2000.jpg" 
+        routerLink="/tabs/tab1/garments/2"
+        routerDirection="forward" />
+      </ion-col>
+      <ion-col size="6">
+        <img src="https://www.net-a-porter.com/variants/images/6630340698817910/in/w2000.jpg" 
+        routerLink="/tabs/tab1/garments/2"
+        routerDirection="forward" />
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
