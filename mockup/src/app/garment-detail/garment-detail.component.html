@@ -1,3 +1,89 @@
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-title slot>Garment View</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content padding> 
+    <ion-label>FIltra i tuoi risultati di ricerca</ion-label>
+    <ion-grid>
+      <ion-row>
+        <ion-col id="category" size="4">
+          <ion-select placeholder="Select Category">
+            <ion-select-option value="top">Top</ion-select-option>
+            <ion-select-option value="bottom">Bottom</ion-select-option>
+          </ion-select>
+        </ion-col>
+
+        <ion-col id="event" size="4">
+          <ion-select placeholder="Select Event">
+            <ion-select-option value="concert">Concert</ion-select-option>
+            <ion-select-option value="graduation">Graduation</ion-select-option>
+            <ion-select-option value="meeting">Meeting</ion-select-option>
+            <ion-select-option value="mountain-trip">Mountain Trip</ion-select-option>
+          </ion-select>
+        </ion-col>
+
+        <ion-col id="mood" size="4">
+          <ion-select placeholder="Select Mood">
+            <ion-select-option value="felegant">Elegant</ion-select-option>
+            <ion-select-option value="dandy">Dandy</ion-select-option>
+            <ion-select-option value="clear">Clear</ion-select-option>
+          </ion-select>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+    <div class="garment-card-container"> 
+      <ion-card class="main-card">
+        <ion-card-header>
+          <ion-card-title >Your Garment </ion-card-title>
+          <ion-icon name="heart" class="center-right" ></ion-icon>
+          
+        </ion-card-header>
+        <ion-card-content>
+          <div class="garment-card-container"> 
+          <!-- First garment card-->
+            <ion-card class="garment-card">
+              <ion-card-content >
+                <img *ngIf="garment"
+                id= garment.name
+                src= "https://www.net-a-porter.com/variants/images/6630340699385535/in/w2000.jpg"
+        
+                />
+              </ion-card-content>
+            </ion-card >
+            <!-- Second garment card-->
+            <ion-card class="garment-card">
+              <ion-card-content>
+                <ion-slides>
+
+                  <ion-slide>
+                      <img src="https://www.net-a-porter.com/variants/images/11452292647496505/in/w2000.jpg"/>
+                  </ion-slide>
+          
+                  <ion-slide>
+                    <img src="https://www.net-a-porter.com/variants/images/11452292645919937/in/w2000.jpg"/>
+                  </ion-slide>
+          
+                  <ion-slide>
+                    <img src="https://www.net-a-porter.com/variants/images/6630340698817910/in/w2000.jpg"/>
+                  </ion-slide>
+          
+                </ion-slides>
+              </ion-card-content>      
+          </ion-card>
+          </div>
+        </ion-card-content>
+      </ion-card>
+      </div>
+    
+  </ion-content>
+
+
 <div *ngIf="garment">
   <h2>{{garment.name | uppercase}} Details</h2>
   <div><span>id: </span>{{garment.id}}</div>
@@ -5,5 +91,5 @@
     <label for="garment-name">Garment name: </label>
     <input id="garment-name" [(ngModel)]="garment.name" placeholder="Garment name"/>
   </div>
-  <button (click)="goBack()">go back</button>
-</div>
+
+

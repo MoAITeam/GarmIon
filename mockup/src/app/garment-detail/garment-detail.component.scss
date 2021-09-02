@@ -1,0 +1,28 @@
+.garment-card{
+    width: 80%;
+
+    
+}
+
+.main-card{
+    width: 80%;
+
+
+}
+
+.garment-card-container{
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+}
+
+ion-card-header {
+     position: relative }
+
+.center-right{
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: translateY(-50%);
+    font-size: 3em;
+}

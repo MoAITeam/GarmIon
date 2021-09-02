@@ -14,6 +14,6 @@ export class ViewGarmentPage implements OnInit {
   ngOnInit() {
     const routeParams = this.route.snapshot.paramMap;
     this.id = Number(routeParams.get('id'));
-  }
+  } 
 
 }
