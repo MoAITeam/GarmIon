@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 import { GarmentDetailComponent } from '../garment-detail/garment-detail.component';
+import { OutfitDetailComponent } from '../outfit-detail/outfit-detail.component';
 
 const routes: Routes = [
   {
@@ -30,7 +31,7 @@ const routes: Routes = [
       },
       {
         path: 'tab2/outfits/:id',
-        loadChildren: () => import('../tab2/view-outfit/view-outfit.module').then(m => m.ViewOutfitPageModule)
+        component : OutfitDetailComponent
       },
       {
         path: '',

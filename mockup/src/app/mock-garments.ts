@@ -1,3 +1,4 @@
+import { UrlResolver } from '@angular/compiler';
 import { Garment } from './garment';
 
 export const GARMENTS: Garment[] = [

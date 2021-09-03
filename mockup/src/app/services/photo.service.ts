@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import {GARMENTS} from '../mock-garments';
+import {DomSanitizer,SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
+import { Garment } from '../garment';
+
+
 
 
 
@@ -12,8 +16,8 @@ import {GARMENTS} from '../mock-garments';
 export class PhotoService{ 
 
   public photos: Photo[] = [];
-
-  constructor() { 
+  public garments:Garment[] = GARMENTS;
+  constructor(private sanitizer: DomSanitizer) { 
 
   }
   
@@ -24,17 +28,20 @@ export class PhotoService{
     source: CameraSource.Camera,
     quality: 100
   });
+  ;
 
-  this.photos.unshift({
+/*this.photos.unshift({
+    id: Math.random(),
     filepath: "soon...",
     webviewPath: capturedPhoto.webPath
-  });
-
-  GARMENTS.push({
+  });*/
+    this.garments.unshift({
     id: Math.random(),
     name: "garment",
-    link : capturedPhoto.webPath
+    link: capturedPhoto.webPath
   });
+
+
 }
 }
 
@@ -42,6 +49,7 @@ export class PhotoService{
 
 
 export interface Photo {
+  id: Number;
   filepath: string;
   webviewPath: string;
 }

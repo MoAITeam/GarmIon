@@ -3,6 +3,7 @@ import {Garment} from '../garment';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import {GARMENTS} from '../mock-garments';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-garment-detail',
@@ -15,9 +16,10 @@ export class GarmentDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private sanitizer : DomSanitizer
   ) {}
-
+    
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.garment = GARMENTS.find(h => h.id === id)!;
