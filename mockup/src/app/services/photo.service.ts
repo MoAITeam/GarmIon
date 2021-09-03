@@ -38,7 +38,8 @@ export class PhotoService{
     this.garments.unshift({
     id: Math.random(),
     name: "garment",
-    link: capturedPhoto.webPath
+    link: capturedPhoto.webPath,
+    color: 'Red'
   });
 
 

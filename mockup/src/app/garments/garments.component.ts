@@ -14,10 +14,7 @@ export class GarmentsComponent implements OnInit {
   onSelect(garment: Garment): void {
     this.selectedGarment = garment;
   }
-  /*public garment: Garment = {
-    id: 1,
-    name: 'BeautifulTop'
-  };*/
+  
   constructor() {
    }
 
