@@ -47,11 +47,11 @@
         <ion-card-content>
           <div class="garment-card-container"> 
           <!-- First garment card-->
-            <ion-card class="garment-card">
+            <ion-card class="garment-card" >
               <ion-card-content >
                 <img *ngIf="garment"
                 id= garment.name
-                src= "https://www.net-a-porter.com/variants/images/6630340699385535/in/w2000.jpg"
+                src= {{garment.link}}
         
                 />
               </ion-card-content>

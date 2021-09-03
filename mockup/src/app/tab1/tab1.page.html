@@ -1,11 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title> Tab One </ion-title>
+    <ion-title> Home </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content padding>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button>
+    <ion-fab-button  (click)="addPhotoToGallery()">
       <ion-icon name="camera-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
@@ -16,6 +16,8 @@
       </ion-label>
     </ion-list-header>
     </ion-list>
+
+
 
     <ion-grid>
       <ion-row >
@@ -43,32 +45,15 @@
   <app-garments>
     
   </app-garments>
+ 
   <ion-grid>
     <ion-row>
-      <ion-col size="6">
-        <img 
-        id = "2"
-        src="https://www.net-a-porter.com/variants/images/6630340699385535/in/w2000.jpg" 
-        routerLink="/tabs/tab1/garments/2"
-        routerDirection="forward" />
-      </ion-col>
-      <ion-col size="6">
-        <img src="https://www.net-a-porter.com/variants/images/11452292647496505/in/w2000.jpg" 
-        routerLink="/tabs/tab1/garments/2"
-        routerDirection="forward" />
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="6">
-        <img src="https://www.net-a-porter.com/variants/images/11452292645919937/in/w2000.jpg" 
-        routerLink="/tabs/tab1/garments/2"
-        routerDirection="forward" />
-      </ion-col>
-      <ion-col size="6">
-        <img src="https://www.net-a-porter.com/variants/images/6630340698817910/in/w2000.jpg" 
-        routerLink="/tabs/tab1/garments/2"
-        routerDirection="forward" />
+      <ion-col
+        size="6"
+        *ngFor="let photo of photoService.photos; index as position"
+      >
+        <ion-img [src]="photo.webviewPath"
+        routerLink="detail/{{photo.webviewPath}}"></ion-img>
       </ion-col>
     </ion-row>
   </ion-grid>
-</ion-content>

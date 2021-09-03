@@ -1,8 +1,12 @@
 <h2>My Garments</h2>
-<ul class="garments">
-  <li *ngFor="let garment of garments">
-    <a routerLink="detail/{{garment.id}}">
-      <span class="badge">{{garment.id}}</span> {{garment.name}}
-    </a>
-  </li>
-</ul>
+<ion-grid class="garments">
+  <ion-row>
+  <ion-col size="6" *ngFor="let garment of garments">
+    <img 
+    src={{garment.link}}
+    routerLink="detail/{{garment.id}}">
+
+  >
+  </ion-col>
+</ion-row>
+</ion-grid>
