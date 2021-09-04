@@ -17,10 +17,6 @@ export class Tab1Page {
       this.photoService.addNewToGallery();
   }
 
-  onColorChange($event) {
-    this.colorFilter = $event.target.value;
-}
-
 }
 
 
