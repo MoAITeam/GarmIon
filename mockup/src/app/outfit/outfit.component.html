@@ -4,21 +4,23 @@
   <ion-row>
   <ion-col size="6" *ngFor="let outfit of outfits">
 
-    <ion-card>
-      <ion-card-content>
+    <ion-card >
+      <ion-card-content routerLink="detail/{{outfit.id}}" >
     
         <ion-img 
         [src]="outfit.garments[0].link"
-        routerLink="detail/{{outfit.id}}" >
+        
+         >
     
         </ion-img>
 
+        
     
         <ion-label> </ion-label>
     
         <ion-img 
-        [src]="outfit.garments[0].link"
-        routerLink="detail/{{outfit.id}}" >
+        [src]="outfit.garments[1].link"
+         >
             
         </ion-img>
     </ion-card-content>

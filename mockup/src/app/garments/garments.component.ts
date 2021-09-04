@@ -10,6 +10,7 @@ import { GARMENTS } from '../mock-garments';
 
 export class GarmentsComponent implements OnInit {
   public garments = GARMENTS;
+  public colors : string[];
   selectedGarment?: Garment;
   onSelect(garment: Garment): void {
     this.selectedGarment = garment;
@@ -20,5 +21,6 @@ export class GarmentsComponent implements OnInit {
 
   ngOnInit() {
   }
+
 
 }

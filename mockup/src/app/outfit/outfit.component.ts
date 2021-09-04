@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Garment } from '../garment';
+import { OUTFITS } from '../outfit-mockup';
 
 @Component({
   selector: 'app-outfit',
@@ -8,7 +9,7 @@ import { Garment } from '../garment';
 })
 export class OutfitComponent implements OnInit {
 
-  public outfit:Outfit;
+  public outfits = OUTFITS;
 
   constructor() { }
 

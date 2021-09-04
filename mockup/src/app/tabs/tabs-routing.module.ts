@@ -22,10 +22,6 @@ const routes: Routes = [
         loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
       },
       {
-        path: 'tab2/outfits',
-        loadChildren: () => import('../tab2/outfit-list/outfit-list.module').then(m => m.OutfitListPageModule)
-      },
-      {
         path: 'tab1/detail/:id',
         component: GarmentDetailComponent
       },
