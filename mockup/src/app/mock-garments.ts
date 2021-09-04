@@ -2,9 +2,9 @@ import { UrlResolver } from '@angular/compiler';
 import { Garment } from './garments/garments.component';
 
 export const GARMENTS: Garment[] = [
-  { id: 11, name: 'BeautifulBottom', link: 'https://www.net-a-porter.com/variants/images/6630340699385535/in/w2000.jpg', color: 'Blue' },
-  { id: 12, name: 'NiceDress', link: 'https://www.net-a-porter.com/variants/images/11452292647496505/in/w2000.jpg', color: 'Red' },
-  { id: 13, name: 'FantasticButt' , link: 'https://www.net-a-porter.com/variants/images/6630340699385535/in/w2000.jpg', color: 'Blue'},
+  { id: 11, name: 'BeautifulBottom', link: 'https://www.net-a-porter.com/variants/images/6630340699385535/in/w2000.jpg', color: 'Green' },
+  { id: 12, name: 'NiceDress', link: 'https://www.net-a-porter.com/variants/images/11452292647496505/in/w2000.jpg', color: 'Green' },
+  { id: 13, name: 'FantasticButt' , link: 'https://www.net-a-porter.com/variants/images/6630340699385535/in/w2000.jpg', color: 'Green'},
   { id: 14, name: 'VIPTits' , link: 'https://www.net-a-porter.com/variants/images/6630340699385535/in/w2000.jpg', color: 'Red'},
   { id: 15, name: 'CagoBalcone' , link: 'https://www.net-a-porter.com/variants/images/6630340699385535/in/w2000.jpg', color: 'Blue'},
   { id: 16, name: 'TantaRoba', link: 'https://www.net-a-porter.com/variants/images/6630340699385535/in/w2000.jpg' , color: 'Red'},

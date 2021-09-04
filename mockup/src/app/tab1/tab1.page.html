@@ -27,9 +27,10 @@
       </ion-row>
         <ion-row>    
         <ion-col size = 6>
-          <ion-select multiple="true" [value]="['Blue', 'Red']"  [(ngModel)]="colorFilter" cancelText="Nah" okText="Okay!">
+          <ion-select multiple="true" [value]="['Blue', 'Red', 'Green']"  [(ngModel)]="colorFilter" cancelText="Nah" okText="Okay!">
             <ion-select-option value="Blue">Blue</ion-select-option>
             <ion-select-option value="Red">Red</ion-select-option>
+            <ion-select-option value="Green">Green</ion-select-option>
           </ion-select>
         </ion-col>
         <ion-col size = 6>
