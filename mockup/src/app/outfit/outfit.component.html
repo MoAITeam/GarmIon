@@ -1,13 +1,29 @@
-<ion-card>
-  </ion-card-content>
 
-    <ion-img src='https://www.net-a-porter.com/variants/images/6630340699385535/in/w2000.jpg' routerLink="outfits
-    /{{garment.id}}">
 
-    </ion-img>
+<ion-grid>
+  <ion-row>
+  <ion-col size="6" *ngFor="let outfit of outfits">
 
-    <ion-img>
+    <ion-card>
+      <ion-card-content>
+    
+        <ion-img 
+        [src]="outfit.garments[0].link"
+        routerLink="detail/{{outfit.id}}" >
+    
+        </ion-img>
 
-    </ion-img>
-</ion-card-content>
-</ion-card>
+    
+        <ion-label> </ion-label>
+    
+        <ion-img 
+        [src]="outfit.garments[0].link"
+        routerLink="detail/{{outfit.id}}" >
+            
+        </ion-img>
+    </ion-card-content>
+    </ion-card>
+  </ion-col>
+</ion-row>
+</ion-grid> 
+

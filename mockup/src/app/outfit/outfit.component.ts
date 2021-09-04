@@ -8,10 +8,15 @@ import { Garment } from '../garment';
 })
 export class OutfitComponent implements OnInit {
 
-  public outfit:Garment[]=[]
+  public outfit:Outfit;
 
   constructor() { }
 
   ngOnInit() {}
 
+}
+
+export interface Outfit {
+  id: number,
+  garments: Garment[]
 }

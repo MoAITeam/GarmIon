@@ -30,7 +30,7 @@ const routes: Routes = [
         component: GarmentDetailComponent
       },
       {
-        path: 'tab2/outfits/:id',
+        path: 'tab2/detail/:id',
         component : OutfitDetailComponent
       },
       {

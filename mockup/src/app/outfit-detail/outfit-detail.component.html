@@ -1,3 +1,48 @@
-<p>
-  outfit-detail works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-title slot>Outfit View</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab2"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="outfit-card-container"> 
+    <ion-card class="main-card">
+      <ion-card-header>
+        <ion-card-title >Your Outfit </ion-card-title>
+        <ion-icon name="heart" class="center-right" ></ion-icon>
+        
+      </ion-card-header>
+      <ion-card-content>
+        <div class="outfit-card-container"> 
+        <!-- First garment card-->
+          <ion-card class="outfit-card" >
+            <ion-card-content >
+              <ion-img *ngIf="outfit"
+              id= {{outfit.garment[0].name}}
+              src = {{outfit.garment[0].link}}
+              >
+            </ion-img>
+            </ion-card-content>
+          </ion-card >
+          <!-- Second garment card-->
+          <ion-card class="outfit-card">
+            <ion-card-content>
+              <ion-img *ngIf="outfit"
+              id= {{outfit.garment[1].name}}
+              src = {{outfit.garment[1].link}}
+              >
+              </ion-img>
+            </ion-card-content>      
+        </ion-card>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    </div>
+  
+</ion-content>
+
+
+
+
