@@ -1,5 +1,5 @@
 import { UrlResolver } from '@angular/compiler';
-import { Garment } from './garment';
+import { Garment } from './garments/garments.component';
 
 export const GARMENTS: Garment[] = [
   { id: 11, name: 'BeautifulBottom', link: 'https://www.net-a-porter.com/variants/images/6630340699385535/in/w2000.jpg', color: 'Blue' },

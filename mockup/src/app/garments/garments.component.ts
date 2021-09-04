@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {Garment} from '../garment';
+import { Component, Input, OnInit } from '@angular/core';
 import { GARMENTS } from '../mock-garments';
 
 @Component({
@@ -9,6 +8,10 @@ import { GARMENTS } from '../mock-garments';
 })
 
 export class GarmentsComponent implements OnInit {
+
+  @Input()
+  colorFilter: string[];
+
   public garments = GARMENTS;
   public colors : string[];
   selectedGarment?: Garment;
@@ -23,4 +26,11 @@ export class GarmentsComponent implements OnInit {
   }
 
 
+}
+
+export interface Garment {
+  id: number;
+  name: string;
+  link: string;
+  color: string;
 }

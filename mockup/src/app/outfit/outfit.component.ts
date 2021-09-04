@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Garment } from '../garment';
+import { Garment } from '../garments/garments.component';
 import { OUTFITS } from '../outfit-mockup';
 
 @Component({

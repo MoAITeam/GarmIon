@@ -2,11 +2,7 @@ import { Injectable } from '@angular/core';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import {GARMENTS} from '../mock-garments';
 import {DomSanitizer,SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
-import { Garment } from '../garment';
-
-
-
-
+import { Garment } from '../garments/garments.component';
 
 @Injectable({
   providedIn: 'root'

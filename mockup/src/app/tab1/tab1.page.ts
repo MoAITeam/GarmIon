@@ -9,7 +9,7 @@ import { PhotoService } from '../services/photo.service';
 })
 export class Tab1Page {
 
-  public colorFilter:string[];
+  public colorFilter:['Blue','Red'];
 
   constructor(public photoService: PhotoService) { }
 
@@ -18,11 +18,8 @@ export class Tab1Page {
   }
 
   onColorChange($event) {
-    this.colorFilter = $event.target.value ;
-
+    this.colorFilter = $event.target.value;
 }
-
-
 
 }
 

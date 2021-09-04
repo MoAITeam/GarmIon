@@ -16,11 +16,6 @@
     </ion-label>
   </ion-list-header>
 </ion-list>
-
-
-
-
-
   <ion-grid>
     <ion-row >
       <ion-col size=6>
@@ -32,7 +27,7 @@
       </ion-row>
         <ion-row>    
         <ion-col size = 6>
-          <ion-select multiple="true" cancelText="Nah" okText="Okay!" id="color-filter" [(ngModel)]="color_filter"  (ionChange)="onColorChange($event)">
+          <ion-select multiple="true" [value]="['Blue', 'Red']" cancelText="Nah" okText="Okay!" (ionChange)="onColorChange($event)">
             <ion-select-option value="Blue">Blue</ion-select-option>
             <ion-select-option value="Red">Red</ion-select-option>
           </ion-select>
@@ -47,6 +42,6 @@
     </ion-row>
   </ion-grid>
 
-  <app-garments>
+  <app-garments [colorFilter]="colorFilter">
     
   </app-garments>

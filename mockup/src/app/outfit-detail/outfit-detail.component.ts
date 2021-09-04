@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Outfit } from '../outfit/outfit.component';
 import { OUTFITS } from '../outfit-mockup';
-import { Garment } from '../garment';
+import { Garment } from '../garments/garments.component';
 
 @Component({
   selector: 'app-outfit-detail',

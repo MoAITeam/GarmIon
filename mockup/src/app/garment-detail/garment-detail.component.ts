@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {Garment} from '../garment';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import {GARMENTS} from '../mock-garments';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Garment } from '../garments/garments.component';
 
 @Component({
   selector: 'app-garment-detail',
