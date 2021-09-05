@@ -2,7 +2,7 @@
 <ion-grid>
   <ion-row>
   <ion-col size="6" *ngFor="let garment of garments" >
-    <ion-img  *ngIf="(colorFilter && colorFilter.includes(garment.color)) || (colorFilter && colorFilter.length==0)"
+    <ion-img  *ngIf="(colorFilter && categoryFilter && categoryFilter.includes(garment.category) && colorFilter.includes(garment.color)) || (categoryFilter && colorFilter && colorFilter.length==0 && categoryFilter.includes(garment.category) || (categoryFilter && colorFilter && categoryFilter.length==0 && colorFilter.includes(garment.color) || (categoryFilter && colorFilter && categoryFilter.length==0 && colotFilter.length==0) ))"
     [src]="garment.link"
     routerLink="detail/{{garment.id}}">
     </ion-img>

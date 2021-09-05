@@ -26,3 +26,24 @@ ion-card-header {
     transform: translateY(-50%);
     font-size: 3em;
 }
+
+.verticalLine {
+    width:1%;
+    height:100%;
+    background:black;
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    
+  }
+
+  .icon-displayed{
+     height: 50%;
+     width: 50%;
+     
+  }
+
+  .text-displayed{
+      display: flex;
+      justify-content: center;
+  }

@@ -11,9 +11,10 @@ export class GarmentsComponent implements OnInit {
 
   @Input()
   colorFilter: string[];
+  @Input()
+  categoryFilter: string[];
 
   public garments = GARMENTS;
-  public colors : string[];
   selectedGarment?: Garment;
   onSelect(garment: Garment): void {
     this.selectedGarment = garment;
@@ -33,4 +34,5 @@ export interface Garment {
   name: string;
   link: string;
   color: string;
+  category: string;
 }

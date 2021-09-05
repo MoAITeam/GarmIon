@@ -35,7 +35,8 @@ export class PhotoService{
     id: Math.random(),
     name: "garment",
     link: capturedPhoto.webPath,
-    color: 'Red'
+    color: 'Red',
+    category:'top'
   });
 
 
