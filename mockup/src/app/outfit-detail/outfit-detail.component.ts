@@ -25,8 +25,8 @@ export class OutfitDetailComponent implements OnInit {
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.outfit = OUTFITS.find(h => h.id === id)!;
-    this.userGarment = this.outfit.garments[0];
-    this.recommendedGarment = this.outfit.garments[1];
+    this.userGarment = this.outfit.userGarment;
+    this.recommendedGarment = this.outfit.matchGarment;
 
   }
 

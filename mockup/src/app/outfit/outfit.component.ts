@@ -17,7 +17,13 @@ export class OutfitComponent implements OnInit {
 
 }
 
-export interface Outfit {
+export interface Outfitz {
   id: number,
   garments: Garment[]
+}
+
+export interface Outfit {
+  id: number,
+  userGarment: Garment,
+  matchGarment: Garment
 }

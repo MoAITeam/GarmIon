@@ -8,7 +8,7 @@
       <ion-card-content routerLink="detail/{{outfit.id}}" >
     
         <ion-img 
-        [src]="outfit.garments[0].link"
+        [src]="outfit.userGarment.link"
         
          >
     
@@ -19,7 +19,7 @@
         <ion-label> </ion-label>
     
         <ion-img 
-        [src]="outfit.garments[1].link"
+        [src]="outfit.matchGarment.link"
          >
             
         </ion-img>

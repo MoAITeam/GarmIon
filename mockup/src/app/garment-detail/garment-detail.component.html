@@ -41,7 +41,7 @@
         <ion-card-header id='card-header'>
           <ion-card-title >Your Garment </ion-card-title>
           <ion-fab vertical='top' horizontal='end'>
-            <ion-fab-button>
+            <ion-fab-button (click)="save()">
               <ion-icon name='heart-outline'></ion-icon>
             </ion-fab-button>
           </ion-fab>>
@@ -62,20 +62,10 @@
             <!-- Second garment card-->
             <ion-card class="garment-card">
               <ion-card-content>
-                <ion-slides>
-
-                  <ion-slide>
-                      <img src="https://www.net-a-porter.com/variants/images/11452292647496505/in/w2000.jpg"/>
+                <ion-slides id="slider">
+                  <ion-slide *ngFor="let match of matchGarments">
+                    <img [src]='match'/>
                   </ion-slide>
-          
-                  <ion-slide>
-                    <img src="https://www.net-a-porter.com/variants/images/11452292645919937/in/w2000.jpg"/>
-                  </ion-slide>
-          
-                  <ion-slide>
-                    <img src="https://www.net-a-porter.com/variants/images/6630340698817910/in/w2000.jpg"/>
-                  </ion-slide>
-          
                 </ion-slides>
               </ion-card-content>      
           </ion-card>
