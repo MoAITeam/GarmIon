@@ -27,7 +27,7 @@
       </ion-row>
         <ion-row>    
         <ion-col size = 6>
-          <ion-select multiple="true" [value]="['Blue', 'Red', 'Green']"  [(ngModel)]="colorFilter" cancelText="Nah" okText="Okay!">
+          <ion-select multiple="true" [(ngModel)]="colorFilter" cancelText="Nah" okText="Okay!">
             <ion-select-option value="Blue">Blue</ion-select-option>
             <ion-select-option value="Red">Red</ion-select-option>
             <ion-select-option value="Green">Green</ion-select-option>
@@ -35,7 +35,7 @@
         </ion-col>
         <ion-col size = 6>
         
-        <ion-select multiple="true" [value]="['top', 'bottom']" [(ngModel)]="categoryFilter">
+        <ion-select multiple="true" [(ngModel)]="categoryFilter">
           <ion-select-option value="top">Top</ion-select-option>
           <ion-select-option value="bottom">Bottom</ion-select-option>
         </ion-select>
@@ -43,6 +43,6 @@
     </ion-row>
   </ion-grid>
 
-  <app-garments [colorFilter]="colorFilter" [categoryFilter]="categoryFilter" >
-    
+  <app-garments [colorFilter]="(!colorFilter || (colorFilter.length==0))? ['Blue','Green','Red'] : colorFilter" 
+                [categoryFilter]="(!categoryFilter || (categoryFilter.length==0))? ['top','bottom'] : categoryFilter">
   </app-garments>
