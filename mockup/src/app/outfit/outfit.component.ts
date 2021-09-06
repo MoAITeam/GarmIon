@@ -25,5 +25,5 @@ export interface Outfitz {
 export interface Outfit {
   id: number,
   userGarment: Garment,
-  matchGarment: Garment
+  matchGarment: Garment,
 }

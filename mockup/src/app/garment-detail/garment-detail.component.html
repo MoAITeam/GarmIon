@@ -42,7 +42,7 @@
           <ion-card-title >Your Garment </ion-card-title>
           <ion-fab vertical='top' horizontal='end'>
             <ion-fab-button (click)="save()">
-              <ion-icon name='heart-outline'></ion-icon>
+              <ion-icon id="heart-icon" name='heart-outline'></ion-icon>
             </ion-fab-button>
           </ion-fab>>
           
@@ -62,7 +62,7 @@
             <!-- Second garment card-->
             <ion-card class="garment-card">
               <ion-card-content>
-                <ion-slides #slider >
+                <ion-slides #slider (onSlideChange) = "slideChange" >
                   <ion-slide *ngFor="let match of matchGarments">
                     <img [src]='match'/>
                   </ion-slide>
