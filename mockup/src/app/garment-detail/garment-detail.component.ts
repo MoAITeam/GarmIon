@@ -13,10 +13,11 @@ import { IonSlides } from '@ionic/angular';
 })
 export class GarmentDetailComponent implements OnInit {
 
-  @ViewChild('slider') sliderComponent: IonSlides;
+  @ViewChild('slider') sliderComponent:IonSlides;
 
   public garment : Garment;
   public matchGarments: string[];
+
 
   constructor(
     private route: ActivatedRoute,
@@ -35,7 +36,15 @@ export class GarmentDetailComponent implements OnInit {
   }
 
   save(){
-    this.sliderComponent.getActiveIndex().then((index)=>{console.log(this.matchGarments[index]);});
+    let async_id = this.sliderComponent.getActiveIndex();
+    async_id.then( id => {
+      console.log(this.matchGarments[id]);
+      //TUTTO IL CODICE DEVE STAR QUI DENTRO E VIENE ESEGUITO SU UN THREAD ASINCRONO
+      //PUOI ANCHE AVVIARLO SU ALTRE FUNZIONI MA VANNO RICHIAMATE DA QUI
+
+    });
+    
+    
   }
 
 }
