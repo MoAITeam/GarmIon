@@ -62,9 +62,9 @@
             <!-- Second garment card-->
             <ion-card class="garment-card">
               <ion-card-content>
-                <ion-slides #slider (onSlideChange) = "slideChange" >
+                <ion-slides #slider (ionSlideDidChange) = "slideChange()" >
                   <ion-slide *ngFor="let match of matchGarments">
-                    <img [src]='match'/>
+                    <img [src]='match.link'/>
                   </ion-slide>
                 </ion-slides>
               </ion-card-content>      
