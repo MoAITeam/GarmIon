@@ -9,9 +9,22 @@
 <ion-content>
   <div class="outfit-card-container"> 
     <ion-card class="main-card">
-      <ion-card-header>
+      <ion-card-header id="card-header">
         <ion-card-title >Your Outfit </ion-card-title>
-        <ion-icon name="heart" class="center-right" ></ion-icon>
+        <ion-fab vertical='top' horizontal='end' >
+          <ion-row>
+            <ion-col>
+              <ion-fab-button>
+                <ion-icon name='trash-outline'></ion-icon>
+              </ion-fab-button>
+            </ion-col>
+            <ion-col>
+              <ion-fab-button>
+                <ion-icon name='create-outline'></ion-icon>
+              </ion-fab-button>
+            </ion-col>
+          </ion-row>
+      </ion-fab>
         
       </ion-card-header>
       <ion-card-content>
