@@ -6,6 +6,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Garment } from '../garments/garments.component';
 import { IonSlides } from '@ionic/angular';
 import { Outfit } from '../outfit/outfit.component';
+import { OutfitCorridorService } from '../services/outfit-corridor.service';
 
 @Component({
   selector: 'app-garment-detail',
@@ -25,7 +26,8 @@ export class GarmentDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private location: Location,
-    private sanitizer : DomSanitizer
+    private sanitizer : DomSanitizer,
+    private outfitCorridorService : OutfitCorridorService
   ) {}
     
   ngOnInit(): void {
@@ -51,6 +53,8 @@ export class GarmentDetailComponent implements OnInit {
       let icon = document.getElementById('heart-icon');
       icon.setAttribute('name','heart');
       console.log(icon);
+
+      this.outfitCorridorService.sendOutfits(this.lovedOutfit)
 
 
 

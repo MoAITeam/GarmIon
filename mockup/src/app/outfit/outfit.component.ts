@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Garment } from '../garments/garments.component';
 import { OUTFITS } from '../outfit-mockup';
+import { OutfitCorridorService } from '../services/outfit-corridor.service';
 
 @Component({
   selector: 'app-outfit',
@@ -10,10 +11,20 @@ import { OUTFITS } from '../outfit-mockup';
 export class OutfitComponent implements OnInit {
 
   public outfits = OUTFITS;
+  public selectedOutfits : Outfit[];
 
-  constructor() { }
+  constructor(private outfitCorridorService : OutfitCorridorService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+    this.outfitCorridorService.receiveOutfits().subscribe(
+      (outfits) => {
+        this.selectedOutfits = outfits;
+        
+          
+      }
+  );
+  }
 
 }
 
