@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Garment } from '../garments/garments.component';
+import { OUTFITS } from '../outfit-mockup';
 import { OutfitCorridorService } from '../services/outfit-corridor.service';
 import { OutfitsForOutfitDetailService } from '../services/outfits-for-outfit-detail.service';
+
 
 @Component({
   selector: 'app-outfit',
@@ -10,8 +12,7 @@ import { OutfitsForOutfitDetailService } from '../services/outfits-for-outfit-de
 })
 export class OutfitComponent implements OnInit {
 
-  public selectedOutfits : Outfit[] = [{id:2,userGarment:{id: 14, name: 'VIPTits' , link: 'https://www.net-a-porter.com/variants/images/6630340699385535/in/w2000.jpg', color: 'Red',category:'top'},matchGarment:{id: 11, name: 'BeautifulBottom', link: 'https://www.net-a-porter.com/variants/images/6630340699385535/in/w2000.jpg', color: 'Blue',category:'top'}}];
-  ;
+  public selectedOutfits : Outfit[] = OUTFITS;
 
   constructor(private outfitCorridorService : OutfitCorridorService,
     private OutfitsForOutfitDetailService : OutfitsForOutfitDetailService,
@@ -21,13 +22,13 @@ export class OutfitComponent implements OnInit {
 
     
 
-    this.outfitCorridorService.receiveOutfits().subscribe(
+  /*  this.outfitCorridorService.receiveOutfits().subscribe(
       (outfits) => {
         this.selectedOutfits = outfits;
         this.OutfitsForOutfitDetailService.sendOutfits(this.selectedOutfits);
           
       }
-  );
+  );  DEVE ESSERE CORRETTO*/
 
     
 

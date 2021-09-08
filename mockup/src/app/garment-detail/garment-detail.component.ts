@@ -7,6 +7,7 @@ import { Garment } from '../garments/garments.component';
 import { IonSlides } from '@ionic/angular';
 import { Outfit } from '../outfit/outfit.component';
 import { OutfitCorridorService } from '../services/outfit-corridor.service';
+import { OUTFITS } from '../outfit-mockup';
 
 @Component({
   selector: 'app-garment-detail',
@@ -54,8 +55,9 @@ export class GarmentDetailComponent implements OnInit {
       let icon = document.getElementById('heart-icon');
       icon.setAttribute('name','heart');
       console.log(icon);
+      OUTFITS.push(outfitToSave);
 
-      this.outfitCorridorService.sendOutfits(this.lovedOutfit)
+      //this.outfitCorridorService.sendOutfits(this.lovedOutfit)   DEVE ESSERE CORRETTO PER FARE TUTTO CON IL SERVIZIO
 
 
 
