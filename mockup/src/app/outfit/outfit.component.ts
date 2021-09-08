@@ -10,7 +10,8 @@ import { OutfitsForOutfitDetailService } from '../services/outfits-for-outfit-de
 })
 export class OutfitComponent implements OnInit {
 
-  public selectedOutfits : Outfit[];
+  public selectedOutfits : Outfit[] = [{id:2,userGarment:{id: 14, name: 'VIPTits' , link: 'https://www.net-a-porter.com/variants/images/6630340699385535/in/w2000.jpg', color: 'Red',category:'top'},matchGarment:{id: 11, name: 'BeautifulBottom', link: 'https://www.net-a-porter.com/variants/images/6630340699385535/in/w2000.jpg', color: 'Blue',category:'top'}}];
+  ;
 
   constructor(private outfitCorridorService : OutfitCorridorService,
     private OutfitsForOutfitDetailService : OutfitsForOutfitDetailService,
@@ -23,11 +24,12 @@ export class OutfitComponent implements OnInit {
     this.outfitCorridorService.receiveOutfits().subscribe(
       (outfits) => {
         this.selectedOutfits = outfits;
+        this.OutfitsForOutfitDetailService.sendOutfits(this.selectedOutfits);
           
       }
   );
 
-    this.OutfitsForOutfitDetailService.sendOutfits(this.selectedOutfits);
+    
 
 
   }

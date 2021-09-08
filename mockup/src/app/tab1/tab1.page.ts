@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonItemSliding } from '@ionic/angular';
+import { HTTP } from '@ionic-native/http/ngx';
 import { PhotoService } from '../services/photo.service';
 
 @Component({
@@ -10,11 +10,34 @@ import { PhotoService } from '../services/photo.service';
 export class Tab1Page {
 
   public colorFilter:['Blue','Red'];
+  private requestObject : any = null;
 
-  constructor(public photoService: PhotoService) { }
+  constructor(public photoService: PhotoService,
+    private http:HTTP) { }
 
     addPhotoToGallery() {
       this.photoService.addNewToGallery();
+  }
+
+    sendRequest() {
+      this.http.get('http://ionic.io', {}, {})
+  .then(data => {
+
+    console.log(data.status);
+    console.log(data.data); // data received by server
+    console.log(data.headers);
+
+  })
+  .catch(error => {
+
+    console.log(error.status);
+    console.log(error.error); // error message as string
+    console.log(error.headers);
+
+  });
+
+  this.http.post("google.com",2,{});
+     
   }
 
 }

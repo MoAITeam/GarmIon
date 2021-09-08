@@ -46,7 +46,8 @@ export class GarmentDetailComponent implements OnInit {
 
     async_id.then( id => {
       let lovedMatch = this.matchGarments.find(h=>h.id===(id+1))!;
-      let randomID:number = + Math.random().toString(36).substr(2, 9);
+      let randomID:number = Math.floor(Math.random() * 100000);
+      console.log(randomID);
       let outfitToSave = {id: randomID, userGarment: this.garment, matchGarment: lovedMatch};
       this.lovedOutfit.push(outfitToSave);
 
