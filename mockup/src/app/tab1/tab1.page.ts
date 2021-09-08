@@ -20,7 +20,8 @@ export class Tab1Page {
   }
 
     sendRequest() {
-      this.http.get('http://ionic.io', {}, {})
+      // se non si mette .then capacitor generea un errore fastidioso!
+      this.http.get('https://ionic.io', {},{})
   .then(data => {
 
     console.log(data.status);
@@ -35,8 +36,6 @@ export class Tab1Page {
     console.log(error.headers);
 
   });
-
-  this.http.post("google.com",2,{});
      
   }
 
