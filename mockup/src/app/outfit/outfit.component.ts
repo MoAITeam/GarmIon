@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Garment } from '../garments/garments.component';
-import { OUTFITS } from '../outfit-mockup';
 import { OutfitCorridorService } from '../services/outfit-corridor.service';
+import { OutfitsForOutfitDetailService } from '../services/outfits-for-outfit-detail.service';
 
 @Component({
   selector: 'app-outfit',
@@ -10,20 +10,26 @@ import { OutfitCorridorService } from '../services/outfit-corridor.service';
 })
 export class OutfitComponent implements OnInit {
 
-  public outfits = OUTFITS;
   public selectedOutfits : Outfit[];
 
-  constructor(private outfitCorridorService : OutfitCorridorService) { }
+  constructor(private outfitCorridorService : OutfitCorridorService,
+    private OutfitsForOutfitDetailService : OutfitsForOutfitDetailService,
+    ) { }
 
   ngOnInit() {
+
+    
 
     this.outfitCorridorService.receiveOutfits().subscribe(
       (outfits) => {
         this.selectedOutfits = outfits;
-        
           
       }
   );
+
+    this.OutfitsForOutfitDetailService.sendOutfits(this.selectedOutfits);
+
+
   }
 
 }
