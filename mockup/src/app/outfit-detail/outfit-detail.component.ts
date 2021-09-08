@@ -48,6 +48,16 @@ export class OutfitDetailComponent implements OnInit {
 
   delete() {
 
+    let index:number = OUTFITS.indexOf(this.outfit,0);
+    OUTFITS.splice(index,1);
+
+  }
+
+  edit() {
+
+    let index:number = OUTFITS.indexOf(this.outfit,0);
+    OUTFITS.splice(index,1);
+
   }
 
 }

@@ -27,27 +27,10 @@ ion-card-header {
     font-size: 3em;
 }
 
-.verticalLine {
-    width:1%;
-    height:100%;
-    background:black;
-    margin-top: 0;
-    display: flex;
-    justify-content: center;
-    
-  }
+.icon {
+    font-size: 4em;
+}
 
-  .icon-displayed{
-     height: 50%;
-     width: 50%;
-     
-  }
-
-  .text-displayed{
-      display: flex;
-      justify-content: center;
-  }
-
-  #card-header{
-      margin-bottom: 2em;
-  }
+.card-content {
+    text-align: center;
+}
