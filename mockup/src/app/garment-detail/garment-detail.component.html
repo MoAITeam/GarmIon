@@ -7,7 +7,7 @@
     </ion-toolbar>
   </ion-header>
   <ion-content padding> 
-    <ion-label>FIltra i tuoi risultati di ricerca</ion-label>
+    <ion-item id="subtitle">FIltra i tuoi risultati di ricerca</ion-item>
     <ion-grid>
       <ion-row>
         <ion-col id="category" size="4">
@@ -39,16 +39,15 @@
     <div class="garment-card-container"> 
       <ion-card class="main-card">
         <ion-card-header id='card-header'>
-          <ion-card-title >Your Garment </ion-card-title>
+          <ion-card-title >Scegli e salva il tuo outfit! </ion-card-title>
           <ion-fab vertical='top' horizontal='end'>
             <ion-fab-button (click)="save()">
               <ion-icon id="heart-icon" name='heart-outline'></ion-icon>
             </ion-fab-button>
-          </ion-fab>>
+          </ion-fab>
           
         </ion-card-header>
         <ion-card-content>
-          <div class="garment-card-container"> 
           <!-- First garment card-->
             <ion-card class="garment-card" >
               <ion-card-content >
@@ -69,14 +68,13 @@
                 </ion-slides>
               </ion-card-content>      
           </ion-card>
-          </div>
         </ion-card-content>
       </ion-card>
       </div>
     
   </ion-content>
 
-
+<!--
 <div *ngIf="garment">
   <h2>{{garment.name | uppercase}} Details</h2>
   <div><span>id: </span>{{garment.id}}</div>
@@ -84,5 +82,7 @@
     <label for="garment-name">Garment name: </label>
     <input id="garment-name" [(ngModel)]="garment.name" placeholder="Garment name"/>
   </div>
+
+  -->
 
 
