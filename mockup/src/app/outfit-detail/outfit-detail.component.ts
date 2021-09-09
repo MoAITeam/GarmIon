@@ -19,7 +19,7 @@ import { NavController } from '@ionic/angular/';
 
 export class OutfitDetailComponent implements OnInit {
 
-  public outfit:Outfit;
+  public outfit:number;
   public userGarment:Garment;
   public recommendedGarment:Garment;
   public selectedOutfits: Outfit[] = OUTFITS;
@@ -41,22 +41,24 @@ export class OutfitDetailComponent implements OnInit {
   ); */
 
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.outfit = this.selectedOutfits.find(h => h.id === id)!;
-    this.userGarment = this.outfit.userGarment;
-    this.recommendedGarment = this.outfit.matchGarment;
+    this.outfit = this.selectedOutfits.findIndex(h => h.id === id)!;
+    console.log(id);
+    console.log(this.outfit);
+    console.log(this.selectedOutfits);
+    this.userGarment = this.selectedOutfits[this.outfit].userGarment;
+    this.recommendedGarment = this.selectedOutfits[this.outfit].matchGarment;
 
   }
 
   delete() {
 
-    let index:number = OUTFITS.indexOf(this.outfit,0);
-    OUTFITS.splice(index,1);
+    OUTFITS.splice(this.outfit,1);
 
   }
 
   edit() {
 
-    this.navCtrl.navigateRoot("tabs/tab1/edit/"+this.outfit.id);
+    this.navCtrl.navigateRoot("tabs/tab2/outfit/edit/"+this.selectedOutfits[this.outfit].id);
 
   }
 

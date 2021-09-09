@@ -26,7 +26,11 @@ const routes: Routes = [
         component: GarmentDetailComponent
       },
       {
-        path: 'tab2/detail/:id',
+        path: 'tab2/outfit/:opt/:id',
+        component: GarmentDetailComponent
+      },
+      {
+        path: 'tab2/outfit/:id',
         component : OutfitDetailComponent
       },
       {

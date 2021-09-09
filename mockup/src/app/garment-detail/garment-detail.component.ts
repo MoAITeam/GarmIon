@@ -68,6 +68,8 @@ export class GarmentDetailComponent implements OnInit {
 
       let lovedMatch = this.matchGarments.find(h=>h.id===(id+1))!;
       let randomID:number = Math.floor(Math.random() * 100000);
+      if(this.opt==='edit')
+        randomID = this.outfit.id;
       console.log(randomID);
       let outfitToSave = {id: randomID, userGarment: this.garment, matchGarment: lovedMatch};
       this.lovedOutfit.push(outfitToSave);

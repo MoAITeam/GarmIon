@@ -1,8 +1,10 @@
   <ion-header>
     <ion-toolbar>
-      <ion-title slot>Garment View</ion-title>
+      <ion-title *ngIf="opt==='detail'" slot>Garment View</ion-title>
+      <ion-title *ngIf="opt==='edit'" slot>Edit View</ion-title>
       <ion-buttons slot="start">
-        <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+        <ion-back-button *ngIf="opt==='detail'" defaultHref="/tabs/tab1"></ion-back-button>
+        <ion-back-button *ngIf="opt==='edit'" defaultHref="/tabs/tab2/outfit/{{outfit.id}}"></ion-back-button>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>

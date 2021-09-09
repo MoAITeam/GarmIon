@@ -32,9 +32,9 @@
         <!-- First garment card-->
           <ion-card class="outfit-card" >
             <ion-card-content >
-              <ion-img *ngIf="outfit"
-              id= userGarment.name
-              src = {{userGarment.link}}
+              <ion-img
+              id= {{this.selectedOutfits[this.outfit].userGarment.name}}
+              src = {{this.selectedOutfits[this.outfit].userGarment.link}}
               >
             </ion-img>
             </ion-card-content>
@@ -42,9 +42,9 @@
           <!-- Second garment card-->
           <ion-card class="outfit-card">
             <ion-card-content>
-              <ion-img *ngIf="outfit"
-              id= {{recommendedGarment.name}}
-              src = {{recommendedGarment.link}}
+              <ion-img
+              id= {{this.selectedOutfits[this.outfit].matchGarment.name}}
+              src = {{this.selectedOutfits[this.outfit].matchGarment.link}}
               >
               </ion-img>
             </ion-card-content>      

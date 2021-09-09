@@ -5,7 +5,7 @@
   <ion-col size="6" *ngFor="let outfit of selectedOutfits">
 
     <ion-card >
-      <ion-card-content routerLink="detail/{{outfit.id}}" >
+      <ion-card-content routerLink="outfit/{{outfit.id}}" >
     
         <ion-img 
         [src]="outfit.userGarment.link"
