@@ -22,6 +22,8 @@ export class GarmentDetailComponent implements OnInit {
   public garment : Garment;
   public matchGarments: Garment[];
   public lovedOutfit: Outfit[];
+  public outfit : Outfit;
+  public opt : String;
 
 
   constructor(
@@ -33,19 +35,37 @@ export class GarmentDetailComponent implements OnInit {
     
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.garment = GARMENTS.find(h => h.id === id)!;
+    this.opt = String(this.route.snapshot.paramMap.get('opt'));
     this.lovedOutfit = [];
-    this.matchGarments = [
-    {  id: 1, name: 'TeslaTits', link: 'https://www.net-a-porter.com/variants/images/6630340699385535/in/w2000.jpg', color: 'Red',category:'bottom' },
-    { id: 2, name: 'Cosciona99', link: 'https://www.net-a-porter.com/variants/images/6630340699385535/in/w2000.jpg',color: 'Blue',category:'top' },
-    { id: 3, name: 'Banana33', link: 'https://www.net-a-porter.com/variants/images/6630340699385535/in/w2000.jpg',color: 'Red',category:'top' }
-    ];
+    if (this.opt==='detail'){
+        this.garment = GARMENTS.find(h => h.id === id)!;
+        this.matchGarments = [
+        {  id: 1, name: 'TeslaTits', link: 'https://www.net-a-porter.com/variants/images/6630340699385535/in/w2000.jpg', color: 'Red',category:'bottom' },
+        { id: 2, name: 'Cosciona99', link: 'https://www.net-a-porter.com/variants/images/11452292647496505/in/w2000.jpg',color: 'Blue',category:'top' },
+        { id: 3, name: 'Banana33', link: 'https://www.net-a-porter.com/variants/images/6630340699385535/in/w2000.jpg',color: 'Red',category:'top' }
+        ];
+      }
+      if (this.opt==='edit'){
+        this.outfit = OUTFITS.find(h => h.id === id)!;
+        this.garment = this.outfit.userGarment;
+        this.matchGarments = [
+        {  id: 1, name: 'TeslaTits', link: 'https://www.net-a-porter.com/variants/images/6630340699385535/in/w2000.jpg', color: 'Red',category:'bottom' },
+        { id: 2, name: 'Cosciona99', link: 'https://www.net-a-porter.com/variants/images/11452292647496505/in/w2000.jpg',color: 'Blue',category:'top' },
+        { id: 3, name: 'Banana33', link: 'https://www.net-a-porter.com/variants/images/6630340699385535/in/w2000.jpg',color: 'Red',category:'top' }
+        ];
+      }
     }
 
   save(){
     let async_id = this.sliderComponent.getActiveIndex();
 
     async_id.then( id => {
+
+      if(this.opt==='edit'){
+        let index:number = OUTFITS.indexOf(this.outfit,0);
+        OUTFITS.splice(index,1);
+      }
+
       let lovedMatch = this.matchGarments.find(h=>h.id===(id+1))!;
       let randomID:number = Math.floor(Math.random() * 100000);
       console.log(randomID);

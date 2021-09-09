@@ -5,6 +5,7 @@ import { OUTFITS } from '../outfit-mockup';
 import { Garment } from '../garments/garments.component';
 import { OutfitCorridorService } from '../services/outfit-corridor.service';
 import { OutfitsForOutfitDetailService } from '../services/outfits-for-outfit-detail.service';
+import { NavController } from '@ionic/angular/';
 
 @Component({
   selector: 'app-outfit-detail',
@@ -24,7 +25,7 @@ export class OutfitDetailComponent implements OnInit {
   public selectedOutfits: Outfit[] = OUTFITS;
   constructor(
     private route: ActivatedRoute,
-    private outfitsForOutfitDetailService : OutfitsForOutfitDetailService
+    public navCtrl: NavController
 
   ) {}
 
@@ -55,8 +56,7 @@ export class OutfitDetailComponent implements OnInit {
 
   edit() {
 
-    let index:number = OUTFITS.indexOf(this.outfit,0);
-    OUTFITS.splice(index,1);
+    this.navCtrl.navigateRoot("tabs/tab1/edit/"+this.outfit.id);
 
   }
 

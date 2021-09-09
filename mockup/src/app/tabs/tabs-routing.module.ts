@@ -22,7 +22,7 @@ const routes: Routes = [
         loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
       },
       {
-        path: 'tab1/detail/:id',
+        path: 'tab1/:opt/:id',
         component: GarmentDetailComponent
       },
       {
