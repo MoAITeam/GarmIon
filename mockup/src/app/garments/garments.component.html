@@ -1,10 +1,10 @@
 
 <ion-grid>
   <ion-row>
-  <ion-col class="garment-col" size="6" *ngFor="let garment of garments; let i=index" >
+  <ion-col class="garment-col" size="6" *ngFor="let garment of filteredGarments" >
     <ion-card >
       <ion-card-content>
-        <ion-img *ngIf="colorFilter.includes(garment.color) && categoryFilter.includes(garment.category)"
+        <ion-img
         [src]="garment.link"
         routerLink="detail/{{garment.id}}">
         </ion-img>
