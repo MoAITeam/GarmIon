@@ -6,42 +6,46 @@
 <ion-content padding>
 <ion-list>
   <ion-list-header>
-    <ion-label>Visualizza i tuoi outfit preferiti</ion-label>
+    <ion-item>Visualizza i tuoi outfit preferiti</ion-item>
   </ion-list-header>
 </ion-list>
 
 
 <ion-grid>
   <ion-row >
-    <ion-col size=4>
-      <ion-label>Color</ion-label>
+    <ion-col size='4'>
+      <ion-card>
+        <ion-card-content class="filter-card">
+          <ion-select multiple="true" cancelText="Nah" okText="Okay!" placeholder = 'Color'>
+            <ion-select-option value="blue">Blue</ion-select-option>
+            <ion-select-option value="red">Red</ion-select-option>
+          </ion-select>
+        </ion-card-content>
+      </ion-card>
     </ion-col>
-    <ion-col size=4>
-      <ion-label>Mood</ion-label>
+
+    <ion-col size='4'>
+      <ion-card>
+        <ion-card-content class="filter-card">
+          <ion-select multiple="true" [value]="['Elegant', 'Dandy']"  placeholder = 'Mood'>
+            <ion-select-option value="elegant">Elegant</ion-select-option>
+            <ion-select-option value="dandy">Dandy</ion-select-option>
+          </ion-select>
+        </ion-card-content>
+      </ion-card>
     </ion-col>
-    <ion-col size=4>
-      <ion-label>Event</ion-label>
+
+    <ion-col size='4'>
+      <ion-card>
+        <ion-card-content class="filter-card">
+          <ion-select multiple="true" placeholder = 'Event'>
+            <ion-select-option value="wedding">Wedding</ion-select-option>
+            <ion-select-option value="funeral">Funeral</ion-select-option>
+          </ion-select>
+        </ion-card-content>
+      </ion-card>
     </ion-col>
-    </ion-row>
-      <ion-row>    
-      <ion-col size = 4>
-        <ion-select multiple="true" cancelText="Nah" okText="Okay!">
-          <ion-select-option value="blue">Blue</ion-select-option>
-          <ion-select-option value="red">Red</ion-select-option>
-        </ion-select>
-      </ion-col>
-      <ion-col size = 4>
-        <ion-select multiple="true" [value]="['Elegant', 'Dandy']">
-          <ion-select-option value="elegant">Elegant</ion-select-option>
-          <ion-select-option value="dandy">Dandy</ion-select-option>
-        </ion-select>
-      </ion-col>
-      <ion-col size = 4>
-        <ion-select multiple="true" [value]="['wedding', 'funeral']">
-          <ion-select-option value="wedding">Wedding</ion-select-option>
-          <ion-select-option value="funeral">Funeral</ion-select-option>
-        </ion-select>
-    </ion-col>
+
   </ion-row>
 </ion-grid>
 

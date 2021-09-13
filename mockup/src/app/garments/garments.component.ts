@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { GARMENTS } from '../mock-garments';
+import { Photo } from '../services/photo.service';
 
 @Component({
   selector: 'app-garments',
@@ -45,4 +46,5 @@ export interface Garment {
   link: string;
   color: string;
   category: string;
+  photo: Photo;
 }

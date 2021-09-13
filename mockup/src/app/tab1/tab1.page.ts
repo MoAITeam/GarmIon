@@ -19,6 +19,10 @@ export class Tab1Page {
       this.photoService.addNewToGallery();
   }
 
+  async ngOnInit() {
+    await this.photoService.loadSaved();
+  }
+
     sendRequest() {
       // se non si mette .then capacitor generea un errore fastidioso!
       this.http.get('https://ionic.io', {},{})

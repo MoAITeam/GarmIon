@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
+import { Camera, CameraPhoto, CameraResultType, CameraSource } from '@capacitor/camera';
 import {GARMENTS} from '../mock-garments';
 import {DomSanitizer,SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 import { Garment } from '../garments/garments.component';
+import { AlertController } from '@ionic/angular';
+import { Directory, Filesystem } from '@capacitor/filesystem';
+import { Storage } from '@capacitor/storage';
 
 @Injectable({
   providedIn: 'root'
@@ -12,34 +15,144 @@ import { Garment } from '../garments/garments.component';
 export class PhotoService{ 
 
   public photos: Photo[] = [];
-  public garments:Garment[] = GARMENTS;
-  constructor(private sanitizer: DomSanitizer) { 
+  private PHOTO_STORAGE: string = "photos";
 
-  }
-  
+
+  public garments:Garment[] = GARMENTS;
+  public capturedPhoto;
+  constructor(private sanitizer: DomSanitizer,
+    public alertController: AlertController
+    ) {}
+
+    private async readAsBase64(cameraPhoto: CameraPhoto) {
+      // Fetch the photo, read as a blob, then convert to base64 format
+      const response = await fetch(cameraPhoto.webPath!);
+      const blob = await response.blob();
+    
+      return await this.convertBlobToBase64(blob) as string;
+    }
+    
+    convertBlobToBase64 = (blob: Blob) => new Promise((resolve, reject) => {
+      const reader = new FileReader;
+      reader.onerror = reject;
+      reader.onload = () => {
+          resolve(reader.result);
+      };
+      reader.readAsDataURL(blob);
+    });
+    
+
+    private async savePicture(cameraPhoto: CameraPhoto) { 
+
+       // Convert photo to base64 format, required by Filesystem API to save
+      const base64Data = await this.readAsBase64(cameraPhoto);
+
+      // Write the file to the data directory
+      const fileName = new Date().getTime() + '.jpeg';
+      const savedFile = await Filesystem.writeFile({
+        path: fileName,
+        data: base64Data,
+        directory: Directory.Data
+      });
+
+      // Use webPath to display the new image instead of base64 since it's
+      // already loaded into memory
+      return {
+        filepath: fileName,
+        webviewPath: cameraPhoto.webPath
+      };
+    }
+
+    private async shotPhoto(){
+
+      this.capturedPhoto = Camera.getPhoto({
+        resultType: CameraResultType.Uri,
+        source: CameraSource.Camera,
+        quality: 100
+      });
+      ;
+
+      const savedImageFile = await this.savePicture(this.capturedPhoto)
+      .then(() =>   
+      this.garments.unshift({
+        id: Math.random(),
+        name: "garment",
+        link: this.capturedPhoto.webPath,
+        color: 'Red',
+        category:'top',
+        photo: savedImageFile
+      }));
+    
+
+
+
+    }
+
+
   public async addNewToGallery() {
   // Take a photo
-  const capturedPhoto = await Camera.getPhoto({
-    resultType: CameraResultType.Uri,
-    source: CameraSource.Camera,
-    quality: 100
+
+  let dismiss:boolean;
+
+  const alert = await this.alertController.create({
+    cssClass: 'my-custom-class',
+    header: 'Attenzione',
+    subHeader: 'Come Scattare',
+    message: 'Per avere un risultato migliore,poni i tuoi vestiti su uno sfondo uniforme',
+    buttons: [
+      {
+        text: 'Cancella',
+        role: 'cancel',
+        handler: () => {
+          dismiss = true;
+          console.log('Cancel clicked');
+        }
+      },
+      {
+        text: 'Scatta',
+        handler: () => {
+          this.shotPhoto();
+        }
+        
+      }
+    ]
   });
-  ;
+
+  await alert.present();
+  
+  Storage.set({
+    key: this.PHOTO_STORAGE,
+    value: JSON.stringify(this.photos)
+  });
+
+  
 
 /*this.photos.unshift({
     id: Math.random(),
     filepath: "soon...",
     webviewPath: capturedPhoto.webPath
   });*/
-    this.garments.unshift({
-    id: Math.random(),
-    name: "garment",
-    link: capturedPhoto.webPath,
-    color: 'Red',
-    category:'top'
-  });
 
 
+
+
+}
+
+public async loadSaved() {
+  // Retrieve cached photo array data
+  const photoList = await Storage.get({ key: this.PHOTO_STORAGE });
+  this.photos = JSON.parse(photoList.value) || [];
+
+  // Display the photo by reading into base64 format
+  for (let photo of this.photos) {
+    // Read each saved photo's data from the Filesystem
+    const readFile = await Filesystem.readFile({
+        path: photo.filepath,
+        directory: Directory.Data
+    });
+
+    // Web platform only: Load the photo as base64 data
+    photo.webviewPath = `data:image/jpeg;base64,${readFile.data}`;}
 }
 }
 
