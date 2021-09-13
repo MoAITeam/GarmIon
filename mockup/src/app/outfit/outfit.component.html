@@ -7,27 +7,39 @@
   <ion-row>
   <ion-col size="6" *ngFor="let outfit of selectedOutfits">
 
-    <ion-card >
-      <ion-card-content routerLink="outfit/{{outfit.id}}" >
-    
-        <ion-img 
-        [src]="outfit.userGarment.link"
+    <ion-card>
+      <ion-card-content>
+        <ion-card >
+          <ion-card-content routerLink="outfit/{{outfit.id}}" >
         
-        >
-    
-        </ion-img>
-
-        
-    
-        <ion-label> </ion-label>
-    
-        <ion-img 
-        [src]="outfit.matchGarment.link"
-         >
+            <ion-img class='img' 
+            [src]="outfit.userGarment.link"
             
-        </ion-img>
-    </ion-card-content>
+            >
+        
+            </ion-img>
+    
+            
+        
+            </ion-card-content>
+            </ion-card>
+    
+            
+            <ion-card>
+              <ion-card-content>
+                <ion-img class='img'
+                  [src]="outfit.matchGarment.link"
+                  >
+                
+                </ion-img>
+              </ion-card-content>
+            </ion-card>
+      </ion-card-content>
     </ion-card>
+    
+    
+        
+
   </ion-col>
 </ion-row>
 </ion-grid> 

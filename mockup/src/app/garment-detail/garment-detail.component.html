@@ -10,66 +10,91 @@
   </ion-header>
   <ion-content padding> 
     <ion-item id="subtitle">FIltra i tuoi risultati di ricerca</ion-item>
+
     <ion-grid>
-      <ion-row>
-        <ion-col id="category" size="4">
-          <ion-select placeholder="Select Category">
-            <ion-select-option value="top">Top</ion-select-option>
-            <ion-select-option value="bottom">Bottom</ion-select-option>
-          </ion-select>
+      <ion-row >
+        <ion-col size='4'>
+          <ion-card>
+            <ion-card-content class="filter-card">
+              <ion-select multiple="true" cancelText="Nah" okText="Okay!" placeholder = 'Color'>
+                <ion-select-option value="blue">Blue</ion-select-option>
+                <ion-select-option value="red">Red</ion-select-option>
+              </ion-select>
+            </ion-card-content>
+          </ion-card>
         </ion-col>
-
-        <ion-col id="event" size="4">
-          <ion-select placeholder="Select Event">
-            <ion-select-option value="concert">Concert</ion-select-option>
-            <ion-select-option value="graduation">Graduation</ion-select-option>
-            <ion-select-option value="meeting">Meeting</ion-select-option>
-            <ion-select-option value="mountain-trip">Mountain Trip</ion-select-option>
-          </ion-select>
+    
+        <ion-col size='4'>
+          <ion-card>
+            <ion-card-content class="filter-card">
+              <ion-select multiple="true" [value]="['Elegant', 'Dandy']"  placeholder = 'Mood'>
+                <ion-select-option value="elegant">Elegant</ion-select-option>
+                <ion-select-option value="dandy">Dandy</ion-select-option>
+              </ion-select>
+            </ion-card-content>
+          </ion-card>
         </ion-col>
-
-        <ion-col id="mood" size="4">
-          <ion-select placeholder="Select Mood">
-            <ion-select-option value="felegant">Elegant</ion-select-option>
-            <ion-select-option value="dandy">Dandy</ion-select-option>
-            <ion-select-option value="clear">Clear</ion-select-option>
-          </ion-select>
+    
+        <ion-col size='4'>
+          <ion-card>
+            <ion-card-content class="filter-card">
+              <ion-select multiple="true" placeholder = 'Event'>
+                <ion-select-option value="wedding">Wedding</ion-select-option>
+                <ion-select-option value="funeral">Funeral</ion-select-option>
+              </ion-select>
+            </ion-card-content>
+          </ion-card>
         </ion-col>
-
+    
       </ion-row>
     </ion-grid>
+
+    <ion-fab vertical='bottom' horizontal='end' slot="fixed">
+      <ion-fab-button (click)="save()">
+        <ion-icon id="heart-icon" name='heart-outline'></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+    
     <div class="garment-card-container"> 
       <ion-card class="main-card">
         <ion-card-header id='card-header'>
           <ion-card-title >Scegli e salva il tuo outfit! </ion-card-title>
-          <ion-fab vertical='top' horizontal='end'>
-            <ion-fab-button (click)="save()">
-              <ion-icon id="heart-icon" name='heart-outline'></ion-icon>
-            </ion-fab-button>
-          </ion-fab>
+
           
         </ion-card-header>
         <ion-card-content>
-          <!-- First garment card-->
-            <ion-card class="garment-card" >
-              <ion-card-content >
-                <ion-img *ngIf="garment"
-                id= userGarment.name
-                src = {{garment.link}}
-                >
-              </ion-img>
-              </ion-card-content>
-            </ion-card >
-            <!-- Second garment card-->
-            <ion-card class="garment-card">
-              <ion-card-content>
-                <ion-slides #slider (ionSlideDidChange) = "slideChange()" >
-                  <ion-slide *ngFor="let match of matchGarments">
-                    <img [src]='match.link'/>
-                  </ion-slide>
-                </ion-slides>
-              </ion-card-content>      
-          </ion-card>
+          <ion-row>
+            <ion-col size='12'>
+              <!-- First garment card-->
+                <ion-card class="garment-card" >
+                  <ion-card-header>
+                    <ion-item style="font-weight:bolder; font-size: xx-small">Your garment</ion-item>
+                  </ion-card-header>
+                  <ion-card-content >
+                    <ion-img class="garment-img" *ngIf="garment"
+                    id= userGarment.name
+                    src = {{garment.link}}
+                    >
+                  </ion-img>
+                  </ion-card-content>
+                </ion-card >
+              </ion-col>
+                <!-- Second garment card-->
+              <ion-col size='12'>
+                <ion-card class="garment-card">
+                  <ion-card-header>
+                    <ion-item style="font-weight:bolder;font-size: xx-small">Your match</ion-item>
+                  </ion-card-header>
+                  <ion-card-content>
+                    <ion-slides #slider (ionSlideDidChange) = "slideChange()" >
+                      <ion-slide *ngFor="let match of matchGarments">
+                        <ion-img class="garment-img" [src]='match.link'></ion-img>
+                      </ion-slide>
+                    </ion-slides>
+                  </ion-card-content>      
+              </ion-card>
+            </ion-col>
+        </ion-row>
         </ion-card-content>
       </ion-card>
       </div>
