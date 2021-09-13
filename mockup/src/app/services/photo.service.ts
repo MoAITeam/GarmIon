@@ -63,37 +63,12 @@ export class PhotoService{
       };
     }
 
-    private async shotPhoto(){
-
-      this.capturedPhoto = Camera.getPhoto({
-        resultType: CameraResultType.Uri,
-        source: CameraSource.Camera,
-        quality: 100
-      });
-      ;
-
-      const savedImageFile = await this.savePicture(this.capturedPhoto)
-      .then(() =>   
-      this.garments.unshift({
-        id: Math.random(),
-        name: "garment",
-        link: this.capturedPhoto.webPath,
-        color: 'Red',
-        category:'top',
-        photo: savedImageFile
-      }));
-    
-
-
-
-    }
-
 
   public async addNewToGallery() {
   // Take a photo
 
   let dismiss:boolean;
-
+/* 
   const alert = await this.alertController.create({
     cssClass: 'my-custom-class',
     header: 'Attenzione',
@@ -119,19 +94,40 @@ export class PhotoService{
   });
 
   await alert.present();
+  */
+
+  this.capturedPhoto = await Camera.getPhoto({
+    resultType: CameraResultType.Uri,
+    source: CameraSource.Camera,
+    quality: 100
+  });
+  ;
+
+  const savedImageFile = await this.savePicture(this.capturedPhoto);
+  this.photos.unshift({
+    id: Math.random(),
+    filepath: savedImageFile.filepath,
+    webviewPath: savedImageFile.webviewPath
+  });
+
+
+
   
   Storage.set({
     key: this.PHOTO_STORAGE,
     value: JSON.stringify(this.photos)
   });
 
+
   
 
-/*this.photos.unshift({
+/*this.garments.unshift({
     id: Math.random(),
-    filepath: "soon...",
-    webviewPath: capturedPhoto.webPath
-  });*/
+    name: "garment",
+    link: this.capturedPhoto.webPath,
+    color: 'Red',
+    category:'top',
+    photo: savedImageFile*/
 
 
 
