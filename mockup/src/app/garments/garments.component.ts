@@ -46,5 +46,4 @@ export interface Garment {
   link: string;
   color: string;
   category: string;
-  photo: Photo;
 }

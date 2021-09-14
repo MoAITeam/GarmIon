@@ -20,7 +20,6 @@ export class PhotoService{
   private platform: Platform;
 
   public garments:Garment[] = GARMENTS;
-  public capturedPhoto;
   constructor(platform: Platform) {
     this.platform = platform;
   }
@@ -105,6 +104,17 @@ export class PhotoService{
         photo.webviewPath = `data:image/jpeg;base64,${readFile.data}`;
       }
     }
+
+    for (let photo of this.photos) {
+      this.garments.unshift({
+        id: Math.random(),
+        name: "garment",
+        link: photo.webviewPath,
+        color: 'Red',
+        category:'top',
+      });
+    }
+
   }
 
   public async addNewToGallery() {
@@ -118,7 +128,6 @@ export class PhotoService{
       // Save the picture and add it to photo collection
     const savedImageFile = await this.savePicture(capturedPhoto);
     this.photos.unshift({
-      id: Math.random(),
       filepath: savedImageFile.filepath,
       webviewPath: savedImageFile.webviewPath
     });
@@ -134,14 +143,12 @@ export class PhotoService{
     link: savedImageFile.webviewPath,
     color: 'Red',
     category:'top',
-    photo: this.capturedPhoto
   });
 
 }
 }
 
 export interface Photo {
-  id: Number;
   filepath: string;
   webviewPath: string;
 }
