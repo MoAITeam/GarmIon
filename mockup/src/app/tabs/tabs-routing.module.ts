@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 import { GarmentDetailComponent } from '../garment-detail/garment-detail.component';
 import { OutfitDetailComponent } from '../outfit-detail/outfit-detail.component';
+import { GarmentPreviewPage } from '../garment-preview/garment-preview.page';
 
 const routes: Routes = [
   {
@@ -33,6 +34,10 @@ const routes: Routes = [
         path: 'tab2/outfit/:id',
         component : OutfitDetailComponent
       },
+      {
+        path: 'tab1/preview',
+        loadChildren: () => import('../garment-preview/garment-preview.module').then(m => m.GarmentPreviewPageModule)
+    },
       {
         path: '',
         redirectTo: '/tabs/tab1',

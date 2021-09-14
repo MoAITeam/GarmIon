@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title id="title">Preview</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button  defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size ="2"></ion-col>
+      <ion-col size ="8">
+        <ion-card>
+          <ion-card-header>
+            <ion-item style="font-weight: bold;">Your garment</ion-item>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-img
+            src="https://www.net-a-porter.com/variants/images/6630340699385535/in/w2000.jpg"></ion-img>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col size ="2"></ion-col>
+
+    </ion-row>
+
+    <ion-row>
+      <ion-item>Insert missing data</ion-item>
+    </ion-row>
+    <ion-row>
+      <ion-col size='6'>
+        <ion-item>What color is your garment?</ion-item>
+      </ion-col>
+      <ion-col size='6'>
+        <ion-card >
+          <ion-card-content class="filter-card" >
+            <ion-select class="select-card" multiple="true" [(ngModel)]="colorFilter" cancelText="Nah" okText="Okay!" placeholder="Color">
+              <ion-select-option value="Blue">Blue</ion-select-option>
+              <ion-select-option value="Red">Red</ion-select-option>
+              <ion-select-option value="Green">Green</ion-select-option>
+            </ion-select>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size='6'>
+        <ion-item>What is your garment?</ion-item>
+      </ion-col>
+      <ion-col size='6'>
+        <ion-card >
+          <ion-card-content class="filter-card" >
+            <ion-select class="select-card" multiple="true" [(ngModel)]="categoryFilter" cancelText="Nah" okText="Okay!" placeholder="Category">
+              <ion-select-option value="Top">Top</ion-select-option>
+              <ion-select-option value="Bottom">Bottom</ion-select-option>
+            </ion-select>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>
