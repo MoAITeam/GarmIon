@@ -20,6 +20,7 @@ export class Tab1Page {
   }
 
   async ngOnInit() {
+    console.log('debug');
     await this.photoService.loadSaved();
   }
 

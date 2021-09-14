@@ -1,26 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Camera, CameraPhoto, CameraResultType, CameraSource } from '@capacitor/camera';
-import {GARMENTS} from '../mock-garments';
-import {DomSanitizer,SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
-import { Garment } from '../garments/garments.component';
-import { AlertController, Platform } from '@ionic/angular';
-import { Directory, Filesystem } from '@capacitor/filesystem';
-import { Storage } from '@capacitor/storage';
 import { Capacitor } from '@capacitor/core';
+import { Filesystem, Directory } from '@capacitor/filesystem';
+import { Storage } from '@capacitor/storage';
+import { Platform } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
 })
 
-
-export class PhotoService{ 
+export class PhotoService {
 
   public photos: Photo[] = [];
+
   private PHOTO_STORAGE: string = "photos";
   private platform: Platform;
 
-  public garments:Garment[] = GARMENTS;
-  public capturedPhoto;
   constructor(platform: Platform) {
     this.platform = platform;
   }
@@ -43,7 +38,7 @@ export class PhotoService{
       return await this.convertBlobToBase64(blob) as string;
     }
   }
-
+  
   convertBlobToBase64 = (blob: Blob) => new Promise((resolve, reject) => {
     const reader = new FileReader;
     reader.onerror = reject;
@@ -52,7 +47,6 @@ export class PhotoService{
     };
     reader.readAsDataURL(blob);
   });
-    
 
   // Save picture to file on device
   private async savePicture(cameraPhoto: CameraPhoto) {
@@ -112,13 +106,12 @@ export class PhotoService{
     const capturedPhoto = await Camera.getPhoto({
       resultType: CameraResultType.Uri,
       source: CameraSource.Camera,
-      quality: 5
+      quality: 100
     });
 
       // Save the picture and add it to photo collection
     const savedImageFile = await this.savePicture(capturedPhoto);
     this.photos.unshift({
-      id: Math.random(),
       filepath: savedImageFile.filepath,
       webviewPath: savedImageFile.webviewPath
     });
@@ -127,24 +120,11 @@ export class PhotoService{
       key: this.PHOTO_STORAGE,
       value: JSON.stringify(this.photos)
     });
+  }
 
-    this.garments.unshift({
-    id: Math.random(),
-    name: "garment",
-    link: savedImageFile.webviewPath,
-    color: 'Red',
-    category:'top',
-    photo: this.capturedPhoto
-  });
-
-}
 }
 
 export interface Photo {
-  id: Number;
   filepath: string;
   webviewPath: string;
 }
-
-
-
