@@ -4,7 +4,7 @@ import {GARMENTS} from '../mock-garments';
 import {DomSanitizer,SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 import { Garment } from '../garments/garments.component';
 import { AlertController, Platform } from '@ionic/angular';
-import { Directory, Filesystem } from '@capacitor/filesystem';
+import { Directory, Encoding, Filesystem } from '@capacitor/filesystem';
 import { Storage } from '@capacitor/storage';
 import { Capacitor } from '@capacitor/core';
 
@@ -56,14 +56,18 @@ export class PhotoService{
   // Save picture to file on device
   private async savePicture(cameraPhoto: CameraPhoto) {
     // Convert photo to base64 format, required by Filesystem API to save
-    const base64Data = await this.readAsBase64(cameraPhoto);
+    //let base64Data = await this.readAsBase64(cameraPhoto);
+    let base64Data = "{\"id\":\"Math.random()\",\"photo\":\""+await this.readAsBase64(cameraPhoto)+"\"}";
+    //let base64Data = '{"id":"Math.random()","photo":"ecco"}';
 
+    console.log('d');
     // Write the file to the data directory
-    const fileName = new Date().getTime() + '.jpeg';
+    const fileName = new Date().getTime() + '.sav';
     const savedFile = await Filesystem.writeFile({
       path: fileName,
       data: base64Data,
-      directory: Directory.Data
+      directory: Directory.Data,
+      encoding: Encoding.UTF8
     });
 
     if (this.platform.is('hybrid')) {
@@ -101,7 +105,8 @@ export class PhotoService{
         });
   
         // Web platform only: Load the photo as base64 data
-        photo.webviewPath = `data:image/jpeg;base64,${readFile.data}`;
+        let pars = JSON.parse(readFile.data);
+        photo.webviewPath = `${pars.photo}`;
       }
     }
 
