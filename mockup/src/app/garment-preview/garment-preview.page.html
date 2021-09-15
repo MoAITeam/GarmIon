@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title id="title">Preview</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button  defaultHref="/tabs/tab1"></ion-back-button>
+      <ion-back-button  (click)='exit()'></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -19,7 +19,7 @@
           </ion-card-header>
           <ion-card-content>
             <ion-img
-            src="https://www.net-a-porter.com/variants/images/6630340699385535/in/w2000.jpg"></ion-img>
+            src = {{garment.link}} ></ion-img>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -64,5 +64,9 @@
     </ion-row>
 
   </ion-grid>
+
+  <section>
+    <ion-button id="save-button" (click)='savePicture()' expand="block">Save!</ion-button>
+  </section>
 
 </ion-content>

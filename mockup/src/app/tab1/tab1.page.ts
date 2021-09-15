@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { HTTP } from '@ionic-native/http/ngx';
 import { PhotoService } from '../services/photo.service';
 import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { PreviewCorridorService } from '../services/preview-corridor.service';
+
 
 @Component({
   selector: 'app-tab1',
@@ -15,11 +18,20 @@ export class Tab1Page {
 
   constructor(public photoService: PhotoService,
     private http:HTTP,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private router: Router,
+    private previewCorridor: PreviewCorridorService
     ) { }
 
-    addPhotoToGallery() {
-      this.photoService.addNewToGallery();
+    async addPhotoToGallery() {
+      let values = await this.photoService.addNewToGallery(); 
+      let photoID = values[0];
+      let photo = values[1];
+      this.previewCorridor.setPhoto(photo);
+      this.previewCorridor.setPhotoID(photoID);
+
+      this.router.navigate(['tabs/tab1/preview']);
+      
   }
 
   async alertDisplay(){

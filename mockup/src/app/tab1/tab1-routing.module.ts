@@ -10,7 +10,9 @@ const routes: Routes = [
   {
     path: 'view-garment',
     loadChildren: () => import('./view-garment/view-garment.module').then( m => m.ViewGarmentPageModule)
-  }
+  },
+
+  
 ];
 
 @NgModule({

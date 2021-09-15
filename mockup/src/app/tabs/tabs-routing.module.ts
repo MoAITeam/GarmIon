@@ -36,8 +36,7 @@ const routes: Routes = [
       },
       {
         path: 'tab1/preview',
-        loadChildren: () => import('../garment-preview/garment-preview.module').then(m => m.GarmentPreviewPageModule)
-    },
+        loadChildren: () => import('../garment-preview/garment-preview.module').then(m => m.GarmentPreviewPageModule)    },
       {
         path: '',
         redirectTo: '/tabs/tab1',

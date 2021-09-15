@@ -86,6 +86,8 @@ export class PhotoService{
         webviewPath: cameraPhoto.webPath
       };
     }
+
+
   }
 
   public async loadSaved() {
@@ -127,31 +129,46 @@ export class PhotoService{
     const capturedPhoto = await Camera.getPhoto({
       resultType: CameraResultType.Uri,
       source: CameraSource.Camera,
-      quality: 5
+      quality: 5,
+ 
     });
+
+    let photoID = Math.random();
+
+      
+    this.garments.unshift({
+      id: photoID,
+      name: "garment",
+      link: capturedPhoto.webPath,
+      color: 'Red',
+      category:'top',
+    });
+
+
+    return [photoID,capturedPhoto];
+
+
+
+}
+public async waitForCheck(capturedPhoto){
 
       // Save the picture and add it to photo collection
-    const savedImageFile = await this.savePicture(capturedPhoto);
-    this.photos.unshift({
-      filepath: savedImageFile.filepath,
-      webviewPath: savedImageFile.webviewPath
-    });
-
-    Storage.set({
-      key: this.PHOTO_STORAGE,
-      value: JSON.stringify(this.photos)
-    });
-
-    this.garments.unshift({
-    id: Math.random(),
-    name: "garment",
-    link: savedImageFile.webviewPath,
-    color: 'Red',
-    category:'top',
-  });
+      const savedImageFile = await this.savePicture(capturedPhoto);
+      this.photos.unshift({
+        filepath: savedImageFile.filepath,
+        webviewPath: savedImageFile.webviewPath
+      });
+  
+      Storage.set({
+        key: this.PHOTO_STORAGE,
+        value: JSON.stringify(this.photos)
+      });
 
 }
+
 }
+
+
 
 export interface Photo {
   filepath: string;
