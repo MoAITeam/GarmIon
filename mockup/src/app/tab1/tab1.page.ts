@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HTTP } from '@ionic-native/http/ngx';
 import { PhotoService } from '../services/photo.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -13,10 +14,35 @@ export class Tab1Page {
   private requestObject : any = null;
 
   constructor(public photoService: PhotoService,
-    private http:HTTP) { }
+    private http:HTTP,
+    private alertCtrl: AlertController
+    ) { }
 
     addPhotoToGallery() {
       this.photoService.addNewToGallery();
+  }
+
+  async alertDisplay(){
+    let alert = this.alertCtrl.create({
+      message: 'Fai le foto per benino',
+      buttons: [
+        {
+          text: 'fanculo',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Vabene',
+          handler: () => {
+            this.addPhotoToGallery();
+          }
+        }
+      ]
+    });
+    (await alert).present();
+
   }
 
   async ngOnInit() {
