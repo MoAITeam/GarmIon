@@ -9,9 +9,12 @@ import { Outfit, OutfitComponent } from '../outfit/outfit.component';
 import { OutfitCorridorService } from '../services/outfit-corridor.service';
 import { OUTFITS } from '../outfit-mockup';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { OutfitSaverService } from '../services/outfit-saver.service';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+=======
+>>>>>>> parent of 49a8996 (a)
 =======
 >>>>>>> parent of 49a8996 (a)
 
@@ -38,12 +41,15 @@ export class GarmentDetailComponent implements OnInit {
     private location: Location,
     private sanitizer : DomSanitizer,
 <<<<<<< HEAD
+<<<<<<< HEAD
     private outfitCorridorService : OutfitCorridorService,
     private outfitSaver: OutfitSaverService,
   ) {
 
   }
 =======
+=======
+>>>>>>> parent of 49a8996 (a)
     private outfitCorridorService : OutfitCorridorService
   ) {}
 >>>>>>> parent of 49a8996 (a)
