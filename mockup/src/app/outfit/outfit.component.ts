@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Garment } from '../garments/garments.component';
 import { OUTFITS } from '../outfit-mockup';
@@ -20,11 +19,7 @@ export class OutfitComponent implements OnInit {
 
   constructor(private outfitCorridorService : OutfitCorridorService,
     private OutfitsForOutfitDetailService : OutfitsForOutfitDetailService,
-<<<<<<< HEAD
-    private outfitSaver: OutfitSaverService,
 
-=======
->>>>>>> parent of 49a8996 (a)
     ) { }
 
   ngOnInit() {
@@ -66,8 +61,4 @@ export interface Outfit {
   id: number,
   userGarment: Garment,
   matchGarment: Garment,
-}
-
-function take(arg0: number): import("rxjs").OperatorFunction<Outfit[], unknown> {
-  throw new Error('Function not implemented.');
 }
