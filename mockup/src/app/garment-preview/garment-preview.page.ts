@@ -16,7 +16,7 @@ export class GarmentPreviewPage implements OnInit {
 
   private garment:Garment;
   private photo:Photo;
-  private photoID;
+  private photoID:Number;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,7 +29,6 @@ export class GarmentPreviewPage implements OnInit {
     this.photoID = this.previewCorridor.getPhotoID();
     this.photo = this.previewCorridor.getPhoto();
     this.garment = GARMENTS.find(h => h.id === this.photoID)!;
-
   }
 
   savePicture(){
