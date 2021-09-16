@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { Garment } from '../garments/garments.component';
 import { OUTFITS } from '../outfit-mockup';
 import { OutfitCorridorService } from '../services/outfit-corridor.service';
@@ -15,14 +17,22 @@ import { OutfitsForOutfitDetailService } from '../services/outfits-for-outfit-de
 
 export class OutfitComponent implements OnInit {
 
-  public selectedOutfits : Outfit[] = OUTFITS;
+  public selectedOutfits : Outfit[] = OUTFITS; 
 
   constructor(private outfitCorridorService : OutfitCorridorService,
     private OutfitsForOutfitDetailService : OutfitsForOutfitDetailService,
-    private outfitSaver: OutfitSaverService
+    private outfitSaver: OutfitSaverService,
+
     ) { }
 
   ngOnInit() {
+
+    
+    
+    
+    
+    //this.selectedOutfits = this.store.outfits.value;
+    
 
 
 
@@ -42,6 +52,7 @@ export class OutfitComponent implements OnInit {
   }
 
 
+
 }
 
 export interface Outfitz {
@@ -53,4 +64,8 @@ export interface Outfit {
   id: number,
   userGarment: Garment,
   matchGarment: Garment,
+}
+
+function take(arg0: number): import("rxjs").OperatorFunction<Outfit[], unknown> {
+  throw new Error('Function not implemented.');
 }

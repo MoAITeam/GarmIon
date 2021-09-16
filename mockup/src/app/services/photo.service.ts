@@ -56,6 +56,8 @@ export class PhotoService{
 
   // Save picture to file on device
   private async savePicture(cameraPhoto: CameraPhoto) {
+
+    
     // Convert photo to base64 format, required by Filesystem API to save
     //let base64Data = await this.readAsBase64(cameraPhoto);
     let base64Data = "{\"id\":\"Math.random()\",\"photo\":\""+await this.readAsBase64(cameraPhoto)+"\"}";
@@ -63,8 +65,10 @@ export class PhotoService{
 
     console.log('d');
     // Write the file to the data directory
-    let myuuid = uuidv4();
-    const fileName = myuuid + '.sav';
+
+    let photoID = uuidv4(); 
+    
+    const fileName = photoID + '.sav';
     const savedFile = await Filesystem.writeFile({
       path: fileName,
       data: base64Data,

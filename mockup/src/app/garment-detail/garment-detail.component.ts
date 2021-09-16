@@ -5,10 +5,12 @@ import {GARMENTS} from '../mock-garments';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Garment } from '../garments/garments.component';
 import { IonSlides } from '@ionic/angular';
-import { Outfit } from '../outfit/outfit.component';
+import { Outfit, OutfitComponent } from '../outfit/outfit.component';
 import { OutfitCorridorService } from '../services/outfit-corridor.service';
 import { OUTFITS } from '../outfit-mockup';
 import { OutfitSaverService } from '../services/outfit-saver.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-garment-detail',
@@ -25,6 +27,7 @@ export class GarmentDetailComponent implements OnInit {
   public lovedOutfit: Outfit[];
   public outfit : Outfit;
   public opt : String;
+  outfits: Observable<Outfit[]>;
 
 
   constructor(
@@ -32,9 +35,10 @@ export class GarmentDetailComponent implements OnInit {
     private location: Location,
     private sanitizer : DomSanitizer,
     private outfitCorridorService : OutfitCorridorService,
-    private outfitSaver: OutfitSaverService
+    private outfitSaver: OutfitSaverService,
+  ) {
 
-  ) {}
+  }
     
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
@@ -60,8 +64,9 @@ export class GarmentDetailComponent implements OnInit {
     }
 
   save(){
-    let async_id = this.sliderComponent.getActiveIndex();
 
+
+    let async_id = this.sliderComponent.getActiveIndex();
     async_id.then( id => {
 
       if(this.opt==='edit'){
@@ -82,6 +87,7 @@ export class GarmentDetailComponent implements OnInit {
       icon.setAttribute('name','heart');
       console.log(icon);
       OUTFITS.push(outfitToSave);
+
 
       //this.outfitCorridorService.sendOutfits(this.lovedOutfit)   DEVE ESSERE CORRETTO PER FARE TUTTO CON IL SERVIZIO
 

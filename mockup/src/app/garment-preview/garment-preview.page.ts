@@ -16,6 +16,7 @@ export class GarmentPreviewPage implements OnInit {
 
   private garment:Garment;
   private photo:Photo;
+  private photoID;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,16 +26,14 @@ export class GarmentPreviewPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    let photoID = this.previewCorridor.getPhotoID();
-    let photo = this.previewCorridor.getPhoto;
-    this.garment = GARMENTS.find(h => h.id === photoID)!;
-    console.log(photoID);
-    console.log(this.garment.link);
+    this.photoID = this.previewCorridor.getPhotoID();
+    this.photo = this.previewCorridor.getPhoto();
+    this.garment = GARMENTS.find(h => h.id === this.photoID)!;
 
   }
 
   savePicture(){
-    this.photoService.waitForCheck(this.garment);
+    this.photoService.waitForCheck(this.photo);
     this.router.navigate(['tabs/tab1']);
   }
 
