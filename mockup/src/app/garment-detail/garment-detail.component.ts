@@ -8,6 +8,7 @@ import { IonSlides } from '@ionic/angular';
 import { Outfit } from '../outfit/outfit.component';
 import { OutfitCorridorService } from '../services/outfit-corridor.service';
 import { OUTFITS } from '../outfit-mockup';
+import { OutfitSaverService } from '../services/outfit-saver.service';
 
 @Component({
   selector: 'app-garment-detail',
@@ -30,7 +31,9 @@ export class GarmentDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location,
     private sanitizer : DomSanitizer,
-    private outfitCorridorService : OutfitCorridorService
+    private outfitCorridorService : OutfitCorridorService,
+    private outfitSaver: OutfitSaverService
+
   ) {}
     
   ngOnInit(): void {

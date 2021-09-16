@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Garment } from '../garments/garments.component';
 import { OUTFITS } from '../outfit-mockup';
 import { OutfitCorridorService } from '../services/outfit-corridor.service';
+import { OutfitSaverService } from '../services/outfit-saver.service';
 import { OutfitsForOutfitDetailService } from '../services/outfits-for-outfit-detail.service';
 
 
@@ -18,6 +19,7 @@ export class OutfitComponent implements OnInit {
 
   constructor(private outfitCorridorService : OutfitCorridorService,
     private OutfitsForOutfitDetailService : OutfitsForOutfitDetailService,
+    private outfitSaver: OutfitSaverService
     ) { }
 
   ngOnInit() {

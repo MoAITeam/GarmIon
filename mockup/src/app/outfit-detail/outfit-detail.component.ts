@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Outfit } from '../outfit/outfit.component';
 import { OUTFITS } from '../outfit-mockup';
 import { Garment } from '../garments/garments.component';
@@ -25,7 +25,8 @@ export class OutfitDetailComponent implements OnInit {
   public selectedOutfits: Outfit[] = OUTFITS;
   constructor(
     private route: ActivatedRoute,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    private router: Router
 
   ) {}
 
@@ -53,6 +54,7 @@ export class OutfitDetailComponent implements OnInit {
   delete() {
 
     OUTFITS.splice(this.outfit,1);
+    this.router.navigate(['/tabs/tab2']);
 
   }
 

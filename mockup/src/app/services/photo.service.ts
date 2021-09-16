@@ -7,6 +7,7 @@ import { AlertController, Platform } from '@ionic/angular';
 import { Directory, Encoding, Filesystem } from '@capacitor/filesystem';
 import { Storage } from '@capacitor/storage';
 import { Capacitor } from '@capacitor/core';
+import {v4 as uuidv4} from 'uuid';
 
 @Injectable({
   providedIn: 'root'
@@ -62,7 +63,8 @@ export class PhotoService{
 
     console.log('d');
     // Write the file to the data directory
-    const fileName = new Date().getTime() + '.sav';
+    let myuuid = uuidv4();
+    const fileName = myuuid + '.sav';
     const savedFile = await Filesystem.writeFile({
       path: fileName,
       data: base64Data,
@@ -133,7 +135,7 @@ export class PhotoService{
  
     });
 
-    let photoID = Math.random();
+    let photoID = uuidv4();
 
       
     this.garments.unshift({
@@ -156,7 +158,7 @@ public async waitForCheck(capturedPhoto){
       const savedImageFile = await this.savePicture(capturedPhoto);
       this.photos.unshift({
         filepath: savedImageFile.filepath,
-        webviewPath: savedImageFile.webviewPath
+        webviewPath: savedImageFile.webviewPath,
       });
   
       Storage.set({
