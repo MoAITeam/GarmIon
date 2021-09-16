@@ -59,7 +59,8 @@ export class PhotoService{
     
     // Convert photo to base64 format, required by Filesystem API to save
     //let base64Data = await this.readAsBase64(cameraPhoto);
-    let base64Data = "{\"id\":\"Math.random()\",\"photo\":\""+await this.readAsBase64(cameraPhoto)+"\"}";
+    //let base64Data = "{\"id\":\"Math.random()\",\"photo\":\""+await this.readAsBase64(cameraPhoto)+"\"}";
+    let base64Data = JSON.stringify({id:Math.random(),photo:await this.readAsBase64(cameraPhoto)});
     //let base64Data = '{"id":"Math.random()","photo":"ecco"}';
 
     console.log('d');
@@ -110,18 +111,14 @@ export class PhotoService{
   
         // Web platform only: Load the photo as base64 data
         let pars = JSON.parse(readFile.data);
-        photo.webviewPath = `${pars.photo}`;
+        this.garments.unshift({
+          id: pars.id,
+          name: "garment",
+          link: `${pars.photo}`,
+          color: 'Red',
+          category:'top',
+        });
       }
-    }
-
-    for (let photo of this.photos) {
-      this.garments.unshift({
-        id: Math.random(),
-        name: "garment",
-        link: photo.webviewPath,
-        color: 'Red',
-        category:'top',
-      });
     }
 
   }
@@ -176,6 +173,3 @@ export interface Photo {
   filepath: string;
   webviewPath: string;
 }
-
-
-

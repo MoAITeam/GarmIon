@@ -8,6 +8,9 @@ import { IonSlides } from '@ionic/angular';
 import { Outfit, OutfitComponent } from '../outfit/outfit.component';
 import { OutfitCorridorService } from '../services/outfit-corridor.service';
 import { OUTFITS } from '../outfit-mockup';
+import { Directory, Encoding, Filesystem } from '@capacitor/filesystem';
+import { Storage } from '@capacitor/storage';
+import { Capacitor } from '@capacitor/core';
 
 @Component({
   selector: 'app-garment-detail',
@@ -23,6 +26,7 @@ export class GarmentDetailComponent implements OnInit {
   public lovedOutfit: Outfit[];
   public outfit : Outfit;
   public opt : String;
+  platform: any;
 
 
   constructor(
@@ -81,6 +85,8 @@ export class GarmentDetailComponent implements OnInit {
       console.log(icon);
       OUTFITS.push(outfitToSave);
 
+      this.saveOutfit(outfitToSave);
+
 
       //this.outfitCorridorService.sendOutfits(this.lovedOutfit)   DEVE ESSERE CORRETTO PER FARE TUTTO CON IL SERVIZIO
 
@@ -92,6 +98,27 @@ export class GarmentDetailComponent implements OnInit {
     });
     
     
+  }
+
+  async saveOutfit(outfit:Outfit){
+
+    let base64Data = JSON.stringify(outfit);
+
+    const fileName = new Date().getTime() + '.out';
+    const savedFile = await Filesystem.writeFile({
+      path: fileName,
+      data: base64Data,
+      directory: Directory.Data,
+      encoding: Encoding.UTF8
+    });
+
+    
+    Storage.set({
+      key: "outfit",
+      value: JSON.stringify({filepath: savedFile.uri,
+        webviewPath: Capacitor.convertFileSrc(savedFile.uri)})
+    });
+
   }
 
   slideChange() {
