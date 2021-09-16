@@ -21,11 +21,8 @@ export class OutfitComponent implements OnInit {
   constructor(private outfitCorridorService : OutfitCorridorService,
     private OutfitsForOutfitDetailService : OutfitsForOutfitDetailService,
 <<<<<<< HEAD
-<<<<<<< HEAD
     private outfitSaver: OutfitSaverService,
 
-=======
->>>>>>> parent of 49a8996 (a)
 =======
 >>>>>>> parent of 49a8996 (a)
     ) { }

@@ -65,14 +65,10 @@ export class PhotoService{
     console.log('d');
     // Write the file to the data directory
 <<<<<<< HEAD
-<<<<<<< HEAD
 
     let photoID = uuidv4(); 
     
     const fileName = photoID + '.sav';
-=======
-    const fileName = new Date().getTime() + '.sav';
->>>>>>> parent of 49a8996 (a)
 =======
     const fileName = new Date().getTime() + '.sav';
 >>>>>>> parent of 49a8996 (a)
