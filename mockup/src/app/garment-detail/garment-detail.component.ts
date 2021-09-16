@@ -8,9 +8,12 @@ import { IonSlides } from '@ionic/angular';
 import { Outfit, OutfitComponent } from '../outfit/outfit.component';
 import { OutfitCorridorService } from '../services/outfit-corridor.service';
 import { OUTFITS } from '../outfit-mockup';
+<<<<<<< HEAD
 import { OutfitSaverService } from '../services/outfit-saver.service';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+=======
+>>>>>>> parent of 49a8996 (a)
 
 @Component({
   selector: 'app-garment-detail',
@@ -34,11 +37,16 @@ export class GarmentDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location,
     private sanitizer : DomSanitizer,
+<<<<<<< HEAD
     private outfitCorridorService : OutfitCorridorService,
     private outfitSaver: OutfitSaverService,
   ) {
 
   }
+=======
+    private outfitCorridorService : OutfitCorridorService
+  ) {}
+>>>>>>> parent of 49a8996 (a)
     
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
