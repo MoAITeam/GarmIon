@@ -1,16 +1,16 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import {GARMENTS} from '../mock-garments';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Garment } from '../garments/garments.component';
 import { IonSlides } from '@ionic/angular';
 import { Outfit, OutfitComponent } from '../outfit/outfit.component';
 import { OutfitCorridorService } from '../services/outfit-corridor.service';
-import { OUTFITS } from '../outfit-mockup';
 import { Directory, Encoding, Filesystem } from '@capacitor/filesystem';
 import { Storage } from '@capacitor/storage';
 import { Capacitor } from '@capacitor/core';
+import { ModelService } from '../services/model.service';
+import { Key } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-garment-detail',
@@ -24,6 +24,7 @@ export class GarmentDetailComponent implements OnInit {
   public garment : Garment;
   public matchGarments: Garment[];
   public lovedOutfit: Outfit[];
+  public outfits: Outfit[];
   public outfit : Outfit;
   public opt : String;
   platform: any;
@@ -33,7 +34,8 @@ export class GarmentDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location,
     private sanitizer : DomSanitizer,
-    private outfitCorridorService : OutfitCorridorService
+    private outfitCorridorService : OutfitCorridorService,
+    private modelService: ModelService
   ) {}
 
     
@@ -42,83 +44,52 @@ export class GarmentDetailComponent implements OnInit {
     this.opt = String(this.route.snapshot.paramMap.get('opt'));
     this.lovedOutfit = [];
     if (this.opt==='detail'){
-        this.garment = GARMENTS.find(h => h.id === id)!;
+        this.garment = this.modelService.garments.find(h => h.id === id)!;
         this.matchGarments = [
-        {  id: 1, name: 'TeslaTits', link: 'https://www.net-a-porter.com/variants/images/6630340699385535/in/w2000.jpg', color: 'Red',category:'bottom'},
-        { id: 2, name: 'Cosciona99', link: 'https://www.net-a-porter.com/variants/images/11452292647496505/in/w2000.jpg',color: 'Blue',category:'top'},
-        { id: 3, name: 'Banana33', link: 'https://www.net-a-porter.com/variants/images/6630340699385535/in/w2000.jpg',color: 'Red',category:'top'}
-        ];
-      }
-      if (this.opt==='edit'){
-        this.outfit = OUTFITS.find(h => h.id === id)!;
+          this.modelService.garments[0],
+          this.modelService.garments[0],
+          this.modelService.garments[0],
+          ];      
+        }
+      /*if (this.opt==='edit'){
+        this.outfit = this.modelService.outfits.find(h => h.id === id)!;
         this.garment = this.outfit.userGarment;
         this.matchGarments = [
         {  id: 1, name: 'TeslaTits', link: 'https://www.net-a-porter.com/variants/images/6630340699385535/in/w2000.jpg', color: 'Red',category:'bottom'},
         { id: 2, name: 'Cosciona99', link: 'https://www.net-a-porter.com/variants/images/11452292647496505/in/w2000.jpg',color: 'Blue',category:'top'},
         { id: 3, name: 'Banana33', link: 'https://www.net-a-porter.com/variants/images/6630340699385535/in/w2000.jpg',color: 'Red',category:'top'}
         ];
-      }
+      }*/
     }
 
   save(){
 
 
     let async_id = this.sliderComponent.getActiveIndex();
-    async_id.then( id => {
+    async_id.then( async id => {
 
       if(this.opt==='edit'){
-        let index:number = OUTFITS.indexOf(this.outfit,0);
-        OUTFITS.splice(index,1);
+
       }
 
-      let lovedMatch = this.matchGarments.find(h=>h.id===(id+1))!;
-      let randomID:number = Math.floor(Math.random() * 100000);
-      if(this.opt==='edit')
-        randomID = this.outfit.id;
-      console.log(randomID);
-      let outfitToSave = {id: randomID, userGarment: this.garment, matchGarment: lovedMatch};
-      this.lovedOutfit.push(outfitToSave);
-      console.log(this.lovedOutfit);
+    let data = {id:(((1+Math.random())*0x10000)|0),
+      userGarment:this.garment.id,
+      matchGarment:this.matchGarments[id].id};
 
-      let icon = document.getElementById('heart-icon');
-      icon.setAttribute('name','heart');
-      console.log(icon);
-      OUTFITS.push(outfitToSave);
+    const outfitList = await Storage.get({ key: "outfits"});
+    this.outfits = JSON.parse(outfitList.value) || [];
+    this.outfits.push(data);
+      console.log('dd');
+      Storage.set({
+        key: "outfits",
+        value: JSON.stringify(this.outfits)
+      });
 
-      this.saveOutfit(outfitToSave);
-
-
-      //this.outfitCorridorService.sendOutfits(this.lovedOutfit)   DEVE ESSERE CORRETTO PER FARE TUTTO CON IL SERVIZIO
-
-
-
-      //TUTTO IL CODICE DEVE STAR QUI DENTRO E VIENE ESEGUITO SU UN THREAD ASINCRONO
-      //PUOI ANCHE AVVIARLO SU ALTRE FUNZIONI MA VANNO RICHIAMATE DA QUI
-
+      this.modelService.outfits.unshift(data);
+      
     });
     
     
-  }
-
-  async saveOutfit(outfit:Outfit){
-
-    let base64Data = JSON.stringify(outfit);
-
-    const fileName = new Date().getTime() + '.out';
-    const savedFile = await Filesystem.writeFile({
-      path: fileName,
-      data: base64Data,
-      directory: Directory.Data,
-      encoding: Encoding.UTF8
-    });
-
-    
-    Storage.set({
-      key: "outfit",
-      value: JSON.stringify({filepath: savedFile.uri,
-        webviewPath: Capacitor.convertFileSrc(savedFile.uri)})
-    });
-
   }
 
   slideChange() {
@@ -127,7 +98,7 @@ export class GarmentDetailComponent implements OnInit {
 
     async_id.then( id => {
       let lovedMatch = this.matchGarments.find(h=>h.id===(id+1))!;
-      let findOutfit = this.lovedOutfit.find(v=>v.matchGarment.id===(id+1));
+      let findOutfit = this.lovedOutfit.find(v=>v.matchGarment===(id+1));
       let icon = document.getElementById('heart-icon');
       if (findOutfit){
         icon.setAttribute('name','heart');

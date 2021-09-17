@@ -8,10 +8,6 @@ const routes: Routes = [
     component: Tab2Page,
   },
   {
-    path: 'outfit-list',
-    loadChildren: () => import('./outfit-list/outfit-list.module').then( m => m.OutfitListPageModule)
-  },
-  {
     path: 'view-outfit',
     loadChildren: () => import('./view-outfit/view-outfit.module').then( m => m.ViewOutfitPageModule)
   }

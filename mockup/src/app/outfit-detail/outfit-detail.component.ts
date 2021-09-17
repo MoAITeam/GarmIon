@@ -1,11 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Outfit } from '../outfit/outfit.component';
-import { OUTFITS } from '../outfit-mockup';
 import { Garment } from '../garments/garments.component';
 import { OutfitCorridorService } from '../services/outfit-corridor.service';
 import { OutfitsForOutfitDetailService } from '../services/outfits-for-outfit-detail.service';
 import { NavController } from '@ionic/angular/';
+import { ModelService } from '../services/model.service';
+import { Storage } from '@capacitor/storage';
+
 
 @Component({
   selector: 'app-outfit-detail',
@@ -19,46 +21,44 @@ import { NavController } from '@ionic/angular/';
 
 export class OutfitDetailComponent implements OnInit {
 
-  public outfit:number;
+  public outfit:Outfit;
   public userGarment:Garment;
   public recommendedGarment:Garment;
-  public selectedOutfits: Outfit[] = OUTFITS;
   constructor(
     private route: ActivatedRoute,
-    public navCtrl: NavController
-
+    public navCtrl: NavController,
+    private modelService: ModelService
   ) {}
 
   ngOnInit() {
 
-        
-
-  /*  this.outfitsForOutfitDetailService.receiveOutfits().subscribe(
-      (outfits) => {
-        this.selectedOutfits = outfits;
-          
-      }
-  ); */
-
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.outfit = this.selectedOutfits.findIndex(h => h.id === id)!;
-    console.log(id);
-    console.log(this.outfit);
-    console.log(this.selectedOutfits);
-    this.userGarment = this.selectedOutfits[this.outfit].userGarment;
-    this.recommendedGarment = this.selectedOutfits[this.outfit].matchGarment;
-
+    this.outfit = this.modelService.outfits.find(h => h.id === id)!;
   }
 
-  delete() {
+  getGarment(id:number) {
+    return this.modelService.garments.find(garment => garment.id == id);
+  }
 
-    OUTFITS.splice(this.outfit,1);
-
+  async delete() {
+    // Fa molto schifo
+    const outfitList = await Storage.get({ key: "outfits" });
+    this.modelService.outfits = [];
+    let outfits:Outfit[] = JSON.parse(outfitList.value) || [];
+    let newOutFitList = [];
+    for (let out of outfits){
+      if (this.outfit.id!=out.id){
+        newOutFitList.push(out)
+        this.modelService.outfits.push(out);
+      }
+    }
+    Storage.set({key: "outfits",value: JSON.stringify(newOutFitList)});
+    this.navCtrl.navigateRoot("tabs/tab2");
   }
 
   edit() {
 
-    this.navCtrl.navigateRoot("tabs/tab2/outfit/edit/"+this.selectedOutfits[this.outfit].id);
+    //this.navCtrl.navigateRoot("tabs/tab2/outfit/edit/"+this.modelService.outfits[this.outfit].id);
 
   }
 

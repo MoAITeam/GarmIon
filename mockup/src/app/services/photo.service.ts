@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Camera, CameraPhoto, CameraResultType, CameraSource } from '@capacitor/camera';
-import {GARMENTS} from '../mock-garments';
 import {DomSanitizer,SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 import { Garment } from '../garments/garments.component';
 import { AlertController, Platform } from '@ionic/angular';
 import { Directory, Encoding, Filesystem } from '@capacitor/filesystem';
 import { Storage } from '@capacitor/storage';
 import { Capacitor } from '@capacitor/core';
+import { ModelService } from './model.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,14 +15,17 @@ import { Capacitor } from '@capacitor/core';
 
 export class PhotoService{ 
 
+  public id: number;
   public photos: Photo[] = [];
   private PHOTO_STORAGE: string = "photos";
   private platform: Platform;
+  public garments:Garment[];
 
-  public garments:Garment[] = GARMENTS;
-  constructor(platform: Platform) {
+  constructor(platform: Platform, private modelService: ModelService) {
+    this.garments = modelService.garments;
     this.platform = platform;
   }
+
 
   private async readAsBase64(cameraPhoto: CameraPhoto) {
     // "hybrid" will detect Cordova or Capacitor
@@ -55,13 +58,9 @@ export class PhotoService{
 
   // Save picture to file on device
   private async savePicture(cameraPhoto: CameraPhoto) {
-
     
-    // Convert photo to base64 format, required by Filesystem API to save
-    //let base64Data = await this.readAsBase64(cameraPhoto);
-    //let base64Data = "{\"id\":\"Math.random()\",\"photo\":\""+await this.readAsBase64(cameraPhoto)+"\"}";
-    let base64Data = JSON.stringify({id:Math.random(),photo:await this.readAsBase64(cameraPhoto)});
-    //let base64Data = '{"id":"Math.random()","photo":"ecco"}';
+    console.log('p');
+    let base64Data = JSON.stringify({id:this.id,photo:await this.readAsBase64(cameraPhoto)});
 
     console.log('d');
     // Write the file to the data directory
@@ -111,7 +110,7 @@ export class PhotoService{
   
         // Web platform only: Load the photo as base64 data
         let pars = JSON.parse(readFile.data);
-        this.garments.unshift({
+        this.modelService.garments.unshift({
           id: pars.id,
           name: "garment",
           link: `${pars.photo}`,
@@ -132,11 +131,11 @@ export class PhotoService{
  
     });
 
-    let photoID = Math.random();
+    this.id=(((1+Math.random())*0x10000)|0);
 
       
-    this.garments.unshift({
-      id: photoID,
+    this.modelService.garments.unshift({
+      id: this.id,
       name: "garment",
       link: capturedPhoto.webPath,
       color: 'Red',
@@ -144,7 +143,7 @@ export class PhotoService{
     });
 
 
-    return [photoID,capturedPhoto];
+    return [this.id,capturedPhoto];
 
 
 

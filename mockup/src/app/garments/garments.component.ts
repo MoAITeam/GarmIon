@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { GARMENTS } from '../mock-garments';
-import { Photo } from '../services/photo.service';
+import { ModelService } from '../services/model.service';
 
 @Component({
   selector: 'app-garments',
@@ -15,23 +14,26 @@ export class GarmentsComponent implements OnInit {
   @Input()
   categoryFilter: string[];
 
-  public garments = GARMENTS;
   selectedGarment?: Garment;
+
   public filteredGarments: Garment[];
   onSelect(garment: Garment): void {
     this.selectedGarment = garment;
   }
   
-  constructor() {
+  constructor(private modelService: ModelService) {
+    
    }
 
   ngOnInit() {
-    this.filteredGarments=this.garments;
+    this.modelService.garments = [];
+    this.filteredGarments=this.modelService.garments;
   }
 
   ngOnChanges(){
     this.filteredGarments = [];
-    for (let garment of this.garments){
+    if (this.modelService.garments)
+    for (let garment of this.modelService.garments){
       if(this.colorFilter.includes(garment.color)&&this.categoryFilter.includes(garment.category))
         this.filteredGarments.push(garment);
     }

@@ -33,8 +33,8 @@
           <ion-card class="outfit-card" >
             <ion-card-content >
               <ion-img
-              id= {{this.selectedOutfits[this.outfit].userGarment.name}}
-              src = {{this.selectedOutfits[this.outfit].userGarment.link}}
+              id= {{getGarment(this.outfit.userGarment).id}}
+              src = {{getGarment(this.outfit.userGarment).link}}
               >
             </ion-img>
             </ion-card-content>
@@ -43,8 +43,8 @@
           <ion-card class="outfit-card">
             <ion-card-content>
               <ion-img
-              id= {{this.selectedOutfits[this.outfit].matchGarment.name}}
-              src = {{this.selectedOutfits[this.outfit].matchGarment.link}}
+              id= {{getGarment(this.outfit.matchGarment).id}}
+              src = {{getGarment(this.outfit.matchGarment).link}}
               >
               </ion-img>
             </ion-card-content>      

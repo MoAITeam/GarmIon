@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Storage } from '@capacitor/storage';
+import { ModelService } from '../services/model.service';
+
 
 @Component({
   selector: 'app-tab2',
@@ -7,6 +10,12 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  constructor(private modelService: ModelService) {}
+
+  async ngOnInit(){
+    const outfitList = await Storage.get({ key: "outfits" });
+    let outfits = JSON.parse(outfitList.value) || [];
+    this.modelService.outfits = outfits;
+  }
 
 }

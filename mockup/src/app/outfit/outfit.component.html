@@ -1,8 +1,4 @@
-<app-empty-cart [selectedOutfits] = "selectedOutfits">
-
-</app-empty-cart>
-
-<div id ='empty-cart' class="container-fluid mt-100" *ngIf="selectedOutfits.length==0">
+<div id ='empty-cart' class="container-fluid mt-100" *ngIf="modelService.outfits.length==0">
   <ion-row>
       <ion-col size='12'>
           <ion-card>
@@ -22,43 +18,26 @@
 
 
 <ion-grid>
-  <ion-row>
-  <ion-col size="6" *ngFor="let outfit of selectedOutfits">
-
-    <ion-card>
-      <ion-card-content>
-        <ion-card >
-          <ion-card-content routerLink="outfit/{{outfit.id}}" >
-        
-            <ion-img class='img' 
-            [src]="outfit.userGarment.link"
-            
-            >
-        
-            </ion-img>
-    
-            
-        
-            </ion-card-content>
-            </ion-card>
-    
-            
-            <ion-card>
-              <ion-card-content>
-                <ion-img class='img'
-                  [src]="outfit.matchGarment.link"
-                  >
-                
-                </ion-img>
+    <ion-row>
+    <ion-col size="6" *ngFor="let outfit of this.modelService.outfits">
+      <ion-card>
+        <ion-card-content>
+          <ion-card >
+            <ion-card-content routerLink="outfit/{{outfit.id}}" >
+              <ion-img class='img' 
+              [src]="getGarment(outfit.userGarment)">
+              </ion-img>
               </ion-card-content>
-            </ion-card>
-      </ion-card-content>
-    </ion-card>
-    
-    
-        
-
-  </ion-col>
-</ion-row>
-</ion-grid> 
-
+              </ion-card>
+              <ion-card>
+                <ion-card-content>
+                  <ion-img class='img'
+                    [src]="getGarment(outfit.matchGarment)">
+                  </ion-img>
+                </ion-card-content>
+              </ion-card>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  </ion-grid> 
