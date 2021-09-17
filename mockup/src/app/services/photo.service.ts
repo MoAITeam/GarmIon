@@ -62,10 +62,11 @@ export class PhotoService{
   // Save picture to file on device
   private async savePicture(cameraPhoto: CameraPhoto) {
     
-    console.log('p');
-    let base64Data = JSON.stringify({id:this.id,photo:await this.readAsBase64(cameraPhoto)});
+    let base64Data = JSON.stringify({id:this.id,
+      color:this.color,
+      category:this.category,
+      photo:await this.readAsBase64(cameraPhoto)});
 
-    console.log('d');
     // Write the file to the data directory
     const fileName = new Date().getTime() + '.sav';
     const savedFile = await Filesystem.writeFile({
@@ -117,8 +118,8 @@ export class PhotoService{
           id: pars.id,
           name: "garment",
           link: `${pars.photo}`,
-          color: 'Red',
-          category:'top',
+          color: pars.color,
+          category:pars.category,
         });
       }
     }

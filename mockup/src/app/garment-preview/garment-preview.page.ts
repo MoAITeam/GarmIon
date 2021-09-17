@@ -6,6 +6,7 @@ import { Garment } from '../garments/garments.component';
 import { PhotoService } from '../services/photo.service';
 import { PreviewCorridorService } from '../services/preview-corridor.service';
 import { ModelService } from '../services/model.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-garment-preview',
@@ -24,6 +25,7 @@ export class GarmentPreviewPage implements OnInit {
     private route: ActivatedRoute,
     private photoService: PhotoService,
     private router: Router,
+    private alertCtrl: AlertController,
     private previewCorridor: PreviewCorridorService,
     private modelService: ModelService
     
@@ -36,11 +38,18 @@ export class GarmentPreviewPage implements OnInit {
   }
 
   savePicture(){
-    console.log('roba');
-    this.photoService.color = this.garmentColor;
-    this.photoService.category = this.garmentCategory;
-    this.photoService.waitForCheck(this.photo);
-    this.router.navigate(['tabs/tab1']);
+    if(this.garmentCategory == null || this.garmentColor == null){
+      this.alertDisplay();
+    }
+
+    else{
+      console.log('roba');
+      this.photoService.color = this.garmentColor;
+      this.photoService.category = this.garmentCategory;
+      this.photoService.waitForCheck(this.photo);
+      this.router.navigate(['tabs/tab1']);
+    }
+
   }
 
   exit() {
@@ -61,6 +70,21 @@ export class GarmentPreviewPage implements OnInit {
   categoryChange($event) {
     this.garmentCategory = $event.target.value;
     console.log(this.garmentCategory);
+
+  }
+
+  async alertDisplay(){
+    let alert = this.alertCtrl.create({
+      message: 'Non hai messo tutti i dati FAVAH!',
+      buttons: [
+        {
+          text: 'ok scus',
+          role: 'ok',
+
+        }
+      ]
+    });
+    (await alert).present();
 
   }
 

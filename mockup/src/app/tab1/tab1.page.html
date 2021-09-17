@@ -32,7 +32,7 @@
         <ion-col size = 6>
           <ion-card >
             <ion-card-content class="filter-card" >
-              <ion-select [(ngModel)]="categoryFilter" placeholder="Category">
+              <ion-select [(ngModel)]="categoryFilter" (ionChange)="categoryChange($event)" placeholder="Category">
                 <ion-select-option value="Top">Top</ion-select-option>
                 <ion-select-option value="Bottom">Bottom</ion-select-option>
               </ion-select>

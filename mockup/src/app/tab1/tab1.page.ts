@@ -60,6 +60,10 @@ export class Tab1Page {
 
   }
 
+  categoryChange($event){
+    console.log($event.target.value);
+  }
+
   async ngOnInit() {
     console.log('debug');
     await this.photoService.loadSaved();
