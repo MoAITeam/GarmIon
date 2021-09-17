@@ -25,6 +25,10 @@ export class Tab1Page {
     ) { }
 
     async addPhotoToGallery() {
+
+      this.modelService.categoryFilter = [];
+      this.modelService.colorFilter = [];
+
       let values = await this.photoService.addNewToGallery(); 
       let photoID = values[0];
       let photo = values[1];

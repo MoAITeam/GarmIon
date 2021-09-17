@@ -155,6 +155,7 @@ public async waitForCheck(capturedPhoto){
       this.garment.color = this.color;
       this.garment.category = this.category;
       this.modelService.garments.unshift(this.garment);
+      this.modelService.filteredGarments.unshift(this.garment);
 
       // Save the picture and add it to photo collection
       const savedImageFile = await this.savePicture(capturedPhoto);
