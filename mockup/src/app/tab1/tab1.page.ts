@@ -13,7 +13,8 @@ import { PreviewCorridorService } from '../services/preview-corridor.service';
 })
 export class Tab1Page {
 
-  public colorFilter:['Blue','Red'];
+  public colorFilter;
+  public categoryFilter;
   private requestObject : any = null;
 
   constructor(public photoService: PhotoService,
@@ -48,6 +49,8 @@ export class Tab1Page {
         {
           text: 'Vabene',
           handler: () => {
+            this.colorFilter = null;
+            this.categoryFilter = null;
             this.addPhotoToGallery();
           }
         }

@@ -15,11 +15,14 @@ import { ModelService } from './model.service';
 
 export class PhotoService{ 
 
+  public color:string;
+  public category:string;
   public id: number;
   public photos: Photo[] = [];
   private PHOTO_STORAGE: string = "photos";
   private platform: Platform;
   public garments:Garment[];
+  public garment:Garment;
 
   constructor(platform: Platform, private modelService: ModelService) {
     this.garments = modelService.garments;
@@ -134,21 +137,23 @@ export class PhotoService{
     this.id=(((1+Math.random())*0x10000)|0);
 
       
-    this.modelService.garments.unshift({
+    this.garment = {
       id: this.id,
       name: "garment",
       link: capturedPhoto.webPath,
-      color: 'Red',
-      category:'top',
-    });
+      color: null,
+      category: null
+    };
 
 
     return [this.id,capturedPhoto];
 
-
-
 }
 public async waitForCheck(capturedPhoto){
+
+      this.garment.color = this.color;
+      this.garment.category = this.category;
+      this.modelService.garments.unshift(this.garment);
 
       // Save the picture and add it to photo collection
       const savedImageFile = await this.savePicture(capturedPhoto);

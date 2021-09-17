@@ -17,6 +17,8 @@ export class GarmentPreviewPage implements OnInit {
   private garment:Garment;
   private photo:Photo;
   private photoID:Number;
+  private garmentColor:string;
+  private garmentCategory:string;
 
   constructor(
     private route: ActivatedRoute,
@@ -30,10 +32,13 @@ export class GarmentPreviewPage implements OnInit {
   ngOnInit() {
     this.photoID = this.previewCorridor.getPhotoID();
     this.photo = this.previewCorridor.getPhoto();
-    this.garment = this.modelService.garments.find(h => h.id === this.photoID)!;
+    this.garment = this.photoService.garment;
   }
 
   savePicture(){
+    console.log('roba');
+    this.photoService.color = this.garmentColor;
+    this.photoService.category = this.garmentCategory;
     this.photoService.waitForCheck(this.photo);
     this.router.navigate(['tabs/tab1']);
   }
@@ -44,6 +49,18 @@ export class GarmentPreviewPage implements OnInit {
     this.modelService.garments.splice(index,1);
 
     this.router.navigate(['tabs/tab1']);
+
+  }
+
+  colorChange($event) {
+    this.garmentColor = $event.target.value;
+    console.log(this.garmentColor);
+
+  }
+
+  categoryChange($event) {
+    this.garmentCategory = $event.target.value;
+    console.log(this.garmentCategory);
 
   }
 

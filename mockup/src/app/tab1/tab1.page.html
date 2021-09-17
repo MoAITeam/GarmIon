@@ -33,8 +33,8 @@
           <ion-card >
             <ion-card-content class="filter-card" >
               <ion-select [(ngModel)]="categoryFilter" placeholder="Category">
-                <ion-select-option value="top">Top</ion-select-option>
-                <ion-select-option value="bottom">Bottom</ion-select-option>
+                <ion-select-option value="Top">Top</ion-select-option>
+                <ion-select-option value="Bottom">Bottom</ion-select-option>
               </ion-select>
             </ion-card-content>
           </ion-card>
@@ -47,5 +47,5 @@
 
 
   <app-garments [colorFilter]="(!colorFilter || (colorFilter.length==0))? ['Blue','Green','Red'] : colorFilter" 
-                [categoryFilter]="(!categoryFilter || (categoryFilter.length==0))? ['top','bottom'] : categoryFilter">
+                [categoryFilter]="(!categoryFilter || (categoryFilter.length==0))? ['Top','Bottom'] : categoryFilter">
   </app-garments>
