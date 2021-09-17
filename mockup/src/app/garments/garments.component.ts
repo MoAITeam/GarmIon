@@ -9,11 +9,6 @@ import { ModelService } from '../services/model.service';
 
 export class GarmentsComponent implements OnInit {
 
-  @Input()
-  colorFilter: string[];
-  @Input()
-  categoryFilter: string[];
-
   selectedGarment?: Garment;
 
   public filteredGarments: Garment[];
@@ -30,11 +25,11 @@ export class GarmentsComponent implements OnInit {
     this.filteredGarments=this.modelService.garments;
   }
 
-  ngOnChanges(){
+    filter(){
     this.filteredGarments = [];
     if (this.modelService.garments)
     for (let garment of this.modelService.garments){
-      if(this.colorFilter.includes(garment.color)&&this.categoryFilter.includes(garment.category))
+      if(this.modelService.colorFilter.includes(garment.color)&&this.modelService.categoryFilter.includes(garment.category))
         this.filteredGarments.push(garment);
     }
   }

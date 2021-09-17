@@ -4,6 +4,7 @@ import { PhotoService } from '../services/photo.service';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { PreviewCorridorService } from '../services/preview-corridor.service';
+import { ModelService } from '../services/model.service';
 
 
 @Component({
@@ -13,15 +14,14 @@ import { PreviewCorridorService } from '../services/preview-corridor.service';
 })
 export class Tab1Page {
 
-  public colorFilter;
-  public categoryFilter;
   private requestObject : any = null;
 
   constructor(public photoService: PhotoService,
     private http:HTTP,
     private alertCtrl: AlertController,
     private router: Router,
-    private previewCorridor: PreviewCorridorService
+    private previewCorridor: PreviewCorridorService,
+    private modelService: ModelService
     ) { }
 
     async addPhotoToGallery() {
@@ -33,6 +33,21 @@ export class Tab1Page {
 
       this.router.navigate(['tabs/tab1/preview']);
       
+  }
+
+  filter(){
+    let colorFilter = this.modelService.colorFilter;
+    if (colorFilter.length==0)
+      colorFilter = ['Blue','Red','Green'];
+    let categoryFilter = this.modelService.categoryFilter;
+    if (categoryFilter.length==0)
+      categoryFilter = ['Top','Bottom'];
+    this.modelService.filteredGarments = [];
+    if (this.modelService.garments)
+    for (let garment of this.modelService.garments){
+      if(colorFilter.includes(garment.color)&&categoryFilter.includes(garment.category))
+        this.modelService.filteredGarments.push(garment);
+    }
   }
 
   async alertDisplay(){
@@ -49,8 +64,6 @@ export class Tab1Page {
         {
           text: 'Vabene',
           handler: () => {
-            this.colorFilter = null;
-            this.categoryFilter = null;
             this.addPhotoToGallery();
           }
         }
@@ -60,13 +73,10 @@ export class Tab1Page {
 
   }
 
-  categoryChange($event){
-    console.log($event.target.value);
-  }
-
   async ngOnInit() {
     console.log('debug');
     await this.photoService.loadSaved();
+    this.filter();
   }
 
     sendRequest() {

@@ -21,7 +21,7 @@
           <ion-col size = 6>
             <ion-card >
               <ion-card-content class="filter-card" >
-                <ion-select class="select-card" multiple="true" [(ngModel)]="colorFilter" cancelText="Nah" okText="Okay!" placeholder="Color">
+                <ion-select class="select-card" multiple="true" (ionChange)="filter()" [(ngModel)]="modelService.colorFilter" cancelText="Nah" okText="Okay!" placeholder="Color">
                   <ion-select-option value="Blue">Blue</ion-select-option>
                   <ion-select-option value="Red">Red</ion-select-option>
                   <ion-select-option value="Green">Green</ion-select-option>
@@ -32,7 +32,7 @@
         <ion-col size = 6>
           <ion-card >
             <ion-card-content class="filter-card" >
-              <ion-select [(ngModel)]="categoryFilter" (ionChange)="categoryChange($event)" placeholder="Category">
+              <ion-select [(ngModel)]="modelService.categoryFilter" (ionChange)="filter()" placeholder="Category">
                 <ion-select-option value="Top">Top</ion-select-option>
                 <ion-select-option value="Bottom">Bottom</ion-select-option>
               </ion-select>
@@ -46,6 +46,5 @@
   </ion-grid>
 
 
-  <app-garments [colorFilter]="(!colorFilter || (colorFilter.length==0))? ['Blue','Green','Red'] : colorFilter" 
-                [categoryFilter]="(!categoryFilter || (categoryFilter.length==0))? ['Top','Bottom'] : categoryFilter">
+  <app-garments>
   </app-garments>
