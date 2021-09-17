@@ -6,94 +6,94 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
+<ion-fab vertical='bottom' horizontal='end' >
+  <ion-row>
+    <ion-col>
+      <ion-fab-button (click)="delete()">
+        <ion-icon name='trash-outline'></ion-icon>
+      </ion-fab-button>
+    </ion-col>
+    <ion-col>
+      <ion-fab-button (click)="edit()" >
+        <ion-icon name='create-outline'></ion-icon>
+      </ion-fab-button>
+    </ion-col>
+  </ion-row>
+</ion-fab>
+
 <ion-content>
+
+  
+
+  <ion-row id='header-row' class="no-padding">
+    <ion-item style="font-size:small">Filtri applicati:</ion-item>
+  </ion-row>
+
+  <ion-row >    
+    <ion-col size = 6>
+      <ion-card >
+        <ion-card-header class="no-padding">Mood</ion-card-header>
+        <ion-card-content class="filter-card no-padding" >
+          <ion-item>Felice</ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col size = 6>
+      <ion-card >
+        <ion-card-header class="no-padding">Event</ion-card-header>
+        <ion-card-content class="filter-card no-padding" >
+          <ion-item>Matrimonio</ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+
+</ion-row>
+
+
   <div class="outfit-card-container"> 
     <ion-card class="main-card">
       <ion-card-header id="card-header">
         <ion-card-title >Your Outfit </ion-card-title>
-        <ion-fab vertical='top' horizontal='end' >
-          <ion-row>
-            <ion-col>
-              <ion-fab-button (click)="delete()">
-                <ion-icon name='trash-outline'></ion-icon>
-              </ion-fab-button>
-            </ion-col>
-            <ion-col>
-              <ion-fab-button (click)="edit()" >
-                <ion-icon name='create-outline'></ion-icon>
-              </ion-fab-button>
-            </ion-col>
-          </ion-row>
-      </ion-fab>
+
         
       </ion-card-header>
       <ion-card-content>
         <div class="outfit-card-container"> 
-        <!-- First garment card-->
-          <ion-card class="outfit-card" >
-            <ion-card-content >
-              <ion-img
-              id= {{getGarment(this.outfit.userGarment).id}}
-              src = {{getGarment(this.outfit.userGarment).link}}
-              >
-            </ion-img>
-            </ion-card-content>
-          </ion-card >
-          <!-- Second garment card-->
-          <ion-card class="outfit-card">
-            <ion-card-content>
-              <ion-img
-              id= {{getGarment(this.outfit.matchGarment).id}}
-              src = {{getGarment(this.outfit.matchGarment).link}}
-              >
-              </ion-img>
-            </ion-card-content>      
-        </ion-card>
-        </div>
+          <ion-row>
+            <ion-col size='12'>
+            <!-- First garment card-->
+              <ion-card class="outfit-card" >
+                <ion-card-content >
+                  <ion-img
+                  id= {{getGarment(this.outfit.userGarment).id}}
+                  src = {{getGarment(this.outfit.userGarment).link}}
+                  >
+                </ion-img>
+                </ion-card-content>
+              </ion-card >
+            </ion-col>
+            <ion-col size="12">              <!-- Second garment card-->
+              <ion-card class="outfit-card">
+                <ion-card-content>
+                  <ion-img
+                  id= {{getGarment(this.outfit.matchGarment).id}}
+                  src = {{getGarment(this.outfit.matchGarment).link}}
+                  >
+                  </ion-img>
+                </ion-card-content>      
+            </ion-card>
+          </ion-col>
+
+      </ion-row>
+      </div>
+      
       </ion-card-content>
     </ion-card>
     </div>
 
 
-    <ion-card>
-      <ion-card-header>
-        <ion-card-subtitle>Filtri applicati:</ion-card-subtitle>
-      </ion-card-header>
-      <ion-card-content>
-        <ion-row>
-          <ion-col size=4 id="displayMood">
-            <ion-card>
-              <ion-card-header>
-                <ion-card-title>Mood</ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="card-content">
-                <ion-icon class="icon"  name="happy-outline"></ion-icon>
-              </ion-card-content>
-            </ion-card>
-          </ion-col>
-          <ion-col size = 4 id="displaCategory">
-            <ion-card>
-              <ion-card-header>
-                <ion-card-title>Categoria</ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="card-content">
-                <ion-icon class="icon" name="happy-outline"></ion-icon>
-              </ion-card-content>
-            </ion-card>
-          </ion-col>
-          <ion-col size = 4 id="displayEvent">
-            <ion-card>
-              <ion-card-header>
-                <ion-card-title>Evento</ion-card-title>
-              </ion-card-header>
-              <ion-card-content class="card-content">
-                <ion-icon class="icon" name="happy-outline"></ion-icon>
-              </ion-card-content>
-            </ion-card>
-          </ion-col>
-        </ion-row>
-      </ion-card-content>
-    </ion-card>
+    
   
 </ion-content>
 

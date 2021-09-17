@@ -1,22 +1,24 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title id="title"> My Closet </ion-title>
+    <ion-title id="title"> My Closet 🕶️ </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content padding>
   <ion-alert-controller></ion-alert-controller>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button  (click)="alertDisplay()">
-      <ion-icon name="camera-outline"></ion-icon>
+    <ion-fab-button style="--background:white" (click)="alertDisplay()">
+      <ion-icon name="camera-outline" style="color:black"></ion-icon>
     </ion-fab-button>
     <ion-fab-button  (click)="sendRequest()">
       <ion-icon name="search-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-<ion-list>
-  <ion-item>Seleziona un tuo vestito per creare un outfit</ion-item>
-</ion-list>
-  <ion-grid>
+
+<ion-grid>
+  <ion-row id='header-row' class="no-padding">
+    <ion-item id="subtitle">Seleziona un tuo vestito per creare un outfit</ion-item>
+  </ion-row>
+
         <ion-row >    
           <ion-col size = 6>
             <ion-card >

@@ -39,7 +39,7 @@ export class GarmentDetailComponent implements OnInit {
   ) {}
 
     
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.opt = String(this.route.snapshot.paramMap.get('opt'));
     this.lovedOutfit = [];
@@ -51,6 +51,7 @@ export class GarmentDetailComponent implements OnInit {
           this.modelService.garments[0],
           ];      
         }
+
       /*if (this.opt==='edit'){
         this.outfit = this.modelService.outfits.find(h => h.id === id)!;
         this.garment = this.outfit.userGarment;
@@ -71,34 +72,64 @@ export class GarmentDetailComponent implements OnInit {
       if(this.opt==='edit'){
 
       }
+    let icon = document.getElementById('heart-icon');
+    if(icon.getAttribute('name') === 'heart-outline') {
 
-    let data = {id:(((1+Math.random())*0x10000)|0),
-      userGarment:this.garment.id,
-      matchGarment:this.matchGarments[id].id};
+      let data = {id:(((1+Math.random())*0x10000)|0),
+        userGarment:this.garment.id,
+        matchGarment:this.matchGarments[id].id};
+  
+      const outfitList = await Storage.get({ key: "outfits"});
+      this.outfits = JSON.parse(outfitList.value) || [];
+      this.outfits.push(data);
+        console.log('dd');
+        Storage.set({
+          key: "outfits",
+          value: JSON.stringify(this.outfits)
+        });
+  
+        this.modelService.outfits.unshift(data);
+        icon.setAttribute('name','heart');
 
-    const outfitList = await Storage.get({ key: "outfits"});
-    this.outfits = JSON.parse(outfitList.value) || [];
-    this.outfits.push(data);
-      console.log('dd');
-      Storage.set({
-        key: "outfits",
-        value: JSON.stringify(this.outfits)
-      });
+    }
 
-      this.modelService.outfits.unshift(data);
+    else {
+      // RIMUOVE DA OUTFIT
+      console.log('deleting');
+      icon.setAttribute('name','heart-outline');
+
+      const outfitList = await Storage.get({ key: "outfits" });
+      this.modelService.outfits = [];
+      let outfits:Outfit[] = JSON.parse(outfitList.value) || [];
+      let newOutFitList = [];
+      for (let out of outfits){
+        if ((this.garment.id!=out.userGarment)||(this.matchGarments[id].id!=out.matchGarment)){
+          newOutFitList.push(out);
+          this.modelService.outfits.push(out);
+        }
+      }
+      Storage.set({key: "outfits",value: JSON.stringify(newOutFitList)});
+
+    }
+
+
       
     });
     
     
   }
 
-  slideChange() {
+   slideChange() {
     let async_id = this.sliderComponent.getActiveIndex();
     console.log("slide changed");
 
     async_id.then( id => {
-      let lovedMatch = this.matchGarments.find(h=>h.id===(id+1))!;
-      let findOutfit = this.lovedOutfit.find(v=>v.matchGarment===(id+1));
+      let findOutfit = false;
+      for (let outfit of this.modelService.outfits){
+        if((outfit.userGarment==this.garment.id)&&(outfit.matchGarment==this.matchGarments[id].id))
+          findOutfit = true;
+      }
+
       let icon = document.getElementById('heart-icon');
       if (findOutfit){
         icon.setAttribute('name','heart');

@@ -1,18 +1,17 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title> Saved Outfits </ion-title>
+    <ion-title #title> Saved Outfits </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content padding>
-<ion-list>
-  <ion-list-header>
-    <ion-item>Visualizza i tuoi outfit preferiti</ion-item>
-  </ion-list-header>
-</ion-list>
+
 
 
 <ion-grid>
-  <ion-row >
+  <ion-row id='header-row' class="no-padding">
+    <ion-item id="subtitle">Visualizza i tuoi outfit preferiti</ion-item>
+  </ion-row>
+  <ion-row class="no-padding">
     <ion-col size='4'>
       <ion-card>
         <ion-card-content class="filter-card">
@@ -45,6 +44,8 @@
         </ion-card-content>
       </ion-card>
     </ion-col>
+    <ion-item-divider class="divider"></ion-item-divider>
+
 
   </ion-row>
 </ion-grid>

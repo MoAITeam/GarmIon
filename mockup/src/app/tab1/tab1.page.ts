@@ -5,6 +5,7 @@ import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { PreviewCorridorService } from '../services/preview-corridor.service';
 import { ModelService } from '../services/model.service';
+import { Storage } from '@capacitor/storage';
 
 
 @Component({
@@ -80,8 +81,15 @@ export class Tab1Page {
   async ngOnInit() {
     console.log('debug');
     await this.photoService.loadSaved();
+    const outfitList = await Storage.get({ key: "outfits" });
+    let outfits = JSON.parse(outfitList.value) || [];
+    this.modelService.outfits = outfits;
     this.filter();
+
+
   }
+
+
 
     sendRequest() {
       // se non si mette .then capacitor generea un errore fastidioso!

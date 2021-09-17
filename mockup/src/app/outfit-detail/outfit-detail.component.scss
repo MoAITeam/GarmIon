@@ -1,11 +1,25 @@
 .outfit-card{
     width: 80%;
+    margin-left: 10%;
 
     
 }
 
+.no-padding{
+    padding-bottom:0px;
+}
+
+.no-margin {
+    margin:0;
+}
+
+.filter-card{
+    padding: 0;
+    font-size: smaller;
+}
+
 .main-card{
-    width: 80%;
+    width: 100%;
 
 
 }
@@ -27,9 +41,7 @@ ion-card-header {
     font-size: 3em;
 }
 
-.icon {
-    font-size: 4em;
-}
+
 
 .card-content {
     text-align: center;

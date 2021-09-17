@@ -48,7 +48,7 @@ export class OutfitDetailComponent implements OnInit {
     let newOutFitList = [];
     for (let out of outfits){
       if (this.outfit.id!=out.id){
-        newOutFitList.push(out)
+        newOutFitList.push(out);
         this.modelService.outfits.push(out);
       }
     }
