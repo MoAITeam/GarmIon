@@ -11,3 +11,20 @@
 #save-button{
     color: black;
 }
+
+.divider{
+    min-height: 0 !important; 
+}
+
+#preview-card {
+    width: 100%;
+}
+
+#save-button {
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+    right: 0;
+    --background: cornsilk; 
+    color:black;
+}

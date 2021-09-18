@@ -29,6 +29,7 @@ export class Tab1Page {
 
       this.modelService.categoryFilter = [];
       this.modelService.colorFilter = [];
+      this.modelService.seasonFilter = [];
 
       let values = await this.photoService.addNewToGallery(); 
       let photoID = values[0];
@@ -47,10 +48,13 @@ export class Tab1Page {
     let categoryFilter = this.modelService.categoryFilter;
     if (categoryFilter.length==0)
       categoryFilter = ['Top','Bottom'];
+    let seasonFilter =this.modelService.seasonFilter;
+    if (seasonFilter.length==0)
+      seasonFilter = ['Spring','Summer','Autumn','Winter'];
     this.modelService.filteredGarments = [];
     if (this.modelService.garments)
     for (let garment of this.modelService.garments){
-      if(colorFilter.includes(garment.color)&&categoryFilter.includes(garment.category))
+      if(colorFilter.includes(garment.color)&&categoryFilter.includes(garment.category)&&seasonFilter.includes(garment.season))
         this.modelService.filteredGarments.push(garment);
     }
   }

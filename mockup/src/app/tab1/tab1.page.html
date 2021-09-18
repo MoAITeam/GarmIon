@@ -20,7 +20,7 @@
   </ion-row>
 
         <ion-row >    
-          <ion-col size = 6>
+          <ion-col size = 4>
             <ion-card >
               <ion-card-content class="filter-card" >
                 <ion-select class="select-card" multiple="true" (ionChange)="filter()" [(ngModel)]="modelService.colorFilter" cancelText="Nah" okText="Okay!" placeholder="Color">
@@ -31,12 +31,25 @@
               </ion-card-content>
             </ion-card>
         </ion-col>
-        <ion-col size = 6>
+        <ion-col size = 4>
           <ion-card >
             <ion-card-content class="filter-card" >
               <ion-select [(ngModel)]="modelService.categoryFilter" (ionChange)="filter()" placeholder="Category">
                 <ion-select-option value="Top">Top</ion-select-option>
                 <ion-select-option value="Bottom">Bottom</ion-select-option>
+              </ion-select>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+
+        <ion-col size = 4>
+          <ion-card >
+            <ion-card-content class="filter-card" >
+              <ion-select [(ngModel)]="modelService.seasonFilter" (ionChange)="filter()" placeholder="Season">
+                <ion-select-option value="Spring">Spring</ion-select-option>
+                <ion-select-option value="Summer">Summer</ion-select-option>
+                <ion-select-option value="Autumn">Autumn</ion-select-option>
+                <ion-select-option value="Winter">Winter</ion-select-option>
               </ion-select>
             </ion-card-content>
           </ion-card>

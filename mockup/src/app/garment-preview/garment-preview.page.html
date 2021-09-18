@@ -11,9 +11,8 @@
 
   <ion-grid>
     <ion-row>
-      <ion-col size ="2"></ion-col>
-      <ion-col size ="8">
-        <ion-card>
+
+        <ion-card id="preview-card">
           <ion-card-header>
             <ion-item style="font-weight: bold;">Your garment</ion-item>
           </ion-card-header>
@@ -22,17 +21,14 @@
             src = {{garment.link}} ></ion-img>
           </ion-card-content>
         </ion-card>
-      </ion-col>
-      <ion-col size ="2"></ion-col>
+
 
     </ion-row>
 
-    <ion-row>
-      <ion-item>Insert missing data</ion-item>
-    </ion-row>
+
     <ion-row>
       <ion-col size='6'>
-        <ion-item>What color is your garment?</ion-item>
+        <p>What color is your garment?</p>
       </ion-col>
       <ion-col size='6'>
         <ion-card >
@@ -45,11 +41,12 @@
           </ion-card-content>
         </ion-card>
       </ion-col>
+      <ion-item-divider class="divider"></ion-item-divider>
     </ion-row>
 
     <ion-row>
       <ion-col size='6'>
-        <ion-item>What is your garment?</ion-item>
+        <p>What is your garment?</p>
       </ion-col>
       <ion-col size='6'>
         <ion-card >
@@ -61,13 +58,33 @@
           </ion-card-content>
         </ion-card>
       </ion-col>
+      <ion-item-divider class="divider"></ion-item-divider>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size='6'>
+        <p>What is the best season to wear it?</p>
+      </ion-col>
+      <ion-col size='6'>
+        <ion-card >
+          <ion-card-content class="filter-card" >
+            <ion-select class="select-card" [(ngModel)]="seasonFilter" (ionChange)="seasonChange($event)" cancelText="Cancel" okText="Ok" placeholder="Season">
+              <ion-select-option value="Spring">Spring</ion-select-option>
+              <ion-select-option value="Summer">Summer</ion-select-option>
+              <ion-select-option value="Autumn">Autumn</ion-select-option>
+              <ion-select-option value="Winter">Winter</ion-select-option>
+            </ion-select>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-item-divider class="divider"></ion-item-divider>
     </ion-row>
 
   </ion-grid>
 
   <section>
     <ion-alert-controller></ion-alert-controller>
-    <ion-button  id="save-button" (click)='savePicture()' expand="block" style="--background:white; color:black">Save!</ion-button>
+    <ion-button  id="save-button" (click)='savePicture()' expand="block" >Save!</ion-button>
   </section>
 
 </ion-content>

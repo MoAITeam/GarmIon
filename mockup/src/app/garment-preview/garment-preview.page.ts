@@ -20,6 +20,7 @@ export class GarmentPreviewPage implements OnInit {
   private photoID:Number;
   private garmentColor:string;
   private garmentCategory:string;
+  private garmentSeason: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -38,7 +39,7 @@ export class GarmentPreviewPage implements OnInit {
   }
 
   savePicture(){
-    if(this.garmentCategory == null || this.garmentColor == null){
+    if(this.garmentCategory == null || this.garmentColor == null || this.garmentSeason == null){
       this.alertDisplay();
     }
 
@@ -46,6 +47,7 @@ export class GarmentPreviewPage implements OnInit {
       console.log('roba');
       this.photoService.color = this.garmentColor;
       this.photoService.category = this.garmentCategory;
+      this.photoService.season = this.garmentSeason;
       this.photoService.waitForCheck(this.photo);
       this.router.navigate(['tabs/tab1']);
     }
@@ -67,18 +69,25 @@ export class GarmentPreviewPage implements OnInit {
 
   }
 
-  moodChange($event) {
+  categoryChange($event) {
     this.garmentCategory = $event.target.value;
     console.log(this.garmentCategory);
 
   }
 
+  seasonChange($event) {
+    this.garmentSeason = $event.target.value;
+    console.log(this.garmentSeason);
+
+  }
+
   async alertDisplay(){
     let alert = this.alertCtrl.create({
-      message: 'Non hai messo tutti i dati FAVAH!',
+      header: 'Something is unfilled :(',
+      message: 'Be sure to fill all data fields',
       buttons: [
         {
-          text: 'ok scus',
+          text: 'Ok',
           role: 'ok',
 
         }

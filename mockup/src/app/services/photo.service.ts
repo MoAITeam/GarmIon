@@ -17,6 +17,7 @@ export class PhotoService{
 
   public color:string;
   public category:string;
+  public season:string;
   public id: number;
   public photos: Photo[] = [];
   private PHOTO_STORAGE: string = "photos";
@@ -68,6 +69,7 @@ export class PhotoService{
     let base64Data = JSON.stringify({id:this.id,
       color:this.color,
       category:this.category,
+      season:this.season,
       photo:await this.readAsBase64(cameraPhoto)});
 
     // Write the file to the data directory
@@ -123,8 +125,10 @@ export class PhotoService{
           link: `${pars.photo}`,
           color: pars.color,
           category:pars.category,
+          season:pars.season,
         });
       }
+      console.log(this.modelService.garments);
     }
 
   }
@@ -146,7 +150,8 @@ export class PhotoService{
       name: "garment",
       link: capturedPhoto.webPath,
       color: null,
-      category: null
+      category: null,
+      season: null,
     };
 
 
@@ -157,8 +162,11 @@ public async waitForCheck(capturedPhoto){
 
       this.garment.color = this.color;
       this.garment.category = this.category;
+      this.garment.season = this.season;
       this.modelService.garments.unshift(this.garment);
       this.modelService.filteredGarments.unshift(this.garment);
+
+      console.log(this.garment);
 
       // Save the picture and add it to photo collection
       const savedImageFile = await this.savePicture(capturedPhoto);

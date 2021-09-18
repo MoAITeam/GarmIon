@@ -29,7 +29,7 @@ export class GarmentsComponent implements OnInit {
     this.filteredGarments = [];
     if (this.modelService.garments)
     for (let garment of this.modelService.garments){
-      if(this.modelService.colorFilter.includes(garment.color)&&this.modelService.categoryFilter.includes(garment.category))
+      if(this.modelService.colorFilter.includes(garment.color)&&this.modelService.categoryFilter.includes(garment.category)&&this.modelService.seasonFilter.includes(garment.season))
         this.filteredGarments.push(garment);
     }
   }
@@ -43,4 +43,5 @@ export interface Garment {
   link: string;
   color: string;
   category: string;
+  season: string;
 }

@@ -12,12 +12,14 @@ export class ModelService {
     public outfits: Outfit[];
     public categoryFilter: string[];
     public colorFilter: string[];
+    public seasonFilter: string[];
 
       constructor() {
         this.garments = [];
         this.outfits = [];
         this.categoryFilter = [];
         this.colorFilter = [];
+        this.seasonFilter = [];
        }
 
     }
