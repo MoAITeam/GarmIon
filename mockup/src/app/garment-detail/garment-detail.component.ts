@@ -27,6 +27,9 @@ export class GarmentDetailComponent implements OnInit {
   public outfits: Outfit[];
   public outfit : Outfit;
   public opt : String;
+  private outfitEvent:string;
+  private outfitColor:string;
+  private outfitMood:string;
   platform: any;
 
 
@@ -63,6 +66,22 @@ export class GarmentDetailComponent implements OnInit {
       }*/
     }
 
+    colorChange($event) {
+      this.outfitColor = $event.target.value;
+  
+    }
+  
+    moodChange($event) {
+      this.outfitMood = $event.target.value;
+  
+    }
+
+    eventChange($event) {
+      this.outfitEvent = $event.target.value;
+  
+    }
+
+
   save(){
 
 
@@ -77,7 +96,10 @@ export class GarmentDetailComponent implements OnInit {
 
       let data = {id:(((1+Math.random())*0x10000)|0),
         userGarment:this.garment.id,
-        matchGarment:this.matchGarments[id].id};
+        matchGarment:this.matchGarments[id].id,
+        moodFilter:this.outfitMood,
+        eventFilter: this.outfitEvent,
+      };
   
       const outfitList = await Storage.get({ key: "outfits"});
       this.outfits = JSON.parse(outfitList.value) || [];

@@ -32,4 +32,6 @@ export interface Outfit {
   id: number,
   userGarment: number,
   matchGarment: number,
+  moodFilter: string,
+  eventFilter: string,
 }

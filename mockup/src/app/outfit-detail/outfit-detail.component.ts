@@ -34,6 +34,10 @@ export class OutfitDetailComponent implements OnInit {
 
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.outfit = this.modelService.outfits.find(h => h.id === id)!;
+    let moodText = document.getElementById('mood-text');
+    let eventText = document.getElementById('event-text');
+    moodText.innerHTML = this.outfit.moodFilter;
+    eventText.innerHTML = this.outfit.eventFilter;
   }
 
   getGarment(id:number) {

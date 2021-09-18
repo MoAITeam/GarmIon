@@ -23,6 +23,9 @@ export class PhotoService{
   private platform: Platform;
   public garments:Garment[];
   public garment:Garment;
+  public outfitColorFilter:string;
+  public outfitEventFilter: string;
+  public outfitMoodFilter: string;
 
   constructor(platform: Platform, private modelService: ModelService) {
     this.garments = modelService.garments;

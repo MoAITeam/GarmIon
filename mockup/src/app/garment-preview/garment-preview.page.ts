@@ -67,7 +67,7 @@ export class GarmentPreviewPage implements OnInit {
 
   }
 
-  categoryChange($event) {
+  moodChange($event) {
     this.garmentCategory = $event.target.value;
     console.log(this.garmentCategory);
 
