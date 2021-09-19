@@ -79,12 +79,13 @@
       </ion-col>
       <ion-item-divider class="divider"></ion-item-divider>
     </ion-row>
+    <ion-row>
+      <ion-col size='12'>
+        <ion-alert-controller></ion-alert-controller>
+        <ion-button id="save-button" (click)='savePicture()' expand="block" >Save!</ion-button>
+      </ion-col>
+    </ion-row>
 
   </ion-grid>
-
-  <section>
-    <ion-alert-controller></ion-alert-controller>
-    <ion-button  id="save-button" (click)='savePicture()' expand="block" >Save!</ion-button>
-  </section>
 
 </ion-content>
