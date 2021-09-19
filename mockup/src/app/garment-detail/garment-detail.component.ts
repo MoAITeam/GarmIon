@@ -128,8 +128,8 @@ export class GarmentDetailComponent implements OnInit {
         let data = {id:(((1+Math.random())*0x10000)|0),
           userGarment:this.garment.id,
           matchGarment:this.matchGarments[id].id,
-          moodFilter:this.outfitMood,
-          eventFilter: this.outfitEvent,
+          moodFilter:this.outfitMood==null?'Nessuno':this.outfitMood,
+          eventFilter: this.outfitEvent==null?'Nessuno':this.outfitEvent
         };
     
         const outfitList = await Storage.get({ key: "outfits"});
