@@ -61,8 +61,8 @@ export class OutfitDetailComponent implements OnInit {
   }
 
   edit() {
-
-    //this.navCtrl.navigateRoot("tabs/tab2/outfit/edit/"+this.modelService.outfits[this.outfit].id);
+    //return this.modelService.garments.find(garment => garment.id == id);
+    this.navCtrl.navigateRoot("tabs/tab2/edit/"+this.outfit.id);
 
   }
 
