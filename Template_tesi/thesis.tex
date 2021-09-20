@@ -1,0 +1,122 @@
+\documentclass[a4paper,oneside]{Tptesi2}
+
+\usepackage[italian]{babel}
+\usepackage{listings}
+\usepackage{amsmath,amssymb}
+\usepackage{verbatim}
+\usepackage{indentfirst}
+\usepackage[utf8]{inputenc}
+\usepackage{subfigure}
+\usepackage{algorithmic}
+\usepackage{framed}
+\usepackage{rotating}
+\usepackage{cite}
+
+% Packages -----------------------------------------------------------------------
+%\usepackage{amsthm}
+%\usepackage{amsmath}          % Non necessario se usi TPTESI2 perche' gia` incluso
+%\usepackage[dvips]{graphicx}  % Non necessario se usi TPTESI2 perche' gia` incluso
+%\usepackage{url} %non usare se si usa hyperref
+
+
+\newcommand{\mr}{\emph{motore di ricerca}}
+\newcommand{\Mr}{\emph{Motore di ricerca}}
+\newcommand{\ws}{Web~service }
+
+
+% Use a small font for the verbatim environment
+\makeatletter  % makes '@' an ordinary character
+\renewcommand{\verbatim@font}{%
+  \ttfamily\footnotesize\catcode`\<=\active\catcode`\>=\active%
+}
+\makeatother   % makes '@' a special symbol again
+%
+% Simboli Matematici -------------------------------------------------------------
+%\newcommand{\h}{\mathcal{H}_\infty} % scorciatoia per sequenza usata spesso
+% Definizioni & Teoremi ----------------------------------------------------------
+\newtheorem{teorema}{Teorema}[chapter]
+\newtheorem{corollario}[teorema]{Corollario}
+\newtheorem{lemma}[teorema]{Lemma}
+%\theoremstyle{definition}
+\newtheorem{definizione}{Definizione}[chapter]
+\newtheorem{proposizione}[definizione]{Proposizione}
+% Formattazione Figure -----------------------------------------------------------
+\setcounter{topnumber}{3}
+\setcounter{totalnumber}{3}
+\def\topfraction{1}
+\def\textfraction{0}
+% Fuzz ---------------------------------------------------------------------------
+%\hfuzz10cm %Non scassare linee che escono dal bordo
+% Frontespizio -------------------------------------------------------------------
+       \title{insert title\ldots}
+       \author{insert candidate\ldots}
+       \titolocorso{Ingegneria Informatica}
+       \chair{Prof. ... \\ }
+       \numberofmembers{1} %numero dei relatori
+       \degreeyear{insert degree year\ldots}
+       \numerocorrelatori{2} %numero dei correlatori
+       \correlatori{insert correlators\ldots} % i correlatori separati da \\
+
+%
+% ---- Inclusioni (vedi piu` sotto per il comando "include" --------------
+%\includeonly {introduzione,chapter1, chapter2}
+%\includeonly {chapter1, chapter2, chapter3, chapter4, chapter5, chapter6}
+%\includeonly{chapter6}
+%
+\hypersetup{%
+%  pdfpagemode=FullScreen,%
+  plainpages=false,%
+  breaklinks,%
+  pdftitle={},%
+  pdfauthor={},%
+  pdfsubject={},%
+  pdfkeywords={},%
+  colorlinks=false}
+
+\begin{document}
+
+\frontmatter
+
+%\hyphenation{}
+%
+\pagestyle{headings} % rende attive le impostazioni sulla testata!
+%
+\maketitle % crea il frontespizio (ricordati di copiare "stemma.eps" nella tua directory)
+%
+%
+%\pagenumbering{roman}
+\tableofcontents % inserisce indice generale
+\cleardoublepage
+%\addcontentsline{toc}{chapter}{Elenco delle figure}
+%\listoffigures   % inserisce indice figure
+%\addcontentsline{toc}{chapter}{Elenco delle tabelle}
+%\listoftables    % inserisce indice tabelle
+%\addcontentsline{toc}{chapter}{Elenco degli algoritmi}
+%\listofalgorithms
+%
+%--------------- Inizio del testo vero e proprio
+%
+
+%\cleardoublepage
+\pagenumbering{arabic}
+%\input{files/ringraziamenti}
+\frontmatter
+\include{files/introduction}
+In un mondo in cui l'avanzata tecnologica è ormai arrivata ad abbracciare la maggior parte dei settori sia lavorativi che ricreativi è inevitabile che uno di questi sia proprio quello della moda.A partire dalla digitalizzazione dei negozi attraverso schermi digitali e shops online all'uso della blockchain per la validazione dell'autenticità dei capi, anche l'intelligenza artificiale entra a far parte degli use cases di questo ambiente.Una tecnologia che non solo è necessaria alle grandi aziende per assicurarsi una ottimizzazione nelle vendite e nella distribuzione ma anche estremamente utile all'utente che,non volendo, si trova catapultato in un mondo digitale dove l'offerta si traduce in milioni di capi diversi da poter scegliere ed acquistare.Di conseguenza l'utente potrebbe essere facilitato nell'acquisto se un sistema gli consigliasse quali abiti si abbinano meglio in base a quelli che già possiede,evitando quindi di comprare indumenti che non rientrano nel suo stile e scegliendo solo i più appropriati.
+E se l'utente volesse influenzare la scelta,oltre all'abbinamento per colore,attraverso altri parametri?Come potremmo risolvere se il compratore si sentisse particolarmente felice in quel momento o se dovesse scegliere un outfit per un matrimonio,ad esempio?
+La nostra soluzione è stata quella di realizzare una applicazione multipiattaforma che integrando dei particolari modelli di intelligenza artificiale riesce a suggerire all'utilizzatore una moltitudine di abbinamenti plausibili che rispecchiano sia lo stato d'animo puntuale dello stesso che la volontà di usare quell'outfit per un evento in particolare,come può essere un matrimonio,un picnic,una serata al pub....
+L'utente sarà così in grado di avere sempre a portata di mano oltre al proprio armadio virtuale,anche una sorta di "personal stylist" realizzata dai modelli di AI grazie alla quale potrà farsi suggerire nuovi capi in abbinamento a quelli che già possiede,e che inoltre i suddetti abbinamenti siano anche congruenti al'evento a cui l'utilizzatore dovrà partecipare o allo stato d'animo che vuole trasmettere indossando tale outfit.
+
+\mainmatter
+\include{files/chapter1}
+ciao
+% \include{files/chapter2}
+\include{files/conclusions}
+
+\addcontentsline{toc}{chapter}{Bibliografia}
+\bibliographystyle{plain}
+\bibliography{files/biblio}
+\bibliographystyle{unsrt}
+%\bibliography{sp,xml}
+
+\end{document} 

@@ -61,17 +61,18 @@ export class Tab1Page {
 
   async alertDisplay(){
     let alert = this.alertCtrl.create({
-      message: 'Fai le foto per benino',
+      header: 'Advice',
+      message: 'To get a cleaner result,put your clothes in a solid background such as a white wall',
       buttons: [
         {
-          text: 'fanculo',
+          text: 'Cancel',
           role: 'cancel',
           handler: () => {
             console.log('Cancel clicked');
           }
         },
         {
-          text: 'Vabene',
+          text: 'Ok',
           handler: () => {
             this.addPhotoToGallery();
           }
@@ -88,8 +89,7 @@ export class Tab1Page {
     const outfitList = await Storage.get({ key: "outfits" });
     let outfits = JSON.parse(outfitList.value) || [];
     this.modelService.outfits = outfits;
-    this.filter();
-
+    this.filter();  
 
   }
 

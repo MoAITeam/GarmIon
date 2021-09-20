@@ -49,21 +49,17 @@ export class GarmentDetailComponent implements OnInit {
     this.lovedOutfit = [];
     if (this.opt==='detail'){
         this.garment = this.modelService.garments.find(h => h.id === id)!;
-        this.matchGarments = [
-          this.modelService.garments[0],
-          this.modelService.garments[0],
-          this.modelService.garments[0],
-          ];      
+        this.matchGarments = [this.modelService.garments[0],
+        this.modelService.garments[0],
+        this.modelService.garments[0]];      
         }
 
       if (this.opt==='edit'){
         this.outfit = this.modelService.outfits.find(h => h.id === id)!;
         this.garment = this.modelService.garments.find(h => h.id === this.outfit.userGarment);
-        this.matchGarments = [
-          this.modelService.garments[0],
-          this.modelService.garments[1],
-          this.modelService.garments[2],
-        ];
+        this.matchGarments = [this.modelService.garments[0],
+        this.modelService.garments[0],
+        this.modelService.garments[0]];      
       }
     }
 
@@ -94,8 +90,8 @@ export class GarmentDetailComponent implements OnInit {
         let data = {id:this.outfit.id,
           userGarment:this.garment.id,
           matchGarment:this.matchGarments[id].id,
-          moodFilter:this.outfitMood,
-          eventFilter: this.outfitEvent,
+          moodFilter:this.outfitMood==null?'Nessuno':this.outfitMood,
+          eventFilter: this.outfitEvent==null?'Nessuno':this.outfitEvent,
         };
         this.modelService.outfits = [];
         for (let out of this.outfits){
