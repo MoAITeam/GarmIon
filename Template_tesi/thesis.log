@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.9.19)  20 SEP 2021 12:40
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.9.19)  20 SEP 2021 14:24
 entering extended mode
 **./thesis.tex
 (thesis.tex
@@ -572,17 +572,16 @@ l.104 \include{files/introduction}
 ] [2
 
 
-] [3] [1
-
-]
+] [3]
 \openout2 = `files/chapter1.aux'.
 
  (files/chapter1.tex
 Capitolo 1.
-) [2
+) [1
 
 
-] [3
+
+] [2
 
 
 ]
@@ -590,10 +589,10 @@ Capitolo 1.
 
  (files/conclusions.tex
 Capitolo 2.
-) [4
+) [3
 
 
-] (thesis.bbl) [5
+] (thesis.bbl) [4
 
 
 
@@ -604,9 +603,9 @@ Package rerunfilecheck Info: File `thesis.out' has not changed.
  )
 (\end occurred when \ifx on line 2 was incomplete) 
 Here is how much of TeX's memory you used:
- 13426 strings out of 478864
- 196899 string characters out of 2848660
- 533387 words of memory out of 3000000
+ 13425 strings out of 478864
+ 197045 string characters out of 2848660
+ 532385 words of memory out of 3000000
  31109 multiletter control sequences out of 15000+600000
  413440 words of font info for 41 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -622,9 +621,9 @@ Users\aleba\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecxc1728.pk
 \ecrm1095.pk> <C:\Users\aleba\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/
 dpi600\eccc1200.pk> <C:\Users\aleba\AppData\Local\MiKTeX\fonts/pk/ljfour/jknapp
 en/ec/dpi600\eccc1728.pk>
-Output written on thesis.pdf (10 pages, 484829 bytes).
+Output written on thesis.pdf (9 pages, 485763 bytes).
 PDF statistics:
- 314 PDF objects out of 1000 (max. 8388607)
- 15 named destinations out of 1000 (max. 500000)
+ 313 PDF objects out of 1000 (max. 8388607)
+ 14 named destinations out of 1000 (max. 500000)
  38 words of extra memory for PDF output out of 10000 (max. 10000000)
 
