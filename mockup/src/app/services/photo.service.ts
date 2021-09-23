@@ -36,6 +36,7 @@ export class PhotoService{
   public outfitEventFilter: string;
   public outfitMoodFilter: string;
   private base:string;
+  public result;
 
   constructor(platform: Platform, private modelService: ModelService, private http:HTTP,) {
     this.garments = modelService.garments;
@@ -216,7 +217,7 @@ this.http.sendRequest('http://192.168.43.62:5000/getBase64Picture', {
     this.http.post('http://192.168.43.62:5000/getRecommendations', {'image':image},{'Content-Type':'application/json'}).then(data => {
         let par = JSON.parse(data.data);
         console.log(par);
-        // cosa viene restituito?
+        this.result = par;
     })
 }
 
@@ -238,6 +239,7 @@ public async waitForCheck(capturedPhoto){
         color:this.color,
         category:this.category,
         season:this.season,
+        recommendations:this.result
       });
       
       Storage.set({
@@ -257,4 +259,5 @@ export interface Photo {
   color:string;
   category:string;
   season:string;
+  recommendations
 }

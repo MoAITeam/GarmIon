@@ -142,7 +142,12 @@ def rec(payload):
     kob_classes = ['CHIC', 'CLASSIC', 'CLEAR', 'COOL-CASUAL', 'DANDY', 'DYNAMIC', 'ELEGANT', 'ETHNIC', 'FORMAL', 'GORGEOUS', 'MODERN', 'NATURAL', 'PRETTY', 'ROMANTIC', 'NO CLASS DEFINED']
     pred_classes_names = [kob_classes[x] for x in pred_classes] # Categorie degli outfit suggeriti
 
-    return pred_classes_names
+    res = []
+    for z in range(0,num_predictions):
+        j = {"link":new_list_bottom_paths[z],"class":pred_classes_names[z]}
+        res.append(j)
+
+    return res
 
 
 ############################################## THE REAL DEAL ###############################################
@@ -179,7 +184,7 @@ def get_recs():
     #img_str = base64.b64encode(buff.getvalue())
     preds = rec(scaled)
 
-    return jsonify({'preds':preds})
+    return jsonify(preds)
 
 @app.route('/getPhoto' , methods=['GET'])
 def get_photo():
