@@ -213,6 +213,11 @@ this.http.sendRequest('http://192.168.43.62:5000/getBase64Picture', {
           season: null,
         };
     })
+    this.http.post('http://192.168.43.62:5000/getRecommendations', {'image':image},{'Content-Type':'application/json'}).then(data => {
+        let par = JSON.parse(data.data);
+        console.log(par);
+        // cosa viene restituito?
+    })
 }
 
 public async waitForCheck(capturedPhoto){
@@ -234,7 +239,7 @@ public async waitForCheck(capturedPhoto){
         category:this.category,
         season:this.season,
       });
-  
+      
       Storage.set({
         key: this.PHOTO_STORAGE,
         value: JSON.stringify(this.photos)

@@ -81,8 +81,8 @@ def segment(payload):
 
 def rec(payload):
     # DA CAMBIARE
-    dataset_path = '/home/ldedivitiis/IQON3000/'
-    num_predictions = 3  # Numero di bottom in output
+    #dataset_path = 'D:/STORAGE/IQON3000/home/ldedivitiis/IQON3000/'
+    num_predictions = 4  # Numero di bottom in output
     print('num_predictions:', num_predictions)
     top_path = './test1.jpg'  # Immagine da testare (top)
     #top_path = '/home/ldedivitiis/IQON3000/2505901/3680497/12611548_m.jpg'  # Immagine da testare (top)
@@ -116,6 +116,7 @@ def rec(payload):
     top = torch.FloatTensor(I[None, ...]).permute(0, 3, 1, 2).to(device)
 
     # Ottieni raccomandazioni
+    
     predictions_list, all_predictions_features = memory_full(top, num_predictions, model_ae, criterion, soglia, test=True)
 
     mem_bot_ids = torch.load('./files/mem_bot_ids.pt',map_location=torch.device('cpu'))
@@ -131,11 +132,12 @@ def rec(payload):
 
     # Ottieni categoria di Kobayashi
 
-    print(tuple(list_bottom_paths))
 
-    new_list_bottom_paths = ('.'+list_bottom_paths[0],'.'+list_bottom_paths[1], '.'+list_bottom_paths[2])
+    new_list_bottom_paths = [] # ('.'+list_bottom_paths[0],'.'+list_bottom_paths[1], '.'+list_bottom_paths[2])
+    for p in list_bottom_paths:
+        new_list_bottom_paths.append('D:/STORAGE/IQON3000'+p)
     print(new_list_bottom_paths)
-    pred_classes = kobayashi_classifier(top_path, tuple(new_list_bottom_paths)).cpu().tolist()
+    pred_classes = kobayashi_classifier(payload,'', tuple(new_list_bottom_paths)).cpu().tolist()
 
     kob_classes = ['CHIC', 'CLASSIC', 'CLEAR', 'COOL-CASUAL', 'DANDY', 'DYNAMIC', 'ELEGANT', 'ETHNIC', 'FORMAL', 'GORGEOUS', 'MODERN', 'NATURAL', 'PRETTY', 'ROMANTIC', 'NO CLASS DEFINED']
     pred_classes_names = [kob_classes[x] for x in pred_classes] # Categorie degli outfit suggeriti
@@ -171,7 +173,7 @@ def get_recs():
     im_arr = np.frombuffer(img, dtype=np.uint8)  # im_arr is one-dim Numpy array
     original = cv2.imdecode(im_arr, flags=cv2.IMREAD_COLOR)
     to_scale = Image.fromarray(original.astype("uint8"))
-    scaled = to_scale.resize((140, 140))
+    scaled = to_scale.resize((150, 150))
     #buff = BytesIO()
     #scaled.save(buff, format="JPEG")
     #img_str = base64.b64encode(buff.getvalue())
