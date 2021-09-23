@@ -1,13 +1,13 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title id="title"> My Closet 🕶️ </ion-title>
+  <ion-toolbar class='primary-color'>
+    <ion-title id="title"> My Closet  </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content padding>
   <ion-alert-controller></ion-alert-controller>
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button style="--background:white" (click)="alertDisplay()">
-      <ion-icon name="camera-outline" style="color:black"></ion-icon>
+    <ion-fab-button style="--background:purple" (click)="alertDisplay()">
+      <ion-icon name="camera-outline" style="color:white"></ion-icon>
     </ion-fab-button>
     <ion-fab-button  (click)="sendRequest()">
       <ion-icon name="search-outline"></ion-icon>

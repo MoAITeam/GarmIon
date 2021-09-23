@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.9.19)  20 SEP 2021 14:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.9.19)  23 SEP 2021 15:47
 entering extended mode
 **./thesis.tex
 (thesis.tex
@@ -464,8 +464,9 @@ tex.def
 File: l3backend-pdftex.def 2021-05-07 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count310
 \l__pdf_internal_box=\box67
-) (thesis.aux (files/introduction.aux) (files/chapter1.aux)
-(files/conclusions.aux))
+) (thesis.aux (files/introduction.aux) (files/scopo.aux)
+(files/introcolori.aux) (files/crossplatform.aux) (files/frontend.aux)
+(files/backend.aux) (files/conclusions.aux))
 \openout1 = `thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
@@ -536,7 +537,7 @@ LaTeX Info: Redefining \nameref on input line 76.
 \openout3 = `thesis.out'.
 
 \c@lstlisting=\count318
-<./img/stemma.pdf, id=18, 1622.06pt x 1673.45195pt>
+<./img/stemma.pdf, id=94, 1622.06pt x 1673.45195pt>
 File: ./img/stemma.pdf Graphic file (type pdf)
 <use ./img/stemma.pdf>
 Package pdftex.def Info: ./img/stemma.pdf  used on input line 84.
@@ -545,85 +546,157 @@ Package pdftex.def Info: ./img/stemma.pdf  used on input line 84.
 
 
 {C:/Users/aleba/AppData/Local/MiKTeX/pdftex/config/pdftex.map} <./img/stemma.pd
-f>] (thesis.toc)
+f>] (thesis.toc
+LaTeX Font Info:    Trying to load font information for U+msa on input line 8.
+
+(C:\Users\aleba\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 8.
+
+(C:\Users\aleba\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 8.
+
+
+(C:\Users\aleba\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ursfs.fd
+File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
+)pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.21 ...n}{\numberline {5.3}HTTP}{28}{section.5.3}
+                                                  % [1
+
+])
 \tf@toc=\write4
 \openout4 = `thesis.toc'.
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.i}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.89 \cleardoublepage
-                      [1
-
-]
+ [2]
 \openout2 = `files/introduction.aux'.
 
- (files/introduction.tex)pdfTeX warning (ext4): destination with the same ident
-ifier (name{page.i}) has been already used, duplicate ignored
+
+(files/introduction.texpdfTeX warning (ext4): destination with the same identif
+ier (name{page.i}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.8 
+     [1
+
+
+
+
+])pdfTeX warning (ext4): destination with the same identifier (name{page.ii}) h
+as been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.104 \include{files/introduction}
-                                   [1
+                                   [2]
+\openout2 = `files/scopo.aux'.
 
-
-
-
-] [2
-
-
-] [3]
-\openout2 = `files/chapter1.aux'.
-
- (files/chapter1.tex
+ (files/scopo.tex
 Capitolo 1.
-) [1
+[1
 
 
 
-] [2
 
 
-]
+]) [2]
+\openout2 = `files/introcolori.aux'.
+
+ (files/introcolori.tex
+Capitolo 2.
+[3
+
+
+
+
+]) [4]
+\openout2 = `files/crossplatform.aux'.
+
+ (files/crossplatform.tex
+Capitolo 3.
+[5
+
+
+
+
+] [6]) [7]
+\openout2 = `files/frontend.aux'.
+
+ (files/frontend.tex
+Capitolo 4.
+[8
+
+
+
+
+] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20]) [21]
+\openout2 = `files/backend.aux'.
+
+
+(files/backend.tex
+Capitolo 5.
+[22
+
+
+
+
+] [23] [24]
+<img/styles.png, id=256, 286.671pt x 274.02374pt>
+File: img/styles.png Graphic file (type png)
+<use img/styles.png>
+Package pdftex.def Info: img/styles.png  used on input line 46.
+(pdftex.def)             Requested size: 286.67029pt x 274.02307pt.
+ [25 <./img/styles.png>] [26] [27] [28] [29]) [30]
 \openout2 = `files/conclusions.aux'.
 
- (files/conclusions.tex
-Capitolo 2.
-) [3
+
+(files/conclusions.tex
+Capitolo 6.
+) [31
 
 
-] (thesis.bbl) [4
+
+
+] (thesis.bbl) [32
 
 
 
-] (thesis.aux (files/introduction.aux) (files/chapter1.aux) (files/conclusions.
-aux))
+] (thesis.aux (files/introduction.aux) (files/scopo.aux) (files/introcolori.aux
+) (files/crossplatform.aux) (files/frontend.aux)
+(files/backend.aux) (files/conclusions.aux))
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 67EB8ECB00C0ABC85ACB5DFF47165509;373.
+(rerunfilecheck)             Checksum: 0CC73A6EB959B4A5F1F8C432ECDE37FA;2580.
  )
 (\end occurred when \ifx on line 2 was incomplete) 
 Here is how much of TeX's memory you used:
- 13425 strings out of 478864
- 197045 string characters out of 2848660
- 532385 words of memory out of 3000000
- 31109 multiletter control sequences out of 15000+600000
- 413440 words of font info for 41 fonts, out of 8000000 for 9000
+ 13631 strings out of 478864
+ 201234 string characters out of 2848660
+ 537162 words of memory out of 3000000
+ 31211 multiletter control sequences out of 15000+600000
+ 419393 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,6n,80p,1062b,404s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 75i,6n,80p,1125b,491s stack positions out of 5000i,500n,10000p,200000b,80000s
  <C:\Users\aleba\AppData\Loca
-l\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsl1200.pk> <C:\Users\aleba\AppDat
-a\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk> <C:\Users\aleba\
-AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2488.pk> <C:\Users\
-aleba\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1200.pk> <C:\
-Users\aleba\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecxc1728.pk
-> <C:\Users\aleba\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1
-200.pk> <C:\Users\aleba\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600
-\ecrm1095.pk> <C:\Users\aleba\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/
-dpi600\eccc1200.pk> <C:\Users\aleba\AppData\Local\MiKTeX\fonts/pk/ljfour/jknapp
-en/ec/dpi600\eccc1728.pk>
-Output written on thesis.pdf (9 pages, 485763 bytes).
+l\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\aleba\AppDat
+a\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\aleba\
+AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk> <C:\Users\
+aleba\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecsl1200.pk> <C:\
+Users\aleba\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1200.pk
+> <C:\Users\aleba\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx2
+488.pk> <C:\Users\aleba\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600
+\ecti1200.pk> <C:\Users\aleba\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/
+dpi600\ecxc1728.pk> <C:\Users\aleba\AppData\Local\MiKTeX\fonts/pk/ljfour/jknapp
+en/ec/dpi600\ecrm1200.pk> <C:\Users\aleba\AppData\Local\MiKTeX\fonts/pk/ljfour/
+jknappen/ec/dpi600\ecrm1095.pk> <C:\Users\aleba\AppData\Local\MiKTeX\fonts/pk/l
+jfour/jknappen/ec/dpi600\eccc1200.pk> <C:\Users\aleba\AppData\Local\MiKTeX\font
+s/pk/ljfour/jknappen/ec/dpi600\eccc1728.pk>
+Output written on thesis.pdf (37 pages, 782728 bytes).
 PDF statistics:
- 313 PDF objects out of 1000 (max. 8388607)
- 14 named destinations out of 1000 (max. 500000)
- 38 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 706 PDF objects out of 1000 (max. 8388607)
+ 61 named destinations out of 1000 (max. 500000)
+ 195 words of extra memory for PDF output out of 10000 (max. 10000000)
 
