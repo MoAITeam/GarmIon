@@ -10,8 +10,10 @@ import { ModelService } from './model.service';
 
 import { Component } from '@angular/core';
 import { HTTP } from '@ionic-native/http/ngx';
+import {HttpClient, HttpHeaders} from '@angular/common/http'
 import { Router } from '@angular/router';
 import { PreviewCorridorService } from '../services/preview-corridor.service';
+
 
 
 @Injectable({
@@ -75,7 +77,7 @@ export class PhotoService{
   private async savePicture(cameraPhoto: CameraPhoto) {
 
     let base64Data = await this.readAsBase64(cameraPhoto);
-
+    base64Data = this.base;
     console.log('this.base'+this.base);
     //base64Data = this.base;
 
@@ -85,7 +87,6 @@ export class PhotoService{
       path: fileName,
       data: base64Data,
       directory: Directory.Data,
-      encoding: Encoding.UTF8,
     });
 
     if (this.platform.is('hybrid')) {
@@ -160,38 +161,59 @@ export class PhotoService{
     const capturedPhoto = await Camera.getPhoto({
       resultType: CameraResultType.Uri,
       source: CameraSource.Camera,
-      quality: 5,
+      quality: 30,
  
     });
 
-    const base64Data = await this.readAsBase64(capturedPhoto);
-    console.log(base64Data);
-    this.sendRequest();
+    this.sendRequest(await this.readAsBase64(capturedPhoto));
     
     this.id=(((1+Math.random())*0x10000)|0);
-      
     this.garment = {
       id: this.id,
       name: "garment",
-      link: capturedPhoto.webPath,
+      link: 'https://miro.medium.com/max/880/0*H3jZONKqRuAAeHnG.jpg',
       color: null,
       category: null,
       season: null,
     };
-
-
+      
     return [this.id,capturedPhoto];
 
 }
 
-sendRequest() {
-  this.http.post('http://192.168.43.62:5000/getBase64Picture', { image: '' }, {}).then(data => {
+sendRequest(image) {
+  /*var formData = new FormData();
+  formData.append('image',image)
+
+
+this.http.sendRequest('http://192.168.43.62:5000/getBase64Picture', {
+    method: "post",
+    data: formData,
+    headers: {},
+    timeout: 60,
+})
+    .then(response => {
+        this.base=response.data.status;
+    })
+    .catch(error => {
+        console.log(error);
+    });
+}*/
+
+  this.http.post('http://192.168.43.62:5000/getBase64Picture', {'image':image},{'Content-Type':'application/json'}).then(data => {
         let par = JSON.parse(data.data);
         console.log(par);
         this.base = par.status;
+        this.garment = {
+          id: this.id,
+          name: "garment",
+          link: 'data:image/png;base64,'+this.base,
+          color: null,
+          category: null,
+          season: null,
+        };
     })
 }
- 
 
 public async waitForCheck(capturedPhoto){
 
