@@ -11,6 +11,7 @@ import { Storage } from '@capacitor/storage';
 import { Capacitor } from '@capacitor/core';
 import { ModelService } from '../services/model.service';
 import { Key } from 'selenium-webdriver';
+import { PhotoService } from '../services/photo.service';
 
 @Component({
   selector: 'app-garment-detail',
@@ -40,19 +41,26 @@ export class GarmentDetailComponent implements OnInit {
     private outfitCorridorService : OutfitCorridorService,
     private modelService: ModelService,
     public navCtrl: NavController,
+    private photoService: PhotoService
   ) {}
 
     
   async ngOnInit(): Promise<void> {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.opt = String(this.route.snapshot.paramMap.get('opt'));
+    const reco = await Storage.get({ key: String(id) });
+    //const recos = JSON.parse(reco.value)|| [];
+    const recoarray = JSON.parse(JSON.parse(reco.value));
     this.lovedOutfit = [];
+    console.log('quiquiqui');
     if (this.opt==='detail'){
         this.garment = this.modelService.garments.find(h => h.id === id)!;
-        this.matchGarments = [this.modelService.garments[0],
-        this.modelService.garments[0],
-        this.modelService.garments[0]];      
+        this.matchGarments = [];     
+        for (let r of recoarray){
+          this.matchGarments.unshift({id:Math.random(),name:'',link:'http://192.168.43.62:5000/getPhoto?path='+r.link,
+          color:this.garment.color, category:'Bottom',season:'lol'});
         }
+      }
 
       if (this.opt==='edit'){
         this.outfit = this.modelService.outfits.find(h => h.id === id)!;
@@ -78,7 +86,21 @@ export class GarmentDetailComponent implements OnInit {
   
     }
 
+    async delete() {
+      // Fa molto schifo
+      const garmentz = this.modelService.garments;
+      this.modelService.garments = [];
 
+      //let newGarmentList = [];
+      for (let g of garmentz){
+        if (this.garment.id!=g.id){
+          //newGarmentList.push(g);
+          this.modelService.garments.push(g);
+        }
+      }
+      //Storage.set({key: "outfits",value: JSON.stringify(newOutFitList)});
+      this.navCtrl.navigateRoot("tabs/tab1");
+    }
   save(){
 
     if (this.opt=='edit'){
@@ -137,6 +159,8 @@ export class GarmentDetailComponent implements OnInit {
             value: JSON.stringify(this.outfits)
           });
     
+          this.modelService.garments.unshift(this.matchGarments[id]);
+
           this.modelService.outfits.unshift(data);
           icon.setAttribute('name','heart');
 

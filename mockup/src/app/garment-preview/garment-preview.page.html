@@ -33,7 +33,7 @@
       <ion-col size='6'>
         <ion-card >
           <ion-card-content class="filter-card" >
-            <ion-select class="select-card" [(ngModel)]="colorFilter" (ionChange)="colorChange($event)"  cancelText="Nah" okText="Okay!" placeholder="Color">
+            <ion-select class="select-card" [(ngModel)]="colorFilter" (ionChange)="colorChange($event)"  placeholder="Color">
               <ion-select-option value="Blue">Blue</ion-select-option>
               <ion-select-option value="Red">Red</ion-select-option>
               <ion-select-option value="Green">Green</ion-select-option>
@@ -51,7 +51,7 @@
       <ion-col size='6'>
         <ion-card >
           <ion-card-content class="filter-card" >
-            <ion-select class="select-card" [(ngModel)]="categoryFilter" (ionChange)="categoryChange($event)" cancelText="Nah" okText="Okay!" placeholder="Category">
+            <ion-select class="select-card" [(ngModel)]="categoryFilter" (ionChange)="categoryChange($event)" placeholder="Category">
               <ion-select-option value="Top">Top</ion-select-option>
               <ion-select-option value="Bottom">Bottom</ion-select-option>
             </ion-select>
@@ -68,7 +68,7 @@
       <ion-col size='6'>
         <ion-card >
           <ion-card-content class="filter-card" >
-            <ion-select class="select-card" [(ngModel)]="seasonFilter" (ionChange)="seasonChange($event)" cancelText="Cancel" okText="Ok" placeholder="Season">
+            <ion-select class="select-card" [(ngModel)]="seasonFilter" (ionChange)="seasonChange($event)" placeholder="Season">
               <ion-select-option value="Spring">Spring</ion-select-option>
               <ion-select-option value="Summer">Summer</ion-select-option>
               <ion-select-option value="Autumn">Autumn</ion-select-option>

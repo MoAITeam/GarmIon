@@ -144,7 +144,7 @@ export class PhotoService{
     for (let photo of this.photos) {
       // Read each saved photo's data from the Filesystem
       this.modelService.garments.unshift({
-        id: Math.random(),
+        id: photo.id,
         name: "garment",
         link: photo.webviewPath,
         color: photo.color,
@@ -162,7 +162,7 @@ export class PhotoService{
     const capturedPhoto = await Camera.getPhoto({
       resultType: CameraResultType.Uri,
       source: CameraSource.Camera,
-      quality: 30,
+      quality: 100,
  
     });
 
@@ -218,6 +218,10 @@ this.http.sendRequest('http://192.168.43.62:5000/getBase64Picture', {
         let par = JSON.parse(data.data);
         console.log(par);
         this.result = par;
+        Storage.set({
+          key: String(this.garment.id),
+          value: data.data
+        });
     })
 }
 
@@ -239,7 +243,7 @@ public async waitForCheck(capturedPhoto){
         color:this.color,
         category:this.category,
         season:this.season,
-        recommendations:this.result
+        id:this.garment.id
       });
       
       Storage.set({
@@ -259,5 +263,5 @@ export interface Photo {
   color:string;
   category:string;
   season:string;
-  recommendations
+  id:number
 }

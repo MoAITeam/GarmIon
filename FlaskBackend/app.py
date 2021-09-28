@@ -7,6 +7,7 @@ import os , io , sys
 import numpy as np 
 import cv2
 import base64
+import json
 from io import BytesIO
 
 # SEGMENTATORE IMPORT
@@ -184,7 +185,7 @@ def get_recs():
     #img_str = base64.b64encode(buff.getvalue())
     preds = rec(scaled)
 
-    return jsonify(preds)
+    return jsonify(json.dumps(preds))
 
 @app.route('/getPhoto' , methods=['GET'])
 def get_photo():

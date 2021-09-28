@@ -8,10 +8,11 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
+  
   <ion-content id="content">
   <ion-grid>
     <ion-row id='header-row' class="no-padding">
-      <ion-item class ='no-padding' id="subtitle">FIltra i tuoi risultati di ricerca</ion-item>
+      <ion-item class ='no-padding' id="subtitle">Filter your search result and save matches!</ion-item>
     </ion-row>
     
 
@@ -20,7 +21,7 @@
         <ion-col size='4'>
           <ion-card>
             <ion-card-content class="filter-card">
-              <ion-select multiple="true" cancelText="Nah" okText="Okay!" (ionChange)="colorChange($event)" placeholder = 'Color'>
+              <ion-select multiple="true" (ionChange)="colorChange($event)" placeholder = 'Color'>
                 <ion-select-option value="blue">Blue</ion-select-option>
                 <ion-select-option value="red">Red</ion-select-option>
               </ion-select>
@@ -54,15 +55,22 @@
     </ion-grid>
 
     <ion-fab vertical='bottom' horizontal='end' slot="fixed">
+      <ion-row>
       <ion-fab-button (click)="save()" style="--background:white">
         <ion-icon  id="heart-icon" name='heart-outline' style="color: black;"></ion-icon>
       </ion-fab-button>
+      </ion-row>
+      <ion-row>
+        <ion-fab-button (click)="delete()">
+          <ion-icon name='trash-outline'></ion-icon>
+        </ion-fab-button>
+    </ion-row>
     </ion-fab>
     
     <div class="garment-card-container"> 
       <ion-card id="main-card">
         <ion-card-header id='main-card-header'>
-          <ion-card-title class="no-padding" style="font-size:small">Scegli e salva il tuo outfit!</ion-card-title>
+          <ion-card-title class="no-padding" style="font-size:small">Swipe matches gallery and find out the best outfit!</ion-card-title>
 
           
         </ion-card-header>
