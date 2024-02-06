@@ -34,9 +34,9 @@ The project utilizes neural networks for outfit recommendations, specifically in
 
 ### User Interface
 <div align="center">
-<img src="assets/1.jpeg" alt="Image 1" style="float: left; width: 20vw;" />
-<img src="assets/2.jpeg" alt="Image 2" style="float: left; width: 20vw;" />
-<img src="assets/3.jpeg" alt="Image 3" style="float: left; width: 20vw;" />
+<img src="assets/1.jpeg" alt="Image 1" style="float: left; width: 10vw;" />
+<img src="assets/2.jpeg" alt="Image 2" style="float: left; width: 10vw;" />
+<img src="assets/3.jpeg" alt="Image 3" style="float: left; width: 10vw;" />
 </div>
 
 ### Kobayashi Triplets
