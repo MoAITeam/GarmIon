@@ -32,9 +32,11 @@ The project utilizes neural networks for outfit recommendations, specifically in
 #### Backend:
 - **Flask**: A micro web framework used for building the backend of the application</li>
 
+<div>
 <img src="assets/1.jpeg" alt="Image 1" style="float: left; margin-right: 10px;" />
 <img src="assets/2.jpeg" alt="Image 2" style="float: left; margin-right: 10px;" />
 <img src="assets/3.jpeg" alt="Image 3" style="float: left; margin-right: 10px;" />
+</div>
 
 <br>
 <div align="center">
