@@ -9,6 +9,12 @@ The application aims to provide users with a digital stylist, allowing them to c
 ### Color Theory by Kobayashi:
 The project incorporates the color theory by **Shigenobu Kobayashi**, a Japanese scholar, to categorize color combinations based on the emotions they convey. This categorization is used to recommend suitable outfit combinations aligned with the user's mood and the event they plan to attend. Kobayashi's color theory associates particular emotions with specific color combinations, creating a system that correlates a particular emotion with a combination of colors. These color combinations, known as Kobayashi triplets, are used to suggest correct outfit pairings for various occasions
 
+<br>
+<div align="center">
+    <img src="assets/triplets.png"  alt="Kobayashi Triplets"/>
+</div>
+<br> 
+
 ### Cross-Platform Concept:
 The significance of cross-platform development is highlighted, emphasizing the need to cater to a wide user base across different devices and operating systems, particularly in the mobile-first technological landscape. Front End and Backend:
 The application's front end is built using **Ionic**, **Capacitor**, and **Angular**, while the backend involves the use of neural networks for outfit recommendations.
