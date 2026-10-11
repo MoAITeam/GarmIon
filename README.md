@@ -4,7 +4,7 @@ GarmIon is a **cross-platform app**, developed with **Ionic** (**Angular**, **Ca
 ### Main features
 
 1. Photo Capture: Take a picture of a garment with the camera, on mobile or in the browser
-2. Segmentation: The backend (**Flask**, **TensorFlow** UNET and **OpenCV**'s GrabCut) segments the garment from the rest
+2. Segmentation: The backend (**Flask**, **TensorFlow** UNET and **OpenCV**'s GrabCut) segments garment from the rest
 3. Smart Recommendations: **Style-Based Outfit Recommendation** model; a Memory Augmented Neural Network "MANN" (similar to RAG)
 4. Outfit Creation: Combine garments into outfits and tag them by event and mood (**Fashion2Events** models)
 
