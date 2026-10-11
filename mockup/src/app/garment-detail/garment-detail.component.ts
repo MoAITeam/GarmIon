@@ -57,7 +57,7 @@ export class GarmentDetailComponent implements OnInit {
         this.garment = this.modelService.garments.find(h => h.id === id)!;
         this.matchGarments = [];     
         for (let r of recoarray){
-          this.matchGarments.unshift({id:Math.random(),name:'',link:'http://192.168.43.62:5000/getPhoto?path='+r.link,
+          this.matchGarments.unshift({id:Math.random(),name:'',link:'http://127.0.0.1:5000/getPhoto?path='+r.link,
           color:this.garment.color, category:'Bottom',season:'lol'});
         }
       }

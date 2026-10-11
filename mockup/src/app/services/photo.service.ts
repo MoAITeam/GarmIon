@@ -8,12 +8,7 @@ import { Storage } from '@capacitor/storage';
 import { Capacitor } from '@capacitor/core';
 import { ModelService } from './model.service';
 
-import { Component } from '@angular/core';
 import { HTTP } from '@ionic-native/http/ngx';
-import {HttpClient, HttpHeaders} from '@angular/common/http'
-import { Router } from '@angular/router';
-import { PreviewCorridorService } from '../services/preview-corridor.service';
-
 
 
 @Injectable({
@@ -77,17 +72,19 @@ export class PhotoService{
   // Save picture to file on device
   private async savePicture(cameraPhoto: CameraPhoto) {
 
-    let base64Data = await this.readAsBase64(cameraPhoto);
-    base64Data = this.base;
-    console.log('this.base'+this.base);
-    //base64Data = this.base;
+    let base64Data = JSON.stringify({id:this.id,
+      color:this.color,
+      category:this.category,
+      season:this.season,
+      photo:await this.readAsBase64(cameraPhoto)});
 
     // Write the file to the data directory
-    const fileName = new Date().getTime() + '.jpeg';
+    const fileName = new Date().getTime() + '.sav';
     const savedFile = await Filesystem.writeFile({
       path: fileName,
       data: base64Data,
       directory: Directory.Data,
+      encoding: Encoding.UTF8
     });
 
     if (this.platform.is('hybrid')) {
@@ -162,17 +159,18 @@ export class PhotoService{
     const capturedPhoto = await Camera.getPhoto({
       resultType: CameraResultType.Uri,
       source: CameraSource.Camera,
-      quality: 100,
+      quality: 5,
  
     });
 
-    this.sendRequest(await this.readAsBase64(capturedPhoto));
+    this.sendRequest(await this.readAsBase64(capturedPhoto));       // Browser version
+    this.sendRequestNative(await this.readAsBase64(capturedPhoto)); // Android/iOS version
     
     this.id=(((1+Math.random())*0x10000)|0);
     this.garment = {
       id: this.id,
       name: "garment",
-      link: 'https://miro.medium.com/max/880/0*H3jZONKqRuAAeHnG.jpg',
+      link: capturedPhoto.webPath,
       color: null,
       category: null,
       season: null,
@@ -183,11 +181,49 @@ export class PhotoService{
 }
 
 sendRequest(image) {
+  // Browser gives "data:image/jpeg;base64,XXXX", Android gives "XXXX". Send "XXXX" everywhere.
+  const raw = typeof image === 'string' ? image.replace(/^data:[^;]+;base64,/, '') : image;
+
+  const post = (path: string) =>
+  fetch('http://127.0.0.1:5000' + path, {
+    method: 'POST',
+    body: new URLSearchParams({ image: raw }),   // browser sets Content-Type: application/x-www-form-urlencoded
+  }).then(r => {
+    if (!r.ok) throw new Error(path + ' returned ' + r.status);
+    return r.json();
+  });
+
+  const first = post('/getBase64Picture').then(par => {
+    console.log(par);
+    this.base = par.status;
+    this.garment = {
+      id: this.id,
+      name: "garment",
+      link: 'data:image/png;base64,' + this.base,
+      color: null,
+      category: null,
+      season: null,
+    };
+  });
+
+  const second = post('/getRecommendations').then(par => {
+    console.log(par);
+    this.result = par;
+    Storage.set({
+      key: String(this.id),
+      value: JSON.stringify(par),
+    });
+  });
+
+  return Promise.all([first, second]).catch(e => console.error('sendRequest failed', e));
+}
+
+sendRequestNative(image) {
   /*var formData = new FormData();
   formData.append('image',image)
 
 
-this.http.sendRequest('http://192.168.43.62:5000/getBase64Picture', {
+this.http.sendRequest('http://127.0.0.1:5000/getBase64Picture', {
     method: "post",
     data: formData,
     headers: {},
@@ -201,7 +237,7 @@ this.http.sendRequest('http://192.168.43.62:5000/getBase64Picture', {
     });
 }*/
 
-  this.http.post('http://192.168.43.62:5000/getBase64Picture', {'image':image},{'Content-Type':'application/json'}).then(data => {
+  this.http.post('http://127.0.0.1:5000/getBase64Picture', {'image':image},{'Content-Type':'application/json'}).then(data => {
         let par = JSON.parse(data.data);
         console.log(par);
         this.base = par.status;
@@ -214,7 +250,7 @@ this.http.sendRequest('http://192.168.43.62:5000/getBase64Picture', {
           season: null,
         };
     })
-    this.http.post('http://192.168.43.62:5000/getRecommendations', {'image':image},{'Content-Type':'application/json'}).then(data => {
+    this.http.post('http://127.0.0.1:5000/getRecommendations', {'image':image},{'Content-Type':'application/json'}).then(data => {
         let par = JSON.parse(data.data);
         console.log(par);
         this.result = par;
