@@ -1,7 +1,7 @@
 ## GARMION
 GarmIon is a **cross-platform app**, developed with **Ionic** (**Angular**, **Capacitor**) and a **Flask** python backend, that lets the user build a digital wardrobe by taking pictures of their clothes and leveraging neural networks to get outfit suggestions.
 
-The project was developed as Computer Science Bachelor Thesis for University of Florence UNIFI, Multimedia Design & Production course.
+The project was developed as Computer Science Bachelor Thesis @ University of Florence UNIFI, Multimedia Design & Production course.
 
 ### Main features
 
