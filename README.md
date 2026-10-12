@@ -7,7 +7,7 @@ The project was developed as Computer Science Bachelor Thesis @ University of Fl
 
 1. Photo Capture: Take a picture of a garment with the camera, on mobile or in the browser
 2. Segmentation: The backend (**Flask**, **TensorFlow** UNET and **OpenCV**'s GrabCut) segments garment from the rest
-3. Smart Recommendations: **Style-Based Outfit Recommendation** model; a Memory Augmented Neural Network "MANN" (similar to RAG)
+3. Smart Recommendations: **Style-Based Outfit Recommendation** model; a Memory Augmented Neural Network "MANN" (similar to modern RAG)
 4. Outfit Creation: Combine garments into outfits and tag them by event and mood (**Fashion2Events** models)
 
 ### User Interface
